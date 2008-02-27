@@ -1,0 +1,22 @@
+/*
+ * This file is part of the Code::Blocks IDE and licensed under the GNU Lesser General Public License, version 3
+ * http://www.gnu.org/licenses/lgpl-3.0.html
+ */
+
+/*@REVISION@*/
+#ifndef AUTOREVISION_H
+#define AUTOREVISION_H
+
+
+#include <wx/string.h>
+
+namespace autorevision
+{
+	const unsigned int svn_revision = @REVISION@;
+	const wxString svnRevision(_T("@REVISION@"));
+	const wxString svnDate(_T("@DATE@"));
+}
+
+
+
+#endif
