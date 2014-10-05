@@ -1815,6 +1815,9 @@
 		<Unit filename="src/app.h">
 			<Option target="src" />
 		</Unit>
+		<Unit filename="src/appglobals.cpp">
+			<Option target="src" />
+		</Unit>
 		<Unit filename="src/appglobals.h">
 			<Option target="src" />
 		</Unit>
