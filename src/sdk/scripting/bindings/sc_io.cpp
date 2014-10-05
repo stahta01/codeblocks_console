@@ -16,13 +16,18 @@
 #ifndef CB_PRECOMP
     #include <globals.h>
     #include <wx/string.h>
+#if wxUSE_GUI && !defined(CB_FOR_CONSOLE)
     #include <wx/filedlg.h>
+#endif // #if wxUSE_GUI && !defined(CB_FOR_CONSOLE)
 #endif
 
 #include <wx/filename.h>
 #include <wx/utils.h>
 
+#if wxUSE_GUI
 #include "scriptsecuritywarningdlg.h"
+#endif // #if wxUSE_GUI
+
 #include "sc_base_types.h"
 
 namespace ScriptBindings
@@ -38,6 +43,7 @@ namespace ScriptBindings
             if (Manager::Get()->GetConfigManager(_T("security"))->ReadBool(operation, false))
                 return true;
 
+#if wxUSE_GUI
             ScriptSecurityWarningDlg dlg(Manager::Get()->GetAppWindow(), operation, descr);
             if (dlg.ShowModal() != wxID_OK)
                 return false;
@@ -60,6 +66,7 @@ namespace ScriptBindings
                 default:
                     return false;
             }
+#endif // #if wxUSE_GUI
             return false;
         }
 
@@ -82,10 +89,12 @@ namespace ScriptBindings
             return ::CreateDirRecursively(fname.GetFullPath(), perms);
         }
 
+#if wxUSE_GUI
         wxString ChooseDir(const wxString& message, const wxString& initialPath, bool showCreateDirButton)
         {
             return ChooseDirectory(nullptr, message, Manager::Get()->GetMacrosManager()->ReplaceMacros(initialPath), wxEmptyString, false, showCreateDirButton);
         }
+#endif // #if wxUSE_GUI
 
         bool RemoveDir(const wxString& src)
         {
@@ -148,6 +157,7 @@ namespace ScriptBindings
             return wxFileExists(fname.GetFullPath());
         }
 
+#if wxUSE_GUI
         wxString ChooseFile(const wxString& title, const wxString& defaultFile, const wxString& filter)
         {
             wxFileDialog dlg(nullptr,
@@ -161,6 +171,7 @@ namespace ScriptBindings
                 return dlg.GetPath();
             return wxEmptyString;
         }
+#endif // #if wxUSE_GUI
 
         wxString ReadFileContents(const wxString& filename)
         {
@@ -250,9 +261,13 @@ namespace ScriptBindings
                 staticFunc(&IOLib::SetCwd, "SetCwd").
 
                 staticFunc(&IOLib::DirectoryExists,  "DirectoryExists").
+#if wxUSE_GUI
                 staticFunc(&IOLib::ChooseDir,        "SelectDirectory").
+#endif // #if wxUSE_GUI
                 staticFunc(&IOLib::FileExists,       "FileExists").
+#if wxUSE_GUI
                 staticFunc(&IOLib::ChooseFile,       "SelectFile").
+#endif // #if wxUSE_GUI
                 staticFunc(&IOLib::ReadFileContents, "ReadFileContents");
 
         #ifndef NO_INSECURE_SCRIPTS
