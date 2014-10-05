@@ -29,10 +29,10 @@
 #include "sc_plugin.h"
 #include "sqstdstring.h"
 
-#ifdef CB_FOR_CONSOLE
+#if wxUSE_GUI==0 || defined(CB_FOR_CONSOLE)
     template<> SCRIPTING_MANAGER_BASE* Mgr<SCRIPTING_MANAGER_BASE>::instance = 0;
     template<> bool  Mgr<SCRIPTING_MANAGER_BASE>::isShutdown = false;
-#endif //#ifdef CB_FOR_CONSOLE
+#endif // #if wxUSE_GUI==0 || defined(CB_FOR_CONSOLE)
 
 static wxString s_ScriptErrors;
 static wxString capture;

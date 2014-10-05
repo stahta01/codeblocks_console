@@ -421,6 +421,7 @@ namespace ScriptBindings
             var(&PluginInfo::thanksTo, "thanksTo").
             var(&PluginInfo::license, "license");
 
+#if wxUSE_GUI
         SqPlus::SQClassDef<FileTreeData>("FileTreeData").
             func(&FileTreeData::GetKind, "GetKind").
             func(&FileTreeData::GetProject, "GetProject").
@@ -432,6 +433,7 @@ namespace ScriptBindings
             func(&FileTreeData::SetFileIndex, "SetFileIndex").
             func(&FileTreeData::SetProjectFile, "SetProjectFile").
             func(&FileTreeData::SetFolder, "SetFolder");
+#endif // #if wxUSE_GUI
 
     }
 } // namespace ScriptBindings
