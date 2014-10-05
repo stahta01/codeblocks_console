@@ -15,11 +15,11 @@
 #include "settings.h"
 #include "manager.h"
 
-#ifdef CB_FOR_CONSOLE
-    #define PLUGIN_MANAGER_BASE PluginManager
-#else // #ifdef CB_FOR_CONSOLE
+#if wxUSE_GUI && !defined(CB_FOR_CONSOLE)
     #define PLUGIN_MANAGER_BASE PluginManagerBase
-#endif //#ifdef CB_FOR_CONSOLE
+#else // #if wxUSE_GUI && !defined(CB_FOR_CONSOLE)
+    #define PLUGIN_MANAGER_BASE PluginManager
+#endif // #if wxUSE_GUI && !defined(CB_FOR_CONSOLE)
 
 //forward decls
 struct PluginInfo;
@@ -74,16 +74,16 @@ WX_DEFINE_ARRAY(cbPlugin*, PluginsArray);
  * smaller scale/functionality plugins.
  */
 class DLLIMPORT PLUGIN_MANAGER_BASE
-#ifdef CB_FOR_CONSOLE
+#if wxUSE_GUI==0 || defined(CB_FOR_CONSOLE)
     : public Mgr<PLUGIN_MANAGER_BASE>
-#endif //#ifdef CB_FOR_CONSOLE
+#endif // #if wxUSE_GUI==0 || defined(CB_FOR_CONSOLE)
 {
     public:
-#ifdef CB_FOR_CONSOLE
+#if wxUSE_GUI==0 || defined(CB_FOR_CONSOLE)
         friend class Mgr<PLUGIN_MANAGER_BASE>;
-#else //#ifdef CB_FOR_CONSOLE
+#else //#if wxUSE_GUI==0 || defined(CB_FOR_CONSOLE)
         friend class PluginManager; // give Manager access to our private members
-#endif //#ifdef CB_FOR_CONSOLE
+#endif //#if wxUSE_GUI==0 || defined(CB_FOR_CONSOLE)
         friend class Manager; // give Manager access to our private members
 
         void RegisterPlugin(const wxString& name,

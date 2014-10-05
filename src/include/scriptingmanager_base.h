@@ -18,11 +18,11 @@
 #include "manager.h"
 #include <wx/intl.h>
 
-#ifdef CB_FOR_CONSOLE
+#if wxUSE_GUI==0 || defined(CB_FOR_CONSOLE)
     #define SCRIPTING_MANAGER_BASE ScriptingManager
-#else // #ifdef CB_FOR_CONSOLE
+#else // #if wxUSE_GUI==0 || defined(CB_FOR_CONSOLE)
     #define SCRIPTING_MANAGER_BASE ScriptingManagerBase
-#endif //#ifdef CB_FOR_CONSOLE
+#endif // #if wxUSE_GUI==0 || defined(CB_FOR_CONSOLE)
 
 
 class SquirrelError;
@@ -54,13 +54,13 @@ class SquirrelError;
   * function name is not unicode (we 're not using Squirrel in unicode mode).
   */
 class DLLIMPORT SCRIPTING_MANAGER_BASE
-#ifdef CB_FOR_CONSOLE
+#if wxUSE_GUI==0 || defined(CB_FOR_CONSOLE)
     : public Mgr<SCRIPTING_MANAGER_BASE>
-#endif //#ifdef CB_FOR_CONSOLE
+#endif // #if wxUSE_GUI==0 || defined(CB_FOR_CONSOLE)
 {
-#ifdef CB_FOR_CONSOLE
+#if wxUSE_GUI==0 || defined(CB_FOR_CONSOLE)
         friend class Mgr<SCRIPTING_MANAGER_BASE>;
-#endif //#ifdef CB_FOR_CONSOLE
+#endif // #if wxUSE_GUI==0 || defined(CB_FOR_CONSOLE)
         wxCriticalSection cs;
     public:
         /// Script trusts container struct
@@ -191,7 +191,7 @@ class DLLIMPORT SCRIPTING_MANAGER_BASE
         const TrustedScripts& GetTrustedScripts();
 
         // needed for SqPlus bindings
-#ifdef CB_FOR_CONSOLE
+#if wxUSE_GUI==0 || defined(CB_FOR_CONSOLE)
         virtual SCRIPTING_MANAGER_BASE& operator=(const SCRIPTING_MANAGER_BASE& /*rhs*/) // prevent assignment operator
         {
         	cbThrow(_T("Can't assign a ScriptingManager* !!!"));
@@ -203,7 +203,7 @@ class DLLIMPORT SCRIPTING_MANAGER_BASE
         SCRIPTING_MANAGER_BASE(const SCRIPTING_MANAGER_BASE& /*rhs*/); // prevent copy construction
 #else
     private:
-#endif // #ifdef CB_FOR_CONSOLE
+#endif // #if wxUSE_GUI==0 || defined(CB_FOR_CONSOLE)
 
         virtual void RegisterScriptFunctions();
 
