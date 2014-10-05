@@ -1755,6 +1755,9 @@
 			<Option link="0" />
 			<Option target="sdk" />
 		</Unit>
+		<Unit filename="sdk/scriptingmanager_base.cpp">
+			<Option target="sdk" />
+		</Unit>
 		<Unit filename="sdk/scriptsecuritywarningdlg.cpp">
 			<Option compile="0" />
 			<Option link="0" />

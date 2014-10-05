@@ -9,6 +9,8 @@
 #include "sc_base_types.h"
 #include <wx/dynarray.h>
 
+#if wxUSE_GUI
+
 class FileTreeData;
 class wxMenu;
 
@@ -24,4 +26,5 @@ namespace ScriptBindings
     } // namespace ScriptPluginWrapper
 }
 
+#endif // #if wxUSE_GUI
 #endif // SC_PLUGIN_H
