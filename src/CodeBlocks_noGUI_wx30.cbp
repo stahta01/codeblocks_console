@@ -1978,9 +1978,6 @@
 		<Unit filename="src/watchesdlg.h">
 			<Option target="src" />
 		</Unit>
-		<Unit filename="tools/ConsoleRunner/main.cpp">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
 		<Extensions>
 			<code_completion />
 			<envvars />
