@@ -1030,6 +1030,8 @@ cbWizardPlugin::cbWizardPlugin()
     m_Type = ptWizard;
 }
 
+#if wxUSE_GUI && !defined(CB_FOR_CONSOLE)
+
 /////
 ///// cbSmartIndentPlugin
 /////
