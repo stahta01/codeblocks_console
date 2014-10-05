@@ -86,11 +86,11 @@
 					<Add directory="include/scripting/sqplus" />
 				</Compiler>
 			</Target>
-			<Target title="sdk">
-				<Option output="devel30/codeblocks" prefix_auto="1" extension_auto="1" />
+			<Target title="sdk_nogui">
+				<Option output="devel30/codeblocks_nogui" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="devel30" />
 				<Option object_output=".objs30" />
-				<Option external_deps="base/tinyxml/libtxml30.a;sdk/scripting/lib/libsquirrel30.a;sdk/scripting/lib/libsqstdlib30.a;sdk/scripting/lib/libsqplus30.a;devel30/libwxscintilla_cb.a;" />
+				<Option external_deps="base/tinyxml/libtxml30.a;sdk/scripting/lib/libsquirrel30.a;sdk/scripting/lib/libsqstdlib30.a;sdk/scripting/lib/libsqplus30.a;" />
 				<Option type="3" />
 				<Option compiler="gcc" />
 				<Option parameters="--debug-log --no-dde --no-check-associations --multiple-instance --verbose -p debug" />
@@ -130,13 +130,14 @@
 					<Mode after="always" />
 				</ExtraCommands>
 			</Target>
-			<Target title="src">
-				<Option output="devel30/codeblocks" prefix_auto="1" extension_auto="1" />
+			<Target title="src_nogui">
+				<Option output="devel30/codeblocks_nogui" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="devel30" />
 				<Option object_output=".objs30" />
-				<Option external_deps="devel30/libcodeblocks.a;" />
-				<Option type="0" />
+				<Option external_deps="devel30/codeblocks_nogui.dll;" />
+				<Option type="1" />
 				<Option compiler="gcc" />
+				<Option use_console_runner="0" />
 				<Option parameters="--debug-log --no-dde --no-check-associations --multiple-instance --no-splash-screen --verbose -p debug" />
 				<Option projectLinkerOptionsRelation="2" />
 				<Compiler>
@@ -148,7 +149,7 @@
 				<Linker>
 					<Add option="-Wl,--enable-auto-import" />
 					<Add option="-Wl,--no-undefined" />
-					<Add library="codeblocks" />
+					<Add library="codeblocks_nogui" />
 					<Add library="shfolder" />
 					<Add library="kernel32" />
 					<Add library="user32" />
@@ -189,10 +190,10 @@
 				</Linker>
 			</Target>
 			<Target title="Compiler">
-				<Option output="devel30/share/CodeBlocks/plugins/compiler" prefix_auto="1" extension_auto="1" />
+				<Option output="devel30/share/CodeBlocks/plugins/compiler_nogui" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="devel30" />
 				<Option object_output=".objs30" />
-				<Option external_deps="devel30/libcodeblocks.a;plugins/compilergcc/depslib/libdepslib30.a;" />
+				<Option external_deps="devel30/codeblocks_nogui.dll;plugins/compilergcc/depslib/libdepslib30.a;" />
 				<Option type="3" />
 				<Option compiler="gcc" />
 				<Option parameters="--debug-log --no-dde --no-check-associations --multiple-instance --no-splash-screen --verbose -p debug" />
@@ -212,7 +213,7 @@
 					<Add option="-Wl,--enable-auto-import" />
 					<Add option="-Wl,--no-undefined" />
 					<Add option="-mthreads" />
-					<Add library="codeblocks" />
+					<Add library="codeblocks_nogui" />
 					<Add library="wxmsw$(WX_VERSION)$(WX_SUFFIX)" />
 					<Add library="depslib30" />
 					<Add directory="devel30" />
@@ -228,10 +229,10 @@
 				</ExtraCommands>
 			</Target>
 			<Target title="XP look &amp; feel">
-				<Option output="devel30/share/CodeBlocks/plugins/xpmanifest" prefix_auto="1" extension_auto="1" />
+				<Option output="devel30/share/CodeBlocks/plugins/xpmanifest_nogui" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="devel30" />
 				<Option object_output=".objs30" />
-				<Option external_deps="devel30/libcodeblocks.a;" />
+				<Option external_deps="devel30/codeblocks_nogui.dll;" />
 				<Option type="3" />
 				<Option compiler="gcc" />
 				<Option parameters="--debug-log --no-dde --no-check-associations --multiple-instance --no-splash-screen --verbose -p debug" />
@@ -248,7 +249,7 @@
 					<Add option="-Wl,--enable-auto-import" />
 					<Add option="-Wl,--no-undefined" />
 					<Add option="-mthreads" />
-					<Add library="codeblocks" />
+					<Add library="codeblocks_nogui" />
 					<Add library="wxmsw$(WX_VERSION)$(WX_SUFFIX)" />
 					<Add directory="devel30" />
 				</Linker>
@@ -265,8 +266,8 @@
 			</Environment>
 		</Build>
 		<VirtualTargets>
-			<Add alias="All" targets="tinyXML;AutoRevision;Squirrel;Squirrel std lib;SqPlus;sdk;src;Compiler depslib;Compiler;XP look &amp; feel;" />
-			<Add alias="Core app &amp; plugins" targets="sdk;src;Compiler depslib;Compiler;XP look &amp; feel;" />
+			<Add alias="All" targets="tinyXML;AutoRevision;Squirrel;Squirrel std lib;SqPlus;sdk_nogui;src_nogui;Compiler depslib;Compiler;XP look &amp; feel;" />
+			<Add alias="Core app &amp; plugins" targets="sdk_nogui;src_nogui;Compiler depslib;Compiler;XP look &amp; feel;" />
 			<Add alias="Third-party libs" targets="tinyXML;AutoRevision;Squirrel;Squirrel std lib;SqPlus;Compiler depslib;" />
 		</VirtualTargets>
 		<Compiler>
@@ -317,7 +318,7 @@
 			<Option target="tinyXML" />
 		</Unit>
 		<Unit filename="base/tinyxml/tinywxuni.cpp">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="base/tinyxml/tinyxml.cpp">
 			<Option target="tinyXML" />
@@ -332,394 +333,394 @@
 			<Option target="AutoRevision" />
 		</Unit>
 		<Unit filename="include/annoyingdialog.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/autodetectcompilers.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/backgroundthread.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/base64.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/blockallocated.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/cbauibook.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/cbcolourmanager.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/cbdebugger_interfaces.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/cbeditor.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/cbeditorprintout.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/cbexception.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/cbfunctor.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/cbplugin.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/cbproject.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/cbstatusbar.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/cbstyledtextctrl.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/cbthreadedtask.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/cbthreadpool.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/cbtool.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/cbtreectrl.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/cbworkspace.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/ccmanager.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/compileoptionsbase.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/compiler.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/compilercommandgenerator.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/compilerfactory.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/compileroptions.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/compiletargetbase.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/configmanager.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/configurationpanel.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/configuretoolsdlg.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/confirmreplacedlg.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/crc32.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/debuggermanager.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/editarrayfiledlg.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/editarrayorderdlg.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/editarraystringdlg.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/editor_hooks.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/editorbase.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/editorcolourset.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/editorlexerloader.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/editormanager.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/editpairdlg.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/editpathdlg.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/edittooldlg.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/encodingdetector.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/externaldepsdlg.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/filefilters.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/filegroupsandmasks.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/filemanager.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/findreplacebase.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/findreplacedlg.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/genericmultilinenotesdlg.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/globals.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/ibaseloader.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/ibaseworkspaceloader.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/id.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/importers_globals.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/incrementalselectlistdlg.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/infowindow.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/licenses.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/logger.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/loggers.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/logmanager.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/macrosmanager.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/managedthread.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/manager.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/menuitemsmanager.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/mozilla_chardet/CharDistribution.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/mozilla_chardet/JpCntx.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/mozilla_chardet/mfbt/mozilla/Assertions.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/mozilla_chardet/mfbt/mozilla/Attributes.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/mozilla_chardet/mfbt/mozilla/Compiler.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/mozilla_chardet/mfbt/mozilla/Likely.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/mozilla_chardet/mfbt/mozilla/NullPtr.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/mozilla_chardet/mfbt/mozilla/Types.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/mozilla_chardet/mfbt/mozilla/Util.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/mozilla_chardet/nsBig5Prober.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/mozilla_chardet/nsCharSetProber.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/mozilla_chardet/nsCodingStateMachine.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/mozilla_chardet/nsEUCJPProber.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/mozilla_chardet/nsEUCKRProber.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/mozilla_chardet/nsEUCTWProber.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/mozilla_chardet/nsEscCharsetProber.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/mozilla_chardet/nsGB2312Prober.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/mozilla_chardet/nsHebrewProber.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/mozilla_chardet/nsLatin1Prober.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/mozilla_chardet/nsMBCSGroupProber.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/mozilla_chardet/nsPkgInt.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/mozilla_chardet/nsSBCSGroupProber.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/mozilla_chardet/nsSBCharSetProber.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/mozilla_chardet/nsSJISProber.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/mozilla_chardet/nsUTF8Prober.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/mozilla_chardet/nsUniversalDetector.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/mozilla_chardet/nsprpub/pr/include/prcpucfg.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/mozilla_chardet/nsprpub/pr/include/prcpucfg_darwin.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/mozilla_chardet/nsprpub/pr/include/prcpucfg_linux.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/mozilla_chardet/nsprpub/pr/include/prcpucfg_openbsd.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/mozilla_chardet/nsprpub/pr/include/prcpucfg_win95.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/mozilla_chardet/nsprpub/pr/include/prcpucfg_winnt.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/mozilla_chardet/nsprpub/pr/include/prmem.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/mozilla_chardet/nsprpub/pr/include/prtypes.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/mozilla_chardet/xpcom/base/ErrorList.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/mozilla_chardet/xpcom/base/nsError.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/mozilla_chardet/xpcom/base/nscore.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/mozilla_chardet/xpcom/glue/nsDebug.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/mozilla_chardet/xpcom/glue/nsMemory.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/multiselectdlg.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/newfromtemplatedlg.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/personalitymanager.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/pipedprocess.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/pluginmanager.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/pluginmanager_base.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/pluginsconfigurationdlg.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/prep.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/printing_types.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/projectbuildtarget.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/projectfile.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/projectfileoptionsdlg.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/projectlayoutloader.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/projectloader.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/projectloader_hooks.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/projectmanager.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/projectsfilemasksdlg.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/projecttemplateloader.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/safedelete.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/scripting/bindings/sc_base_types.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/scripting/bindings/sc_plugin.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/scripting/bindings/scriptbindings.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/scripting/bindings/scriptbindings_base.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/scripting/include/sqdbgserver.h">
 			<Option target="Squirrel" />
@@ -827,63 +828,63 @@
 			<Option target="Squirrel" />
 		</Unit>
 		<Unit filename="include/scriptingmanager.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/scriptingmanager_base.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/scriptsecuritywarningdlg.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/scrollingdialog.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/sdk.h">
 			<Option weight="1" />
-			<Option target="src" />
+			<Option target="src_nogui" />
 		</Unit>
 		<Unit filename="include/sdk_common.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/sdk_events.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/sdk_precomp.h">
 			<Option weight="0" />
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/searchresultslog.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/selecttargetdlg.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/settings.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/templatemanager.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/tinyxml/tinystr.h">
 			<Option target="tinyXML" />
 		</Unit>
 		<Unit filename="include/tinyxml/tinywxuni.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/tinyxml/tinyxml.h">
 			<Option target="tinyXML" />
 		</Unit>
 		<Unit filename="include/toolsmanager.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/uservarmanager.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/workspaceloader.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="include/xtra_res.h">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="plugins/compilergcc/advancedcompileroptionsdlg.cpp">
 			<Option compile="0" />
@@ -1319,376 +1320,376 @@
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="scripts/make_dist.script">
-			<Option target="src" />
+			<Option target="src_nogui" />
 		</Unit>
 		<Unit filename="scripts/plugin_find_broken_files.script">
-			<Option target="src" />
+			<Option target="src_nogui" />
 		</Unit>
 		<Unit filename="scripts/sample_plugin.script">
-			<Option target="src" />
+			<Option target="src_nogui" />
 		</Unit>
 		<Unit filename="scripts/startup.script">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="scripts/wx_help.script">
-			<Option target="src" />
+			<Option target="src_nogui" />
 		</Unit>
 		<Unit filename="sdk/annoyingdialog.cpp">
 			<Option compile="0" />
 			<Option link="0" />
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/autodetectcompilers.cpp">
 			<Option compile="0" />
 			<Option link="0" />
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/base64.cpp">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/blockallocated.cpp">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/cbauibook.cpp">
 			<Option compile="0" />
 			<Option link="0" />
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/cbcolourmanager.cpp">
 			<Option compile="0" />
 			<Option link="0" />
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/cbdebugger_interfaces.cpp">
 			<Option compile="0" />
 			<Option link="0" />
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/cbeditor.cpp">
 			<Option compile="0" />
 			<Option link="0" />
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/cbeditorprintout.cpp">
 			<Option compile="0" />
 			<Option link="0" />
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/cbexception.cpp">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/cbplugin.cpp">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/cbproject.cpp">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/cbstatusbar.cpp">
 			<Option compile="0" />
 			<Option link="0" />
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/cbstyledtextctrl.cpp">
 			<Option compile="0" />
 			<Option link="0" />
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/cbthreadpool.cpp">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/cbtreectrl.cpp">
 			<Option compile="0" />
 			<Option link="0" />
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/cbworkspace.cpp">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/ccmanager.cpp">
 			<Option compile="0" />
 			<Option link="0" />
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/compileoptionsbase.cpp">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/compiler.cpp">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/compilercommandgenerator.cpp">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/compilerfactory.cpp">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/compileroptions.cpp">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/compiletargetbase.cpp">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/configmanager-revision.cpp">
 			<Option weight="10" />
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/configmanager.cpp">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/configurationpanel.cpp">
 			<Option compile="0" />
 			<Option link="0" />
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/configuretoolsdlg.cpp">
 			<Option compile="0" />
 			<Option link="0" />
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/confirmreplacedlg.cpp">
 			<Option compile="0" />
 			<Option link="0" />
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/crc32.cpp">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/debuggermanager.cpp">
 			<Option compile="0" />
 			<Option link="0" />
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/editarrayfiledlg.cpp">
 			<Option compile="0" />
 			<Option link="0" />
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/editarrayorderdlg.cpp">
 			<Option compile="0" />
 			<Option link="0" />
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/editarraystringdlg.cpp">
 			<Option compile="0" />
 			<Option link="0" />
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/editor_hooks.cpp">
 			<Option compile="0" />
 			<Option link="0" />
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/editorbase.cpp">
 			<Option compile="0" />
 			<Option link="0" />
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/editorcolourset.cpp">
 			<Option compile="0" />
 			<Option link="0" />
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/editorlexerloader.cpp">
 			<Option compile="0" />
 			<Option link="0" />
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/editormanager.cpp">
 			<Option compile="0" />
 			<Option link="0" />
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/editpairdlg.cpp">
 			<Option compile="0" />
 			<Option link="0" />
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/editpathdlg.cpp">
 			<Option compile="0" />
 			<Option link="0" />
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/edittooldlg.cpp">
 			<Option compile="0" />
 			<Option link="0" />
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/encodingdetector.cpp">
 			<Option compile="0" />
 			<Option link="0" />
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/externaldepsdlg.cpp">
 			<Option compile="0" />
 			<Option link="0" />
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/filefilters.cpp">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/filegroupsandmasks.cpp">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/filemanager.cpp">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/findreplacedlg.cpp">
 			<Option compile="0" />
 			<Option link="0" />
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/genericmultilinenotesdlg.cpp">
 			<Option compile="0" />
 			<Option link="0" />
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/globals.cpp">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/importers_globals.cpp">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/incrementalselectlistdlg.cpp">
 			<Option compile="0" />
 			<Option link="0" />
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/infowindow.cpp">
 			<Option compile="0" />
 			<Option link="0" />
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/infowindow_base.cpp">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/loggers.cpp">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/logmanager.cpp">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/macrosmanager.cpp">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/managedthread.cpp">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/manager.cpp">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/menuitemsmanager.cpp">
 			<Option compile="0" />
 			<Option link="0" />
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/multiselectdlg.cpp">
 			<Option compile="0" />
 			<Option link="0" />
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/newfromtemplatedlg.cpp">
 			<Option compile="0" />
 			<Option link="0" />
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/nullptr.cpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="sdk/personalitymanager.cpp">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/pipedprocess.cpp">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/pluginmanager.cpp">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/pluginsconfigurationdlg.cpp">
 			<Option compile="0" />
 			<Option link="0" />
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/printing_types.cpp">
 			<Option compile="0" />
 			<Option link="0" />
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/projectbuildtarget.cpp">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/projectfile.cpp">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/projectfileoptionsdlg.cpp">
 			<Option compile="0" />
 			<Option link="0" />
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/projectlayoutloader.cpp">
 			<Option compile="0" />
 			<Option link="0" />
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/projectloader.cpp">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/projectloader_hooks.cpp">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/projectmanager.cpp">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/projectsfilemasksdlg.cpp">
 			<Option compile="0" />
 			<Option link="0" />
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/projecttemplateloader.cpp">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/scripting/bindings/sc_consts.cpp">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/scripting/bindings/sc_dialog.cpp">
 			<Option compile="0" />
 			<Option link="0" />
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/scripting/bindings/sc_globals.cpp">
 			<Option compile="0" />
 			<Option link="0" />
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/scripting/bindings/sc_globals_base.cpp">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/scripting/bindings/sc_io.cpp">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/scripting/bindings/sc_plugin.cpp">
 			<Option compile="0" />
 			<Option link="0" />
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/scripting/bindings/sc_progress.cpp">
 			<Option compile="0" />
 			<Option link="0" />
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/scripting/bindings/sc_util_dialogs.cpp">
 			<Option compile="0" />
 			<Option link="0" />
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/scripting/bindings/sc_wxtypes.cpp">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/scripting/bindings/scriptbindings.cpp">
 			<Option compile="0" />
 			<Option link="0" />
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/scripting/bindings/scriptbindings_base.cpp">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/scripting/sqplus/SqPlus.cpp">
 			<Option target="SqPlus" />
@@ -1768,181 +1769,181 @@
 		<Unit filename="sdk/scriptingmanager.cpp">
 			<Option compile="0" />
 			<Option link="0" />
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/scriptingmanager_base.cpp">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/scriptsecuritywarningdlg.cpp">
 			<Option compile="0" />
 			<Option link="0" />
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/scrollingdialog.cpp">
 			<Option compile="0" />
 			<Option link="0" />
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/sdk_events.cpp">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/searchresultslog.cpp">
 			<Option compile="0" />
 			<Option link="0" />
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/selecttargetdlg.cpp">
 			<Option compile="0" />
 			<Option link="0" />
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/templatemanager.cpp">
 			<Option compile="0" />
 			<Option link="0" />
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/toolsmanager.cpp">
 			<Option compile="0" />
 			<Option link="0" />
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/uservarmanager.cpp">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/workspaceloader.cpp">
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/xtra_res.cpp">
 			<Option compile="0" />
 			<Option link="0" />
-			<Option target="sdk" />
+			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="src/app.cpp">
-			<Option target="src" />
+			<Option target="src_nogui" />
 		</Unit>
 		<Unit filename="src/app.h">
-			<Option target="src" />
+			<Option target="src_nogui" />
 		</Unit>
 		<Unit filename="src/appglobals.cpp">
-			<Option target="src" />
+			<Option target="src_nogui" />
 		</Unit>
 		<Unit filename="src/appglobals.h">
-			<Option target="src" />
+			<Option target="src_nogui" />
 		</Unit>
 		<Unit filename="src/associations.h">
-			<Option target="src" />
+			<Option target="src_nogui" />
 		</Unit>
 		<Unit filename="src/backtracedlg.h">
-			<Option target="src" />
+			<Option target="src_nogui" />
 		</Unit>
 		<Unit filename="src/batchbuild.h">
-			<Option target="src" />
+			<Option target="src_nogui" />
 		</Unit>
 		<Unit filename="src/breakpointsdlg.h">
-			<Option target="src" />
+			<Option target="src_nogui" />
 		</Unit>
 		<Unit filename="src/compilersettingsdlg.h">
-			<Option target="src" />
+			<Option target="src_nogui" />
 		</Unit>
 		<Unit filename="src/cpuregistersdlg.h">
-			<Option target="src" />
+			<Option target="src_nogui" />
 		</Unit>
 		<Unit filename="src/crashhandler.h">
-			<Option target="src" />
+			<Option target="src_nogui" />
 		</Unit>
 		<Unit filename="src/debugger_interface_creator.h">
-			<Option target="src" />
+			<Option target="src_nogui" />
 		</Unit>
 		<Unit filename="src/debuggermenu.h">
-			<Option target="src" />
+			<Option target="src_nogui" />
 		</Unit>
 		<Unit filename="src/debuggersettingscommonpanel.h">
-			<Option target="src" />
+			<Option target="src_nogui" />
 		</Unit>
 		<Unit filename="src/debuggersettingsdlg.h">
-			<Option target="src" />
+			<Option target="src_nogui" />
 		</Unit>
 		<Unit filename="src/debuggersettingspanel.h">
-			<Option target="src" />
+			<Option target="src_nogui" />
 		</Unit>
 		<Unit filename="src/disassemblydlg.h">
-			<Option target="src" />
+			<Option target="src_nogui" />
 		</Unit>
 		<Unit filename="src/dlgabout.h">
-			<Option target="src" />
+			<Option target="src_nogui" />
 		</Unit>
 		<Unit filename="src/dlgaboutplugin.h">
-			<Option target="src" />
+			<Option target="src_nogui" />
 		</Unit>
 		<Unit filename="src/editkeywordsdlg.h">
-			<Option target="src" />
+			<Option target="src_nogui" />
 		</Unit>
 		<Unit filename="src/editorconfigurationdlg.h">
-			<Option target="src" />
+			<Option target="src_nogui" />
 		</Unit>
 		<Unit filename="src/environmentsettingsdlg.h">
-			<Option target="src" />
+			<Option target="src_nogui" />
 		</Unit>
 		<Unit filename="src/examinememorydlg.h">
-			<Option target="src" />
+			<Option target="src_nogui" />
 		</Unit>
 		<Unit filename="src/find_replace.h">
-			<Option target="src" />
+			<Option target="src_nogui" />
 		</Unit>
 		<Unit filename="src/infopane.h">
-			<Option target="src" />
+			<Option target="src_nogui" />
 		</Unit>
 		<Unit filename="src/main.h">
-			<Option target="src" />
+			<Option target="src_nogui" />
 		</Unit>
 		<Unit filename="src/notebookstyles.h">
-			<Option target="src" />
+			<Option target="src_nogui" />
 		</Unit>
 		<Unit filename="src/prefix.h">
-			<Option target="src" />
+			<Option target="src_nogui" />
 		</Unit>
 		<Unit filename="src/printdlg.h">
-			<Option target="src" />
+			<Option target="src_nogui" />
 		</Unit>
 		<Unit filename="src/projectdepsdlg.h">
-			<Option target="src" />
+			<Option target="src_nogui" />
 		</Unit>
 		<Unit filename="src/projectmanagerui.h">
-			<Option target="src" />
+			<Option target="src_nogui" />
 		</Unit>
 		<Unit filename="src/projectoptionsdlg.h">
-			<Option target="src" />
+			<Option target="src_nogui" />
 		</Unit>
 		<Unit filename="src/recentitemslist.h">
-			<Option target="src" />
+			<Option target="src_nogui" />
 		</Unit>
 		<Unit filename="src/resources/no_gui.rc">
 			<Option compilerVar="WINDRES" />
-			<Option target="src" />
+			<Option target="src_nogui" />
 		</Unit>
 		<Unit filename="src/scriptconsole.h">
-			<Option target="src" />
+			<Option target="src_nogui" />
 		</Unit>
 		<Unit filename="src/scriptingsettingsdlg.h">
-			<Option target="src" />
+			<Option target="src_nogui" />
 		</Unit>
 		<Unit filename="src/splashscreen.h">
-			<Option target="src" />
+			<Option target="src_nogui" />
 		</Unit>
 		<Unit filename="src/startherepage.h">
-			<Option target="src" />
+			<Option target="src_nogui" />
 		</Unit>
 		<Unit filename="src/switcherdlg.h">
-			<Option target="src" />
+			<Option target="src_nogui" />
 		</Unit>
 		<Unit filename="src/threadsdlg.h">
-			<Option target="src" />
+			<Option target="src_nogui" />
 		</Unit>
 		<Unit filename="src/virtualbuildtargetsdlg.h">
-			<Option target="src" />
+			<Option target="src_nogui" />
 		</Unit>
 		<Unit filename="src/watchesdlg.h">
-			<Option target="src" />
+			<Option target="src_nogui" />
 		</Unit>
 		<Extensions>
 			<code_completion />
