@@ -208,7 +208,7 @@ namespace ScriptBindings
         Register_wxTypes();
         Register_Constants();
         Register_Base_Globals();
-        Register_Base_IO(); // IO is enabled, but just for harmless functions
+        Register_IO(); // IO is enabled, but just for harmless functions
 
         SqPlus::SQClassDef<ConfigManager>("ConfigManager").
                 staticFuncVarArgs(&ConfigManager_Read, "Read", "*").
