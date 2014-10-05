@@ -10,7 +10,7 @@
 				<Option platforms="Windows;" />
 				<Option output="devel30/exchndl" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="devel30" />
-				<Option object_output=".objs30" />
+				<Option object_output=".objs30_nogui" />
 				<Option type="3" />
 				<Option compiler="gcc" />
 				<Compiler>
@@ -26,7 +26,7 @@
 			<Target title="tinyXML">
 				<Option output="base/tinyxml/txml30" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="" />
-				<Option object_output=".objs30" />
+				<Option object_output=".objs30_nogui" />
 				<Option type="2" />
 				<Option compiler="gcc" />
 				<Compiler>
@@ -35,7 +35,7 @@
 			</Target>
 			<Target title="AutoRevision">
 				<Option output="build_tools/autorevision/autorevision30" prefix_auto="1" extension_auto="1" />
-				<Option object_output=".objs30" />
+				<Option object_output=".objs30_nogui" />
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Option projectLinkerOptionsRelation="1" />
@@ -51,7 +51,7 @@
 			<Target title="Squirrel">
 				<Option output="sdk/scripting/lib/squirrel30" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="" />
-				<Option object_output=".objs30" />
+				<Option object_output=".objs30_nogui" />
 				<Option type="2" />
 				<Option compiler="gcc" />
 				<Compiler>
@@ -63,7 +63,7 @@
 			<Target title="Squirrel std lib">
 				<Option output="sdk/scripting/lib/sqstdlib30" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="" />
-				<Option object_output=".objs30" />
+				<Option object_output=".objs30_nogui" />
 				<Option external_deps="sdk/scripting/lib/libsquirrel30.a;" />
 				<Option type="2" />
 				<Option compiler="gcc" />
@@ -76,7 +76,7 @@
 			<Target title="SqPlus">
 				<Option output="sdk/scripting/lib/sqplus30" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="" />
-				<Option object_output=".objs30" />
+				<Option object_output=".objs30_nogui" />
 				<Option external_deps="sdk/scripting/lib/libsquirrel30.a;sdk/scripting/lib/libsqstdlib30.a;" />
 				<Option type="2" />
 				<Option compiler="gcc" />
@@ -89,7 +89,7 @@
 			<Target title="sdk_nogui">
 				<Option output="devel30/codeblocks_nogui" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="devel30" />
-				<Option object_output=".objs30" />
+				<Option object_output=".objs30_nogui" />
 				<Option external_deps="base/tinyxml/libtxml30.a;sdk/scripting/lib/libsquirrel30.a;sdk/scripting/lib/libsqstdlib30.a;sdk/scripting/lib/libsqplus30.a;" />
 				<Option type="3" />
 				<Option compiler="gcc" />
@@ -124,16 +124,16 @@
 				</Linker>
 				<ExtraCommands>
 					<Add before="build_tools/autorevision/autorevision30 +wx +int +t . include/autorevision.h" />
-					<Add after="cmd /c if not exist devel30\share\CodeBlocks mkdir devel30\share\CodeBlocks" />
-					<Add after="zip -jq9 devel30\share\CodeBlocks\manager_resources.zip sdk\resources\*.xrc" />
-					<Add after='cmd /c &quot;cd sdk\resources &amp; zip -0 -q ..\..\devel30\share\CodeBlocks\manager_resources.zip images\*.png images\12x12\*.png images\16x16\*.png&quot;' />
+					<Add after="cmd /c if not exist devel30\share\CodeBlocks_noGUI mkdir devel30\share\CodeBlocks_noGUI" />
+					<Add after="zip -jq9 devel30\share\CodeBlocks_noGUI\manager_resources.zip sdk\resources\*.xrc" />
+					<Add after='cmd /c &quot;cd sdk\resources &amp; zip -0 -q ..\..\devel30\share\CodeBlocks_noGUI\manager_resources.zip images\*.png images\12x12\*.png images\16x16\*.png&quot;' />
 					<Mode after="always" />
 				</ExtraCommands>
 			</Target>
 			<Target title="src_nogui">
 				<Option output="devel30/codeblocks_nogui" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="devel30" />
-				<Option object_output=".objs30" />
+				<Option object_output=".objs30_nogui" />
 				<Option external_deps="devel30/codeblocks_nogui.dll;" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -168,17 +168,17 @@
 					<Add directory="devel30" />
 				</Linker>
 				<ExtraCommands>
-					<Add after="cmd /c if not exist devel30\share\CodeBlocks mkdir devel30\share\CodeBlocks" />
-					<Add after="zip -jq9 devel30\share\CodeBlocks\resources.zip src\resources\*.xrc" />
-					<Add after="zip -jq9 devel30\share\CodeBlocks\start_here.zip src\resources\start_here\*.html src\resources\start_here\*.png" />
-					<Add after='cmd /c &quot;cd src\resources &amp; zip -0 -q ..\..\devel30\share\CodeBlocks\resources.zip images\*.png images\16x16\*.png&quot;' />
+					<Add after="cmd /c if not exist devel30\share\CodeBlocks_noGUI mkdir devel30\share\CodeBlocks_noGUI" />
+					<Add after="zip -jq9 devel30\share\CodeBlocks_noGUI\resources.zip src\resources\*.xrc" />
+					<Add after="zip -jq9 devel30\share\CodeBlocks_noGUI\start_here.zip src\resources\start_here\*.html src\resources\start_here\*.png" />
+					<Add after='cmd /c &quot;cd src\resources &amp; zip -0 -q ..\..\devel30\share\CodeBlocks_noGUI\resources.zip images\*.png images\16x16\*.png&quot;' />
 					<Mode after="always" />
 				</ExtraCommands>
 			</Target>
 			<Target title="Compiler depslib">
 				<Option output="plugins/compilergcc/depslib/depslib30" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="" />
-				<Option object_output=".objs30" />
+				<Option object_output=".objs30_nogui" />
 				<Option type="2" />
 				<Option compiler="gcc" />
 				<Compiler>
@@ -190,9 +190,9 @@
 				</Linker>
 			</Target>
 			<Target title="Compiler">
-				<Option output="devel30/share/CodeBlocks/plugins/compiler_nogui" prefix_auto="1" extension_auto="1" />
+				<Option output="devel30/share/CodeBlocks_noGUI/plugins/compiler_nogui" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="devel30" />
-				<Option object_output=".objs30" />
+				<Option object_output=".objs30_nogui" />
 				<Option external_deps="devel30/codeblocks_nogui.dll;plugins/compilergcc/depslib/libdepslib30.a;" />
 				<Option type="3" />
 				<Option compiler="gcc" />
@@ -220,18 +220,18 @@
 					<Add directory="plugins/compilergcc/depslib" />
 				</Linker>
 				<ExtraCommands>
-					<Add after="cmd /c if not exist devel30\share\CodeBlocks mkdir devel30\share\CodeBlocks" />
-					<Add after="zip -jq9 devel30\share\CodeBlocks\compiler.zip plugins\compilergcc\resources\manifest.xml plugins\compilergcc\resources\*.xrc" />
-					<Add after='cmd /c &quot;cd plugins\compilergcc\resources &amp; zip -0 -q ..\..\..\devel30\share\CodeBlocks\compiler.zip images\*.png images\16x16\*.png&quot;' />
-					<Add after="cmd /c if not exist devel30\share\CodeBlocks\compilers mkdir devel30\share\CodeBlocks\compilers" />
-					<Add after="cmd /c xcopy /D /Y plugins\compilergcc\resources\compilers\*.* devel30\share\CodeBlocks\compilers" />
+					<Add after="cmd /c if not exist devel30\share\CodeBlocks_noGUI mkdir devel30\share\CodeBlocks_noGUI" />
+					<Add after="zip -jq9 devel30\share\CodeBlocks_noGUI\compiler.zip plugins\compilergcc\resources\manifest.xml plugins\compilergcc\resources\*.xrc" />
+					<Add after='cmd /c &quot;cd plugins\compilergcc\resources &amp; zip -0 -q ..\..\..\devel30\share\CodeBlocks_noGUI\compiler.zip images\*.png images\16x16\*.png&quot;' />
+					<Add after="cmd /c if not exist devel30\share\CodeBlocks_noGUI\compilers mkdir devel30\share\CodeBlocks_noGUI\compilers" />
+					<Add after="cmd /c xcopy /D /Y plugins\compilergcc\resources\compilers\*.* devel30\share\CodeBlocks_noGUI\compilers" />
 					<Mode after="always" />
 				</ExtraCommands>
 			</Target>
 			<Target title="XP look &amp; feel">
-				<Option output="devel30/share/CodeBlocks/plugins/xpmanifest_nogui" prefix_auto="1" extension_auto="1" />
+				<Option output="devel30/share/CodeBlocks_noGUI/plugins/xpmanifest_nogui" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="devel30" />
-				<Option object_output=".objs30" />
+				<Option object_output=".objs30_nogui" />
 				<Option external_deps="devel30/codeblocks_nogui.dll;" />
 				<Option type="3" />
 				<Option compiler="gcc" />
@@ -254,8 +254,8 @@
 					<Add directory="devel30" />
 				</Linker>
 				<ExtraCommands>
-					<Add after="cmd /c if not exist devel30\share\CodeBlocks mkdir devel30\share\CodeBlocks" />
-					<Add after="zip -jq9 devel30\share\CodeBlocks\xpmanifest.zip plugins\xpmanifest\manifest.xml" />
+					<Add after="cmd /c if not exist devel30\share\CodeBlocks_noGUI mkdir devel30\share\CodeBlocks_noGUI" />
+					<Add after="zip -jq9 devel30\share\CodeBlocks_noGUI\xpmanifest.zip plugins\xpmanifest\manifest.xml" />
 					<Mode after="always" />
 				</ExtraCommands>
 			</Target>
