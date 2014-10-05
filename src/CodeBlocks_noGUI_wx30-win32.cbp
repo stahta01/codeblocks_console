@@ -886,6 +886,8 @@
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="plugins/compilergcc/advancedcompileroptionsdlg.cpp">
+			<Option compile="0" />
+			<Option link="0" />
 			<Option target="Compiler" />
 		</Unit>
 		<Unit filename="plugins/compilergcc/advancedcompileroptionsdlg.h">
@@ -1006,6 +1008,8 @@
 			<Option target="Compiler" />
 		</Unit>
 		<Unit filename="plugins/compilergcc/compilerflagdlg.cpp">
+			<Option compile="0" />
+			<Option link="0" />
 			<Option target="Compiler" />
 		</Unit>
 		<Unit filename="plugins/compilergcc/compilerflagdlg.h">
