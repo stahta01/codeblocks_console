@@ -76,7 +76,7 @@ SCRIPTING_MANAGER_BASE::SCRIPTING_MANAGER_BASE()
     RefreshTrusts();
 
     // register types
-    ScriptBindings::RegisterBindings();
+    ScriptBindings::RegisterBaseBindings();
 }
 
 SCRIPTING_MANAGER_BASE::~SCRIPTING_MANAGER_BASE()

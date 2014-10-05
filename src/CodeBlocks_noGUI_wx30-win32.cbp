@@ -1592,7 +1592,6 @@
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/pluginmanager.cpp">
-			<Option weight="100" />
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/pluginsconfigurationdlg.cpp">

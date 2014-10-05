@@ -377,6 +377,7 @@ namespace ScriptBindings
                 func(&cbProject::SetTitle, "SetTitle");
 
 
+#if wxUSE_GUI
         SqPlus::SQClassDef<ProjectManager>("ProjectManager").
                 func(&ProjectManager::GetDefaultPath, "GetDefaultPath").
                 func(&ProjectManager::SetDefaultPath, "SetDefaultPath").
@@ -395,6 +396,7 @@ namespace ScriptBindings
                 func(&ProjectManager::RemoveProjectDependency, "RemoveProjectDependency").
                 func(&ProjectManager::ClearProjectDependencies, "ClearProjectDependencies").
                 func(&ProjectManager::RemoveProjectFromAllDependencies, "RemoveProjectFromAllDependencies");
+#endif // #if wxUSE_GUI
 
         SqPlus::SQClassDef<UserVariableManager>("UserVariableManager").
                 func(&UserVariableManager::Exists, "Exists");
