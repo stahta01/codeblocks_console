@@ -2,7 +2,7 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="Code::Blocks_noGUI_wx3.0.x" />
+		<Option title="Code::Blocks_noGUI_wx3.0.x_Win32" />
 		<Option default_target="src" />
 		<Option compiler="gcc" />
 		<Build>
