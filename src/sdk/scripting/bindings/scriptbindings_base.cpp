@@ -38,7 +38,7 @@ namespace ScriptBindings
     extern void Register_Constants();
     extern void Register_Base_Globals();
     extern void Register_wxTypes();
-    extern void Register_Base_IO();
+    extern void Register_IO();
 
     SQInteger ConfigManager_Read(HSQUIRRELVM v)
     {

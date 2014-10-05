@@ -137,8 +137,10 @@ namespace ScriptBindings
 
         SquirrelVM::CreateFunctionGlobal(IsNull, "IsNull", "*");
 
+#if wxUSE_GUI
         // now for some wx globals (utility) functions
         SqPlus::RegisterGlobal(wxLaunchDefaultBrowser, "wxLaunchDefaultBrowser");
+#endif // #if wxUSE_GUI
 
         SqPlus::RegisterGlobal(wxString_ToLong, "wxString_ToLong");
     }
