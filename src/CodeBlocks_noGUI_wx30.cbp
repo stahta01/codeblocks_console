@@ -667,6 +667,9 @@
 		<Unit filename="include/pluginmanager.h">
 			<Option target="sdk" />
 		</Unit>
+		<Unit filename="include/pluginmanager_base.h">
+			<Option target="sdk" />
+		</Unit>
 		<Unit filename="include/pluginsconfigurationdlg.h">
 			<Option target="sdk" />
 		</Unit>
@@ -821,6 +824,9 @@
 			<Option target="Squirrel" />
 		</Unit>
 		<Unit filename="include/scriptingmanager.h">
+			<Option target="sdk" />
+		</Unit>
+		<Unit filename="include/scriptingmanager_base.h">
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="include/scriptsecuritywarningdlg.h">
@@ -1563,81 +1569,6 @@
 			<Option link="0" />
 			<Option target="sdk" />
 		</Unit>
-		<Unit filename="sdk/mozilla_chardet/src/CharDistribution.cpp">
-			<Option target="sdk" />
-		</Unit>
-		<Unit filename="sdk/mozilla_chardet/src/JpCntx.cpp">
-			<Option target="sdk" />
-		</Unit>
-		<Unit filename="sdk/mozilla_chardet/src/LangBulgarianModel.cpp">
-			<Option target="sdk" />
-		</Unit>
-		<Unit filename="sdk/mozilla_chardet/src/LangCyrillicModel.cpp">
-			<Option target="sdk" />
-		</Unit>
-		<Unit filename="sdk/mozilla_chardet/src/LangGreekModel.cpp">
-			<Option target="sdk" />
-		</Unit>
-		<Unit filename="sdk/mozilla_chardet/src/LangHebrewModel.cpp">
-			<Option target="sdk" />
-		</Unit>
-		<Unit filename="sdk/mozilla_chardet/src/LangHungarianModel.cpp">
-			<Option target="sdk" />
-		</Unit>
-		<Unit filename="sdk/mozilla_chardet/src/LangThaiModel.cpp">
-			<Option target="sdk" />
-		</Unit>
-		<Unit filename="sdk/mozilla_chardet/src/nsBig5Prober.cpp">
-			<Option target="sdk" />
-		</Unit>
-		<Unit filename="sdk/mozilla_chardet/src/nsCharSetProber.cpp">
-			<Option target="sdk" />
-		</Unit>
-		<Unit filename="sdk/mozilla_chardet/src/nsEUCJPProber.cpp">
-			<Option target="sdk" />
-		</Unit>
-		<Unit filename="sdk/mozilla_chardet/src/nsEUCKRProber.cpp">
-			<Option target="sdk" />
-		</Unit>
-		<Unit filename="sdk/mozilla_chardet/src/nsEUCTWProber.cpp">
-			<Option target="sdk" />
-		</Unit>
-		<Unit filename="sdk/mozilla_chardet/src/nsEscCharsetProber.cpp">
-			<Option target="sdk" />
-		</Unit>
-		<Unit filename="sdk/mozilla_chardet/src/nsEscSM.cpp">
-			<Option target="sdk" />
-		</Unit>
-		<Unit filename="sdk/mozilla_chardet/src/nsGB2312Prober.cpp">
-			<Option target="sdk" />
-		</Unit>
-		<Unit filename="sdk/mozilla_chardet/src/nsHebrewProber.cpp">
-			<Option target="sdk" />
-		</Unit>
-		<Unit filename="sdk/mozilla_chardet/src/nsLatin1Prober.cpp">
-			<Option target="sdk" />
-		</Unit>
-		<Unit filename="sdk/mozilla_chardet/src/nsMBCSGroupProber.cpp">
-			<Option target="sdk" />
-		</Unit>
-		<Unit filename="sdk/mozilla_chardet/src/nsMBCSSM.cpp">
-			<Option target="sdk" />
-		</Unit>
-		<Unit filename="sdk/mozilla_chardet/src/nsSBCSGroupProber.cpp">
-			<Option target="sdk" />
-		</Unit>
-		<Unit filename="sdk/mozilla_chardet/src/nsSBCharSetProber.cpp">
-			<Option target="sdk" />
-		</Unit>
-		<Unit filename="sdk/mozilla_chardet/src/nsSJISProber.cpp">
-			<Option target="sdk" />
-		</Unit>
-		<Unit filename="sdk/mozilla_chardet/src/nsUTF8Prober.cpp">
-			<Option target="sdk" />
-		</Unit>
-		<Unit filename="sdk/mozilla_chardet/src/nsUniversalDetector.cpp">
-			<Option target="sdk" />
-		</Unit>
 		<Unit filename="sdk/multiselectdlg.cpp">
 			<Option compile="0" />
 			<Option link="0" />
@@ -1658,6 +1589,7 @@
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/pluginmanager.cpp">
+			<Option weight="100" />
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/pluginsconfigurationdlg.cpp">
