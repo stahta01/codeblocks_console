@@ -1330,9 +1330,13 @@
 			<Option target="src" />
 		</Unit>
 		<Unit filename="sdk/annoyingdialog.cpp">
+			<Option compile="0" />
+			<Option link="0" />
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/autodetectcompilers.cpp">
+			<Option compile="0" />
+			<Option link="0" />
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/base64.cpp">
@@ -1342,18 +1346,28 @@
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/cbauibook.cpp">
+			<Option compile="0" />
+			<Option link="0" />
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/cbcolourmanager.cpp">
+			<Option compile="0" />
+			<Option link="0" />
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/cbdebugger_interfaces.cpp">
+			<Option compile="0" />
+			<Option link="0" />
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/cbeditor.cpp">
+			<Option compile="0" />
+			<Option link="0" />
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/cbeditorprintout.cpp">
+			<Option compile="0" />
+			<Option link="0" />
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/cbexception.cpp">
