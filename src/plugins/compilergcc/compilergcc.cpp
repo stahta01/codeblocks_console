@@ -3546,10 +3546,19 @@ void CompilerGCC::LogWarningOrError(CompilerLineType lt, cbProject* prj, const w
     if ( lastAutofitTime < (wxDateTime::Now() - wxTimeSpan::Seconds(3)) )
     {
         lastAutofitTime = wxDateTime::Now();
+#if wxUSE_GUI && !defined(CB_FOR_CONSOLE)
         m_pListLog->Append(errors, lv, 2); // auto fit the 'Message' column
+#else
+    #pragma message "Needs code added"
+#endif // #if wxUSE_GUI && !defined(CB_FOR_CONSOLE)
     }
     else
+#if wxUSE_GUI && !defined(CB_FOR_CONSOLE)
         m_pListLog->Append(errors, lv);
+#else
+        ;
+    #pragma message "Needs code added"
+#endif // #if wxUSE_GUI && !defined(CB_FOR_CONSOLE)
 
     // add to error keeping struct
     m_Errors.AddError(lt, prj, filename, line.IsEmpty() ? 0 : atoi(wxSafeConvertWX2MB(line)), msg);
