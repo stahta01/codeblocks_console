@@ -115,7 +115,6 @@
 					<Add option="-Wl,--no-undefined" />
 					<Add library="shfolder" />
 					<Add library="txml30" />
-					<Add library="wxscintilla_cb" />
 					<Add library="sqplus30" />
 					<Add library="sqstdlib30" />
 					<Add library="squirrel30" />
