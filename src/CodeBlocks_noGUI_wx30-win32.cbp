@@ -717,6 +717,9 @@
 		<Unit filename="include/scripting/bindings/scriptbindings.h">
 			<Option target="sdk" />
 		</Unit>
+		<Unit filename="include/scripting/bindings/scriptbindings_base.h">
+			<Option target="sdk" />
+		</Unit>
 		<Unit filename="include/scripting/include/sqdbgserver.h">
 			<Option target="Squirrel" />
 		</Unit>
@@ -1673,6 +1676,9 @@
 		<Unit filename="sdk/scripting/bindings/scriptbindings.cpp">
 			<Option compile="0" />
 			<Option link="0" />
+			<Option target="sdk" />
+		</Unit>
+		<Unit filename="sdk/scripting/bindings/scriptbindings_base.cpp">
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/scripting/sqplus/SqPlus.cpp">
