@@ -1137,24 +1137,6 @@
 		<Unit filename="plugins/compilergcc/directcommands.h">
 			<Option target="Compiler" />
 		</Unit>
-		<Unit filename="plugins/compilergcc/resources/advanced_compiler_options.xrc">
-			<Option target="Compiler" />
-		</Unit>
-		<Unit filename="plugins/compilergcc/resources/compiler_flag.xrc">
-			<Option target="Compiler" />
-		</Unit>
-		<Unit filename="plugins/compilergcc/resources/compiler_menu.xrc">
-			<Option target="Compiler" />
-		</Unit>
-		<Unit filename="plugins/compilergcc/resources/compiler_options.xrc">
-			<Option target="Compiler" />
-		</Unit>
-		<Unit filename="plugins/compilergcc/resources/compiler_toolbar.xrc">
-			<Option target="Compiler" />
-		</Unit>
-		<Unit filename="plugins/compilergcc/resources/compiler_toolbar_16x16.xrc">
-			<Option target="Compiler" />
-		</Unit>
 		<Unit filename="plugins/compilergcc/resources/compilers/compiler_avr-gcc.xml">
 			<Option target="Compiler" />
 		</Unit>
@@ -1666,54 +1648,6 @@
 		<Unit filename="sdk/projecttemplateloader.cpp">
 			<Option target="sdk" />
 		</Unit>
-		<Unit filename="sdk/resources/auto_detect_compilers.xrc">
-			<Option target="sdk" />
-		</Unit>
-		<Unit filename="sdk/resources/configure_tools.xrc">
-			<Option target="sdk" />
-		</Unit>
-		<Unit filename="sdk/resources/confirm_replace.xrc">
-			<Option target="sdk" />
-		</Unit>
-		<Unit filename="sdk/resources/confirm_replace_multiple.xrc">
-			<Option target="sdk" />
-		</Unit>
-		<Unit filename="sdk/resources/edit_array_order.xrc">
-			<Option target="sdk" />
-		</Unit>
-		<Unit filename="sdk/resources/edit_array_string.xrc">
-			<Option target="sdk" />
-		</Unit>
-		<Unit filename="sdk/resources/edit_pair.xrc">
-			<Option target="sdk" />
-		</Unit>
-		<Unit filename="sdk/resources/edit_path.xrc">
-			<Option target="sdk" />
-		</Unit>
-		<Unit filename="sdk/resources/edit_tool.xrc">
-			<Option target="sdk" />
-		</Unit>
-		<Unit filename="sdk/resources/editor_manager.xrc">
-			<Option target="sdk" />
-		</Unit>
-		<Unit filename="sdk/resources/external_deps.xrc">
-			<Option target="sdk" />
-		</Unit>
-		<Unit filename="sdk/resources/findreplacedlg.xrc">
-			<Option target="sdk" />
-		</Unit>
-		<Unit filename="sdk/resources/generic_multi_select.xrc">
-			<Option target="sdk" />
-		</Unit>
-		<Unit filename="sdk/resources/generic_multiline_notes.xrc">
-			<Option target="sdk" />
-		</Unit>
-		<Unit filename="sdk/resources/global_uservars.xrc">
-			<Option target="sdk" />
-		</Unit>
-		<Unit filename="sdk/resources/incremental_select_list.xrc">
-			<Option target="sdk" />
-		</Unit>
 		<Unit filename="sdk/resources/lexers/lexer_OgreCompositor.sample">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
@@ -1992,24 +1926,6 @@
 		</Unit>
 		<Unit filename="sdk/resources/lexers/lexer_xml.xml">
 			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
-		<Unit filename="sdk/resources/new_from_template.xrc">
-			<Option target="sdk" />
-		</Unit>
-		<Unit filename="sdk/resources/plugins_configuration.xrc">
-			<Option target="sdk" />
-		</Unit>
-		<Unit filename="sdk/resources/project_manager_file_types.xrc">
-			<Option target="sdk" />
-		</Unit>
-		<Unit filename="sdk/resources/projectfile_options.xrc">
-			<Option target="sdk" />
-		</Unit>
-		<Unit filename="sdk/resources/scripting_security_dlg.xrc">
-			<Option target="sdk" />
-		</Unit>
-		<Unit filename="sdk/resources/select_target.xrc">
-			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/scripting/bindings/sc_consts.cpp">
 			<Option target="sdk" />
