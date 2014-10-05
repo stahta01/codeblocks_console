@@ -1896,7 +1896,7 @@
 		<Unit filename="src/recentitemslist.h">
 			<Option target="src" />
 		</Unit>
-		<Unit filename="src/resources/resources.rc">
+		<Unit filename="src/resources/no_gui.rc">
 			<Option compilerVar="WINDRES" />
 			<Option target="src" />
 		</Unit>
