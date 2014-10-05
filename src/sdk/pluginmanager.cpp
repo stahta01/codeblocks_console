@@ -176,6 +176,7 @@ PluginManager::~PluginManager()
     UnloadAllPlugins();
 }
 
+#if wxUSE_GUI && !defined(CB_FOR_CONSOLE)
 void PluginManager::CreateMenu(cb_unused wxMenuBar* menuBar)
 {
 }
@@ -183,6 +184,7 @@ void PluginManager::CreateMenu(cb_unused wxMenuBar* menuBar)
 void PluginManager::ReleaseMenu(cb_unused wxMenuBar* menuBar)
 {
 }
+#endif // #if wxUSE_GUI && !defined(CB_FOR_CONSOLE)
 
 bool PluginManager::AttachPlugin(cbPlugin* plugin, bool ignoreSafeMode)
 {
@@ -208,6 +210,7 @@ bool PluginManager::DetachPlugin(cbPlugin* plugin)
     return true;
 }
 
+#if wxUSE_GUI && !defined(CB_FOR_CONSOLE)
 bool PluginManager::InstallPlugin(const wxString& pluginName, bool forAllUsers, bool askForConfirmation)
 {
     if (pluginName.IsEmpty())
@@ -355,7 +358,9 @@ bool PluginManager::InstallPlugin(const wxString& pluginName, bool forAllUsers, 
 
     return true;
 }
+#endif // #if wxUSE_GUI && !defined(CB_FOR_CONSOLE)
 
+#if wxUSE_GUI && !defined(CB_FOR_CONSOLE)
 bool PluginManager::UninstallPlugin(cbPlugin* plugin, bool removeFiles)
 {
     if (!plugin)
@@ -491,7 +496,9 @@ bool PluginManager::UninstallPlugin(cbPlugin* plugin, bool removeFiles)
     }
     return false;
 }
+#endif // #if wxUSE_GUI && !defined(CB_FOR_CONSOLE)
 
+#if wxUSE_GUI && !defined(CB_FOR_CONSOLE)
 bool PluginManager::ExportPlugin(cbPlugin* plugin, const wxString& filename)
 {
     if (!plugin)
@@ -591,7 +598,9 @@ bool PluginManager::ExportPlugin(cbPlugin* plugin, const wxString& filename)
 
     return true;
 }
+#endif // #if wxUSE_GUI && !defined(CB_FOR_CONSOLE)
 
+#if wxUSE_GUI && !defined(CB_FOR_CONSOLE)
 bool PluginManager::ExtractFile(const wxString& bundlename,
                                 const wxString& src_filename,
                                 const wxString& dst_filename,
@@ -659,6 +668,7 @@ bool PluginManager::ExtractFile(const wxString& bundlename,
     delete fs;
     return true;
 }
+#endif // #if wxUSE_GUI && !defined(CB_FOR_CONSOLE)
 
 void PluginManager::RegisterPlugin(const wxString& name,
                                     CreatePluginProc createProc,
@@ -1254,6 +1264,7 @@ inline int SortByConfigurationPriority(cbPlugin** first, cbPlugin** second)
     return (*first)->GetConfigurationPriority() - (*second)->GetConfigurationPriority();
 }
 
+#if wxUSE_GUI && !defined(CB_FOR_CONSOLE)
 void PluginManager::GetConfigurationPanels(int group, wxWindow* parent, ConfigurationPanelsArray& arrayToFill)
 {
     // build an array of Plugins* because we need to order it by configuration priority
@@ -1293,6 +1304,7 @@ void PluginManager::GetProjectConfigurationPanels(wxWindow* parent, cbProject* p
         }
     }
 }
+#endif // #if wxUSE_GUI && !defined(CB_FOR_CONSOLE)
 
 PluginsArray PluginManager::GetToolOffers()
 {
@@ -1319,10 +1331,12 @@ PluginsArray PluginManager::GetCodeCompletionOffers()
     return GetOffersFor(ptCodeCompletion);
 }
 
+#if wxUSE_GUI && !defined(CB_FOR_CONSOLE)
 PluginsArray PluginManager::GetSmartIndentOffers()
 {
     return GetOffersFor(ptSmartIndent);
 }
+#endif // #if wxUSE_GUI && !defined(CB_FOR_CONSOLE)
 
 PluginsArray PluginManager::GetOffersFor(PluginType type)
 {
@@ -1357,6 +1371,7 @@ PluginsArray PluginManager::GetOffersFor(PluginType type)
     return arr;
 }
 
+#if wxUSE_GUI && !defined(CB_FOR_CONSOLE)
 void PluginManager::AskPluginsForModuleMenu(const ModuleType type, wxMenu* menu, const FileTreeData* data)
 {
     for (unsigned int i = 0; i < m_Plugins.GetCount(); ++i)
@@ -1384,7 +1399,9 @@ void PluginManager::AskPluginsForModuleMenu(const ModuleType type, wxMenu* menu,
                 &PluginManager::OnScriptModuleMenu);
     }
 }
+#endif // #if wxUSE_GUI && !defined(CB_FOR_CONSOLE)
 
+#if wxUSE_GUI && !defined(CB_FOR_CONSOLE)
 void PluginManager::OnScriptMenu(wxCommandEvent& event)
 {
     ScriptBindings::ScriptPluginWrapper::OnScriptMenu(event.GetId());
@@ -1394,6 +1411,7 @@ void PluginManager::OnScriptModuleMenu(wxCommandEvent& event)
 {
     ScriptBindings::ScriptPluginWrapper::OnScriptModuleMenu(event.GetId());
 }
+#endif // #if wxUSE_GUI && !defined(CB_FOR_CONSOLE)
 
 cbMimePlugin* PluginManager::GetMIMEHandlerForFile(const wxString& filename)
 {
@@ -1407,12 +1425,14 @@ cbMimePlugin* PluginManager::GetMIMEHandlerForFile(const wxString& filename)
     return nullptr;
 }
 
+#if wxUSE_GUI && !defined(CB_FOR_CONSOLE)
 int PluginManager::Configure()
 {
     PluginsConfigurationDlg dlg(Manager::Get()->GetAppWindow());
     PlaceWindow(&dlg);
     return dlg.ShowModal();
 }
+#endif // #if wxUSE_GUI && !defined(CB_FOR_CONSOLE)
 
 void PluginManager::SetupLocaleDomain(const wxString& DomainName)
 {
