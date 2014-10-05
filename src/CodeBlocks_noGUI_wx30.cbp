@@ -1367,21 +1367,29 @@
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/cbstatusbar.cpp">
+			<Option compile="0" />
+			<Option link="0" />
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/cbstyledtextctrl.cpp">
+			<Option compile="0" />
+			<Option link="0" />
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/cbthreadpool.cpp">
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/cbtreectrl.cpp">
+			<Option compile="0" />
+			<Option link="0" />
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/cbworkspace.cpp">
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/ccmanager.cpp">
+			<Option compile="0" />
+			<Option link="0" />
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/compileoptionsbase.cpp">
@@ -1410,57 +1418,91 @@
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/configurationpanel.cpp">
+			<Option compile="0" />
+			<Option link="0" />
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/configuretoolsdlg.cpp">
+			<Option compile="0" />
+			<Option link="0" />
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/confirmreplacedlg.cpp">
+			<Option compile="0" />
+			<Option link="0" />
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/crc32.cpp">
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/debuggermanager.cpp">
+			<Option compile="0" />
+			<Option link="0" />
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/editarrayfiledlg.cpp">
+			<Option compile="0" />
+			<Option link="0" />
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/editarrayorderdlg.cpp">
+			<Option compile="0" />
+			<Option link="0" />
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/editarraystringdlg.cpp">
+			<Option compile="0" />
+			<Option link="0" />
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/editor_hooks.cpp">
+			<Option compile="0" />
+			<Option link="0" />
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/editorbase.cpp">
+			<Option compile="0" />
+			<Option link="0" />
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/editorcolourset.cpp">
+			<Option compile="0" />
+			<Option link="0" />
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/editorlexerloader.cpp">
+			<Option compile="0" />
+			<Option link="0" />
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/editormanager.cpp">
+			<Option compile="0" />
+			<Option link="0" />
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/editpairdlg.cpp">
+			<Option compile="0" />
+			<Option link="0" />
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/editpathdlg.cpp">
+			<Option compile="0" />
+			<Option link="0" />
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/edittooldlg.cpp">
+			<Option compile="0" />
+			<Option link="0" />
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/encodingdetector.cpp">
+			<Option compile="0" />
+			<Option link="0" />
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/externaldepsdlg.cpp">
+			<Option compile="0" />
+			<Option link="0" />
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/filefilters.cpp">
@@ -1473,9 +1515,13 @@
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/findreplacedlg.cpp">
+			<Option compile="0" />
+			<Option link="0" />
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/genericmultilinenotesdlg.cpp">
+			<Option compile="0" />
+			<Option link="0" />
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/globals.cpp">
@@ -1485,9 +1531,16 @@
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/incrementalselectlistdlg.cpp">
+			<Option compile="0" />
+			<Option link="0" />
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/infowindow.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+			<Option target="sdk" />
+		</Unit>
+		<Unit filename="sdk/infowindow_base.cpp">
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/loggers.cpp">
@@ -1506,6 +1559,8 @@
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/menuitemsmanager.cpp">
+			<Option compile="0" />
+			<Option link="0" />
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/mozilla_chardet/src/CharDistribution.cpp">
@@ -1584,9 +1639,13 @@
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/multiselectdlg.cpp">
+			<Option compile="0" />
+			<Option link="0" />
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/newfromtemplatedlg.cpp">
+			<Option compile="0" />
+			<Option link="0" />
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/nullptr.cpp">
@@ -1602,9 +1661,13 @@
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/pluginsconfigurationdlg.cpp">
+			<Option compile="0" />
+			<Option link="0" />
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/printing_types.cpp">
+			<Option compile="0" />
+			<Option link="0" />
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/projectbuildtarget.cpp">
@@ -1614,9 +1677,13 @@
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/projectfileoptionsdlg.cpp">
+			<Option compile="0" />
+			<Option link="0" />
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/projectlayoutloader.cpp">
+			<Option compile="0" />
+			<Option link="0" />
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/projectloader.cpp">
@@ -1629,6 +1696,8 @@
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/projectsfilemasksdlg.cpp">
+			<Option compile="0" />
+			<Option link="0" />
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/projecttemplateloader.cpp">
@@ -1737,27 +1806,41 @@
 			<Option target="Squirrel" />
 		</Unit>
 		<Unit filename="sdk/scriptingmanager.cpp">
+			<Option compile="0" />
+			<Option link="0" />
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/scriptsecuritywarningdlg.cpp">
+			<Option compile="0" />
+			<Option link="0" />
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/scrollingdialog.cpp">
+			<Option compile="0" />
+			<Option link="0" />
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/sdk_events.cpp">
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/searchresultslog.cpp">
+			<Option compile="0" />
+			<Option link="0" />
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/selecttargetdlg.cpp">
+			<Option compile="0" />
+			<Option link="0" />
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/templatemanager.cpp">
+			<Option compile="0" />
+			<Option link="0" />
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/toolsmanager.cpp">
+			<Option compile="0" />
+			<Option link="0" />
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/uservarmanager.cpp">
@@ -1767,6 +1850,8 @@
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/xtra_res.cpp">
+			<Option compile="0" />
+			<Option link="0" />
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="src/app.cpp">
