@@ -1639,27 +1639,41 @@
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/scripting/bindings/sc_dialog.cpp">
+			<Option compile="0" />
+			<Option link="0" />
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/scripting/bindings/sc_globals.cpp">
+			<Option compile="0" />
+			<Option link="0" />
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/scripting/bindings/sc_io.cpp">
+			<Option compile="0" />
+			<Option link="0" />
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/scripting/bindings/sc_plugin.cpp">
+			<Option compile="0" />
+			<Option link="0" />
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/scripting/bindings/sc_progress.cpp">
+			<Option compile="0" />
+			<Option link="0" />
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/scripting/bindings/sc_util_dialogs.cpp">
+			<Option compile="0" />
+			<Option link="0" />
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/scripting/bindings/sc_wxtypes.cpp">
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/scripting/bindings/scriptbindings.cpp">
+			<Option compile="0" />
+			<Option link="0" />
 			<Option target="sdk" />
 		</Unit>
 		<Unit filename="sdk/scripting/sqplus/SqPlus.cpp">
