@@ -1624,7 +1624,16 @@
 		<Unit filename="sdk/mozilla_chardet/src/nsEUCTWProber.cpp">
 			<Option target="sdk_gui" />
 		</Unit>
+		<Unit filename="sdk/mozilla_chardet/src/nsEscCharsetProber.cpp">
+			<Option target="sdk_gui" />
+		</Unit>
+		<Unit filename="sdk/mozilla_chardet/src/nsEscSM.cpp">
+			<Option target="sdk_gui" />
+		</Unit>
 		<Unit filename="sdk/mozilla_chardet/src/nsGB2312Prober.cpp">
+			<Option target="sdk_gui" />
+		</Unit>
+		<Unit filename="sdk/mozilla_chardet/src/nsHebrewProber.cpp">
 			<Option target="sdk_gui" />
 		</Unit>
 		<Unit filename="sdk/mozilla_chardet/src/nsLatin1Prober.cpp">
