@@ -1754,11 +1754,6 @@
 			<Option target="Squirrel" />
 		</Unit>
 		<Unit filename="sdk/scriptingmanager.cpp">
-			<Option compile="0" />
-			<Option link="0" />
-			<Option target="sdk_nogui" />
-		</Unit>
-		<Unit filename="sdk/scriptingmanager_base.cpp">
 			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/scriptsecuritywarningdlg.cpp">

@@ -11,24 +11,32 @@
 
 #ifndef CB_PRECOMP
     #include "scriptingmanager.h"
+#if wxUSE_GUI
     #include "cbeditor.h"
+#endif // #if wxUSE_GUI
     #include "cbexception.h"
     #include "configmanager.h"
+#if wxUSE_GUI
     #include "editormanager.h"
+#endif // #if wxUSE_GUI
     #include "globals.h"
     #include "logmanager.h"
     #include "manager.h"
 
     #include <settings.h>
+#if wxUSE_GUI
     #include <wx/msgdlg.h>
+#endif // #if wxUSE_GUI
     #include <wx/file.h>
     #include <wx/filename.h>
     #include <wx/regex.h>
 #endif
 
 #include "crc32.h"
+#if wxUSE_GUI
 #include "menuitemsmanager.h"
 #include "genericmultilinenotesdlg.h"
+#endif // #if wxUSE_GUI
 #include "sqplus.h"
 #include "scriptbindings.h"
 #include "sc_plugin.h"
@@ -81,13 +89,17 @@ static void CaptureScriptOutput(HSQUIRRELVM /*v*/, const SQChar * s, ...)
     va_end(vl);
 }
 
+#if wxUSE_GUI
 BEGIN_EVENT_TABLE(ScriptingManager, wxEvtHandler)
 //
 END_EVENT_TABLE()
+#endif // #if wxUSE_GUI
 
 ScriptingManager::ScriptingManager()
+#if wxUSE_GUI
     : m_AttachedToMainWindow(false),
     m_MenuItemsManager(false) // not auto-clear
+#endif // #if wxUSE_GUI
 {
     //ctor
 
@@ -251,11 +263,15 @@ void ScriptingManager::DisplayErrors(SquirrelError* exception, bool clearErrors)
                             _("Script errors"),
                             wxICON_ERROR | wxYES_NO | wxNO_DEFAULT) == wxID_YES)
         {
+#if wxUSE_GUI
             GenericMultiLineNotesDlg dlg(Manager::Get()->GetAppWindow(),
                                         _("Script errors"),
                                         msg,
                                         true);
             dlg.ShowModal();
+#else
+#pragma message "todo"
+#endif // #if wxUSE_GUI
         }
     }
 }
@@ -270,6 +286,7 @@ int ScriptingManager::Configure()
     return -1;
 }
 
+#if wxUSE_GUI
 bool ScriptingManager::RegisterScriptPlugin(const wxString& /*name*/, const wxArrayInt& ids)
 {
     // attach this event handler in the main window (one-time run)
@@ -338,6 +355,7 @@ bool ScriptingManager::UnRegisterAllScriptMenus()
     m_MenuItemsManager.Clear();
     return true;
 }
+#endif // #if wxUSE_GUI
 
 bool ScriptingManager::IsScriptTrusted(const wxString& script)
 {
@@ -421,6 +439,7 @@ const ScriptingManager::TrustedScripts& ScriptingManager::GetTrustedScripts()
     return m_TrustedScripts;
 }
 
+#if wxUSE_GUI
 void ScriptingManager::OnScriptMenu(wxCommandEvent& event)
 {
     MenuIDToScript::iterator it = m_MenuIDToScript.find(event.GetId());
@@ -472,3 +491,4 @@ void ScriptingManager::OnScriptPluginMenu(wxCommandEvent& event)
 {
     ScriptBindings::ScriptPluginWrapper::OnScriptMenu(event.GetId());
 }
+#endif // #if wxUSE_GUI
