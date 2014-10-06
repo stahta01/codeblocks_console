@@ -13,7 +13,9 @@
     #include <manager.h>
     #include <logmanager.h>
     #include <configmanager.h>
+#if wxUSE_GUI
     #include <editormanager.h>
+#endif // #if wxUSE_GUI
     #include <projectmanager.h>
     #include <macrosmanager.h>
     #include <compilerfactory.h>
@@ -21,7 +23,10 @@
     #include <cbeditor.h>
     #include <globals.h>
 #endif
-#include "cbstyledtextctrl.h"
+
+#if wxUSE_GUI
+    #include "cbstyledtextctrl.h"
+#endif // #if wxUSE_GUI
 
 #include "scriptbindings.h"
 #include <cbexception.h>
@@ -32,9 +37,11 @@ namespace ScriptBindings
     extern void Register_Constants();
     extern void Register_Globals();
     extern void Register_wxTypes();
+#if wxUSE_GUI
     extern void Register_Dialog();
     extern void Register_ProgressDialog();
     extern void Register_UtilDialogs();
+#endif // #if wxUSE_GUI
     extern void Register_IO();
     extern void Register_ScriptPlugin();
 
@@ -100,6 +107,7 @@ namespace ScriptBindings
         }
         return sa.ThrowError("Invalid arguments to \"ConfigManager::Write\"");
     }
+#if wxUSE_GUI
     SQInteger EditorManager_GetBuiltinEditor(HSQUIRRELVM v)
     {
         StackHandler sa(v);
@@ -154,6 +162,7 @@ namespace ScriptBindings
         }
         return sa.ThrowError("Invalid arguments to \"EditorManager::Save\"");
     }
+#endif // #if wxUSE_GUI
     SQInteger cbProject_RemoveFile(HSQUIRRELVM v)
     {
         StackHandler sa(v);
@@ -206,6 +215,7 @@ namespace ScriptBindings
         }
         return sa.ThrowError("Invalid arguments to \"cbProject::GetBuildTarget\"");
     }
+#if wxUSE_GUI
     SQInteger cbProject_RenameBuildTarget(HSQUIRRELVM v)
     {
         StackHandler sa(v);
@@ -281,6 +291,7 @@ namespace ScriptBindings
         }
         return sa.ThrowError("Invalid arguments to \"ProjectManager::AddFileToProject\"");
     }
+#endif // #if wxUSE_GUI
 
     SQInteger ProjectManager_GetProjectCount(HSQUIRRELVM v)
     {
@@ -317,6 +328,7 @@ namespace ScriptBindings
             }
         }
     }
+#if wxUSE_GUI
     SQInteger ProjectManager_RebuildTree(HSQUIRRELVM v)
     {
         StackHandler sa(v);
@@ -366,6 +378,7 @@ namespace ScriptBindings
         }
         return sa.ThrowError("Invalid arguments to \"cbEditor::GetText\"");
     }
+#endif // #if wxUSE_GUI
     SQInteger CompilerFactory_GetCompilerIndex(HSQUIRRELVM v)
     {
         StackHandler sa(v);
@@ -390,9 +403,11 @@ namespace ScriptBindings
         Register_Constants();
         Register_Globals();
         Register_IO(); // IO is enabled, but just for harmless functions
+#if wxUSE_GUI
         Register_Dialog();
         Register_ProgressDialog();
         Register_UtilDialogs();
+#endif // #if wxUSE_GUI
 
         SqPlus::SQClassDef<ConfigManager>("ConfigManager").
                 staticFuncVarArgs(&ConfigManager_Read, "Read", "*").
@@ -541,12 +556,14 @@ namespace ScriptBindings
                 func(&cbProject::SetMakefile, "SetMakefile").
                 func(&cbProject::IsMakefileCustom, "IsMakefileCustom").
                 func(&cbProject::SetMakefileCustom, "SetMakefileCustom").
+#if wxUSE_GUI
                 func(&cbProject::CloseAllFiles, "CloseAllFiles").
                 func(&cbProject::SaveAllFiles, "SaveAllFiles").
                 func(&cbProject::Save, "Save").
 //                func(&cbProject::SaveAs, "SaveAs"). // *UNSAFE*
                 func(&cbProject::SaveLayout, "SaveLayout").
                 func(&cbProject::LoadLayout, "LoadLayout").
+#endif // #if wxUSE_GUI
 //                func(&cbProject::ShowOptions, "ShowOptions").
                 func(&cbProject::GetCommonTopLevelPath, "GetCommonTopLevelPath").
                 func(&cbProject::GetFilesCount, "GetFilesCount").
@@ -557,10 +574,12 @@ namespace ScriptBindings
                 func(&cbProject::GetBuildTargetsCount, "GetBuildTargetsCount").
                 staticFuncVarArgs(&cbProject_GetBuildTarget, "GetBuildTarget", "*").
                 func(&cbProject::AddBuildTarget, "AddBuildTarget").
+#if wxUSE_GUI
                 staticFuncVarArgs(&cbProject_RenameBuildTarget, "RenameBuildTarget", "*").
                 staticFuncVarArgs(&cbProject_DuplicateBuildTarget, "DuplicateBuildTarget", "*").
                 staticFuncVarArgs(&cbProject_RemoveBuildTarget, "RemoveBuildTarget", "*").
                 staticFuncVarArgs(&cbProject_ExportTargetAsProject, "ExportTargetAsProject", "*").
+#endif // #if wxUSE_GUI
                 func(&cbProject::BuildTargetValid, "BuildTargetValid").
                 func(&cbProject::GetFirstValidBuildTargetName, "GetFirstValidBuildTargetName").
                 func(&cbProject::SetDefaultExecuteTarget, "SetDefaultExecuteTarget").
@@ -574,6 +593,7 @@ namespace ScriptBindings
                 func(&cbProject::SetModeForPCH, "SetModeForPCH").
                 func(&cbProject::SetExtendedObjectNamesGeneration, "SetExtendedObjectNamesGeneration").
                 func(&cbProject::GetExtendedObjectNamesGeneration, "GetExtendedObjectNamesGeneration").
+    #if wxUSE_GUI
                 func(&cbProject::SetNotes, "SetNotes").
                 func(&cbProject::GetNotes, "GetNotes").
                 func(&cbProject::SetShowNotesOnLoad, "SetShowNotesOnLoad").
@@ -581,6 +601,7 @@ namespace ScriptBindings
                 func(&cbProject::SetCheckForExternallyModifiedFiles, "SetCheckForExternallyModifiedFiles").
                 func(&cbProject::GetCheckForExternallyModifiedFiles, "GetCheckForExternallyModifiedFiles").
                 func(&cbProject::ShowNotes, "ShowNotes").
+    #endif // #if wxUSE_GUI
                 func(&cbProject::AddToExtensions, "AddToExtensions").
                 func(&cbProject::DefineVirtualBuildTarget, "DefineVirtualBuildTarget").
                 func(&cbProject::HasVirtualBuildTarget, "HasVirtualBuildTarget").
@@ -600,30 +621,44 @@ namespace ScriptBindings
                 staticFuncVarArgs(&ProjectManager_GetProject, "GetProject", "*").
                 func(&ProjectManager::SetProject, "SetProject").
                 func(&ProjectManager::LoadWorkspace, "LoadWorkspace").
+#if wxUSE_GUI
                 func(&ProjectManager::SaveWorkspace, "SaveWorkspace").
                 func(&ProjectManager::SaveWorkspaceAs, "SaveWorkspaceAs").
                 func(&ProjectManager::CloseWorkspace, "CloseWorkspace").
+#endif // #if wxUSE_GUI
                 func(&ProjectManager::IsOpen, "IsOpen").
                 func(&ProjectManager::LoadProject, "LoadProject").
+#if wxUSE_GUI
                 func(&ProjectManager::SaveProject, "SaveProject").
                 func(&ProjectManager::SaveProjectAs, "SaveProjectAs").
                 func(&ProjectManager::SaveActiveProject, "SaveActiveProject").
                 func(&ProjectManager::SaveActiveProjectAs, "SaveActiveProjectAs").
                 func(&ProjectManager::SaveAllProjects, "SaveAllProjects").
+#endif // #if wxUSE_GUI
                 func(&ProjectManager::CloseProject, "CloseProject").
                 func(&ProjectManager::CloseActiveProject, "CloseActiveProject").
                 func(&ProjectManager::CloseAllProjects, "CloseAllProjects").
+#if wxUSE_GUI
                 func(&ProjectManager::NewProject, "NewProject").
                 staticFuncVarArgs(&ProjectManager_AddFileToProject, "AddFileToProject", "*").
+#endif // #if wxUSE_GUI
 //                func(&ProjectManager::AskForBuildTargetIndex, "AskForBuildTargetIndex").
                 func(&ProjectManager::AddProjectDependency, "AddProjectDependency").
                 func(&ProjectManager::RemoveProjectDependency, "RemoveProjectDependency").
                 func(&ProjectManager::ClearProjectDependencies, "ClearProjectDependencies").
                 func(&ProjectManager::RemoveProjectFromAllDependencies, "RemoveProjectFromAllDependencies").
-                func(&ProjectManager::GetDependenciesForProject, "GetDependenciesForProject").
+                func(&ProjectManager::GetDependenciesForProject, "GetDependenciesForProject")
+#if wxUSE_GUI
+                .
+#else
+                ;
+#endif // #if wxUSE_GUI
 //                func(&ProjectManager::ConfigureProjectDependencies, "ConfigureProjectDependencies");
+#if wxUSE_GUI
                 staticFuncVarArgs(&ProjectManager_RebuildTree, "RebuildTree", "*");
+#endif // #if wxUSE_GUI
 
+#if wxUSE_GUI
         SqPlus::SQClassDef<EditorBase>("EditorBase").
                 func(&EditorBase::GetFilename, "GetFilename").
                 func(&EditorBase::SetFilename, "SetFilename").
@@ -702,12 +737,15 @@ namespace ScriptBindings
                 func(&EditorManager::SaveActiveAs, "SaveActiveAs").
                 func(&EditorManager::SaveAll, "SaveAll");
         //        func(&EditorManager::ShowFindDialog, "ShowFindDialog");
+#endif // #if wxUSE_GUI
 
+#if wxUSE_GUI
         SqPlus::SQClassDef<UserVariableManager>("UserVariableManager").
                 func(&UserVariableManager::Exists, "Exists");
 
         SqPlus::SQClassDef<ScriptingManager>("ScriptingManager").
                 func(&ScriptingManager::RegisterScriptMenu, "RegisterScriptMenu");
+#endif // #if wxUSE_GUI
 
         typedef bool(*CF_INHERITSFROM)(const wxString&, const wxString&); // CompilerInheritsFrom
 
@@ -731,6 +769,7 @@ namespace ScriptBindings
             var(&PluginInfo::thanksTo, "thanksTo").
             var(&PluginInfo::license, "license");
 
+#if wxUSE_GUI
         SqPlus::SQClassDef<FileTreeData>("FileTreeData").
             func(&FileTreeData::GetKind, "GetKind").
             func(&FileTreeData::GetProject, "GetProject").
@@ -742,8 +781,11 @@ namespace ScriptBindings
             func(&FileTreeData::SetFileIndex, "SetFileIndex").
             func(&FileTreeData::SetProjectFile, "SetProjectFile").
             func(&FileTreeData::SetFolder, "SetFolder");
+#endif // #if wxUSE_GUI
 
+#if wxUSE_GUI
         // called last because it needs a few previously registered types
         Register_ScriptPlugin();
+#endif // #if wxUSE_GUI
     }
 } // namespace ScriptBindings
