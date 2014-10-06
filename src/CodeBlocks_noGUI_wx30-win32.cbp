@@ -716,9 +716,6 @@
 		<Unit filename="include/scripting/bindings/scriptbindings.h">
 			<Option target="sdk_nogui" />
 		</Unit>
-		<Unit filename="include/scripting/bindings/scriptbindings_base.h">
-			<Option target="sdk_nogui" />
-		</Unit>
 		<Unit filename="include/scripting/include/sqdbgserver.h">
 			<Option target="Squirrel" />
 		</Unit>
