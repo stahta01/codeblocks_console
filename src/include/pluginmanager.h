@@ -46,7 +46,7 @@ WX_DEFINE_ARRAY(cbConfigurationPanel*, ConfigurationPanelsArray);
  * Script plugins are more lightweight and are very convenient for
  * smaller scale/functionality plugins.
  */
-class DLLIMPORT PluginManager : public Mgr<PluginManager>, public wxEvtHandler
+class DLLIMPORT PluginManager : public PluginManagerBase, public Mgr<PluginManager>, public wxEvtHandler
 {
     public:
         friend class Mgr<PluginManager>;
