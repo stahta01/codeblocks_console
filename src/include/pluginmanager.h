@@ -33,32 +33,6 @@ typedef void(*PluginSDKVersionProc)(int*,int*,int*);
 typedef cbPlugin*(*CreatePluginProc)();
 typedef void(*FreePluginProc)(cbPlugin*);
 
-/** Information about the plugin */
-struct PluginInfo
-{
-    wxString name;
-    wxString title;
-    wxString version;
-    wxString description;
-    wxString author;
-    wxString authorEmail;
-    wxString authorWebsite;
-    wxString thanksTo;
-    wxString license;
-};
-
-// struct with info about each pluing
-struct PluginElement
-{
-    PluginInfo info; // plugin's info struct
-    wxString fileName; // plugin's filename
-    wxDynamicLibrary* library; // plugin's library
-    FreePluginProc freeProc; // plugin's release function pointer
-    cbPlugin* plugin; // the plugin itself
-};
-
-WX_DEFINE_ARRAY(PluginElement*, PluginElementsArray);
-WX_DEFINE_ARRAY(cbPlugin*, PluginsArray);
 WX_DEFINE_ARRAY(cbConfigurationPanel*, ConfigurationPanelsArray);
 
 /**

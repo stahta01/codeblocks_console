@@ -107,6 +107,10 @@
 					<Add directory="include/scripting/include" />
 					<Add directory="include/scripting/sqplus" />
 					<Add directory="sdk/wxscintilla/include" />
+					<Add directory="src" />
+					<Add directory="include/mozilla_chardet" />
+					<Add directory="include/mozilla_chardet/xpcom/base" />
+					<Add directory="include/mozilla_chardet/mfbt" />
 				</Compiler>
 				<Linker>
 					<Add option="-Wl,--enable-auto-image-base" />
@@ -555,6 +559,9 @@
 			<Option target="sdk_gui" />
 		</Unit>
 		<Unit filename="include/mozilla_chardet/mfbt/mozilla/NullPtr.h">
+			<Option target="sdk_gui" />
+		</Unit>
+		<Unit filename="include/mozilla_chardet/mfbt/mozilla/TypedEnum.h">
 			<Option target="sdk_gui" />
 		</Unit>
 		<Unit filename="include/mozilla_chardet/mfbt/mozilla/Types.h">
@@ -1366,8 +1373,6 @@
 			<Option target="sdk_gui" />
 		</Unit>
 		<Unit filename="sdk/cbeditor.cpp">
-			<Option compile="0" />
-			<Option link="0" />
 			<Option target="sdk_gui" />
 		</Unit>
 		<Unit filename="sdk/cbeditorprintout.cpp">
@@ -1454,8 +1459,6 @@
 			<Option target="sdk_gui" />
 		</Unit>
 		<Unit filename="sdk/debuggermanager.cpp">
-			<Option compile="0" />
-			<Option link="0" />
 			<Option target="sdk_gui" />
 		</Unit>
 		<Unit filename="sdk/editarrayfiledlg.cpp">
@@ -1474,8 +1477,6 @@
 			<Option target="sdk_gui" />
 		</Unit>
 		<Unit filename="sdk/editor_hooks.cpp">
-			<Option compile="0" />
-			<Option link="0" />
 			<Option target="sdk_gui" />
 		</Unit>
 		<Unit filename="sdk/editorbase.cpp">
