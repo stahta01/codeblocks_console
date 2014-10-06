@@ -16,16 +16,20 @@
     #include <manager.h>
     #include <logmanager.h>
     #include <configmanager.h>
+#if wxUSE_GUI
     #include <editormanager.h>
+#endif // #if wxUSE_GUI
     #include <projectmanager.h>
     #include <pluginmanager.h>
 #endif
 
 #include "sc_base_types.h"
 
+#if wxUSE_GUI
 #include <wx/colordlg.h>
 #include <wx/numdlg.h>
 #include <infowindow.h>
+#endif // #if wxUSE_GUI
 
 namespace ScriptBindings
 {
@@ -53,10 +57,12 @@ namespace ScriptBindings
     {
         return Manager::Get()->GetProjectManager();
     }
+#if wxUSE_GUI
     EditorManager* getEM()
     {
         return Manager::Get()->GetEditorManager();
     }
+#endif // #if wxUSE_GUI
     ConfigManager* getCM()
     {
         return Manager::Get()->GetConfigManager(_T("scripts"));
@@ -74,6 +80,7 @@ namespace ScriptBindings
     {
         return Manager::Get()->GetScriptingManager();
     }
+#if wxUSE_GUI
     bool InstallPlugin(const wxString& pluginName, bool allUsers, bool confirm)
     {
         if (cbMessageBox(_("A script is trying to install a Code::Blocks plugin.\n"
@@ -84,6 +91,7 @@ namespace ScriptBindings
         }
         return Manager::Get()->GetPluginManager()->InstallPlugin(pluginName, allUsers, confirm);
     }
+#endif // #if wxUSE_GUI
     int ExecutePlugin(const wxString& pluginName)
     {
         return Manager::Get()->GetPluginManager()->ExecutePlugin(pluginName);
@@ -92,6 +100,7 @@ namespace ScriptBindings
     {
         return 0; /* leaving script binding intact for compatibility, but this is factually not implemented at all */
     }
+#if wxUSE_GUI
     // locate and call a menu from string (e.g. "/Valgrind/Run Valgrind::MemCheck")
     void CallMenu(const wxString& menuPath)
     {
@@ -154,6 +163,7 @@ namespace ScriptBindings
             pos = nextPos; // prepare for next loop
         }
     }
+#endif // #if wxUSE_GUI
     void Include(const wxString& filename)
     {
         getSM()->LoadScript(filename);
@@ -169,6 +179,7 @@ namespace ScriptBindings
         }
         return sa.Return(static_cast<SQInteger>(0));
     }
+#if wxUSE_GUI
     SQInteger wx_GetColourFromUser(HSQUIRRELVM v)
     {
         StackHandler sa(v);
@@ -187,6 +198,7 @@ namespace ScriptBindings
     {
         return cbGetTextFromUser(message, caption, default_value);
     }
+#endif // #if wxUSE_GUI
 
     long wxString_ToLong(wxString const &str)
     {
@@ -213,7 +225,9 @@ namespace ScriptBindings
         SqPlus::RegisterGlobal(gReplaceMacros, "ReplaceMacros");
 
         SqPlus::RegisterGlobal(getPM, "GetProjectManager");
+#if wxUSE_GUI
         SqPlus::RegisterGlobal(getEM, "GetEditorManager");
+#endif // #if wxUSE_GUI
         SqPlus::RegisterGlobal(getCM, "GetConfigManager");
         SqPlus::RegisterGlobal(getUVM, "GetUserVariableManager");
         SqPlus::RegisterGlobal(getSM, "GetScriptingManager");
@@ -235,23 +249,31 @@ namespace ScriptBindings
 
         SqPlus::RegisterGlobal(ExecutePlugin, "ExecuteToolPlugin");
         SqPlus::RegisterGlobal(ConfigurePlugin, "ConfigureToolPlugin");
+#if wxUSE_GUI
         SqPlus::RegisterGlobal(InstallPlugin, "InstallPlugin");
+#endif // #if wxUSE_GUI
 
+#if wxUSE_GUI
         SqPlus::RegisterGlobal(CallMenu, "CallMenu");
+#endif // #if wxUSE_GUI
 
         SqPlus::RegisterGlobal(Include, "Include");
         SquirrelVM::CreateFunctionGlobal(Require, "Require", "*");
 
+#if wxUSE_GUI
         SqPlus::RegisterGlobal(InfoWindow::Display, "InfoWindow");
+#endif // #if wxUSE_GUI
 
         SquirrelVM::CreateFunctionGlobal(IsNull, "IsNull", "*");
 
         // now for some wx globals (utility) functions
+#if wxUSE_GUI
         SqPlus::RegisterGlobal(wxLaunchDefaultBrowser, "wxLaunchDefaultBrowser");
         SquirrelVM::CreateFunctionGlobal(wx_GetColourFromUser, "wxGetColourFromUser", "*");
         SqPlus::RegisterGlobal(wx_GetNumberFromUser, "wxGetNumberFromUser");
         SqPlus::RegisterGlobal(wx_GetPasswordFromUser, "wxGetPasswordFromUser");
         SqPlus::RegisterGlobal(wx_GetTextFromUser, "wxGetTextFromUser");
+#endif // #if wxUSE_GUI
 
         SqPlus::RegisterGlobal(wxString_ToLong, "wxString_ToLong");
     }

@@ -36,7 +36,7 @@
 namespace ScriptBindings
 {
     extern void Register_Constants();
-    extern void Register_Base_Globals();
+    extern void Register_Globals();
     extern void Register_wxTypes();
     extern void Register_IO();
 
@@ -207,7 +207,7 @@ namespace ScriptBindings
 
         Register_wxTypes();
         Register_Constants();
-        Register_Base_Globals();
+        Register_Globals();
         Register_IO(); // IO is enabled, but just for harmless functions
 
         SqPlus::SQClassDef<ConfigManager>("ConfigManager").

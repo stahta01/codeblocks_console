@@ -1655,11 +1655,6 @@
 			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/scripting/bindings/sc_globals.cpp">
-			<Option compile="0" />
-			<Option link="0" />
-			<Option target="sdk_nogui" />
-		</Unit>
-		<Unit filename="sdk/scripting/bindings/sc_globals_base.cpp">
 			<Option target="sdk_nogui" />
 		</Unit>
 		<Unit filename="sdk/scripting/bindings/sc_io.cpp">
