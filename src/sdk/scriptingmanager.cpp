@@ -270,7 +270,7 @@ void ScriptingManager::DisplayErrors(SquirrelError* exception, bool clearErrors)
                                         true);
             dlg.ShowModal();
 #else
-#pragma message "todo"
+    #pragma message "Needs code added"
 #endif // #if wxUSE_GUI
         }
     }
