@@ -1527,11 +1527,6 @@
 		<Unit filename="sdk/infowindow.cpp">
 			<Option target="sdk_gui" />
 		</Unit>
-		<Unit filename="sdk/infowindow_base.cpp">
-			<Option compile="0" />
-			<Option link="0" />
-			<Option target="sdk_gui" />
-		</Unit>
 		<Unit filename="sdk/loggers.cpp">
 			<Option target="sdk_gui" />
 		</Unit>
