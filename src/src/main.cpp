@@ -31,13 +31,16 @@
 #include "cbstatusbar.h"
 #include "loggers.h"
 
+#include <wx/dcclient.h> // wxClientDC
 #include <wx/display.h>
 #include <wx/dnd.h>
 #include <wx/fileconf.h>
+#include <wx/filedlg.h> // wxFileDialog
 #include <wx/filename.h>
 #include <wx/gdicmn.h>
 #include <wx/printdlg.h>
 #include <wx/sstream.h>
+#include <wx/textdlg.h> // wxGetTextFromUser
 #include <wx/tipdlg.h>
 #include <wx/tokenzr.h>
 #include <wx/xrc/xmlres.h>
