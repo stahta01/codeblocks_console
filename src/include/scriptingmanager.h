@@ -252,7 +252,9 @@ class DLLIMPORT ScriptingManager : public Mgr<ScriptingManager>, public wxEvtHan
 
         MenuItemsManager m_MenuItemsManager;
 
+#if wxUSE_GUI
         DECLARE_EVENT_TABLE()
+#endif // #if wxUSE_GUI
 };
 
 typedef char SQChar; // HACK, MUST match with the type as defined for the dedicated platform in squirrel.h

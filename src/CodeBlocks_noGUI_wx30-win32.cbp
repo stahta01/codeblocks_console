@@ -824,9 +824,6 @@
 		<Unit filename="include/scriptingmanager.h">
 			<Option target="sdk_nogui" />
 		</Unit>
-		<Unit filename="include/scriptingmanager_base.h">
-			<Option target="sdk_nogui" />
-		</Unit>
 		<Unit filename="include/scriptsecuritywarningdlg.h">
 			<Option target="sdk_nogui" />
 		</Unit>
