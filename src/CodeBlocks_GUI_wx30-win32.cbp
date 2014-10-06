@@ -135,7 +135,6 @@
 					<Add directory="include/scripting/include" />
 					<Add directory="include/scripting/sqplus" />
 					<Add directory="sdk/wxscintilla/include" />
-					<Add directory="src" />
 					<Add directory="include/mozilla_chardet" />
 					<Add directory="include/mozilla_chardet/xpcom/base" />
 					<Add directory="include/mozilla_chardet/mfbt" />
@@ -180,6 +179,12 @@
 					<Add directory="include" />
 					<Add directory="include/scripting/include" />
 					<Add directory="include/scripting/sqplus" />
+					<Add directory="sdk/wxscintilla/include" />
+					<Add directory="include/mozilla_chardet" />
+					<Add directory="include/mozilla_chardet/xpcom/base" />
+					<Add directory="include/mozilla_chardet/mfbt" />
+					<Add directory="include/mozilla_chardet/nsprpub/pr/include" />
+					<Add directory="include/mozilla_chardet/xpcom/glue" />
 				</Compiler>
 				<Linker>
 					<Add option="-Wl,--enable-auto-import" />
@@ -241,6 +246,7 @@
 					<Add directory="plugins/compilergcc/depslib/src" />
 					<Add directory="include/scripting/include" />
 					<Add directory="include/scripting/sqplus" />
+					<Add directory="sdk/wxscintilla/include" />
 				</Compiler>
 				<Linker>
 					<Add option="-Wl,--enable-auto-image-base" />
@@ -922,8 +928,6 @@
 			<Option target="sdk_gui" />
 		</Unit>
 		<Unit filename="plugins/compilergcc/advancedcompileroptionsdlg.cpp">
-			<Option compile="0" />
-			<Option link="0" />
 			<Option target="Compiler" />
 		</Unit>
 		<Unit filename="plugins/compilergcc/advancedcompileroptionsdlg.h">
@@ -1044,8 +1048,6 @@
 			<Option target="Compiler" />
 		</Unit>
 		<Unit filename="plugins/compilergcc/compilerflagdlg.cpp">
-			<Option compile="0" />
-			<Option link="0" />
 			<Option target="Compiler" />
 		</Unit>
 		<Unit filename="plugins/compilergcc/compilerflagdlg.h">
@@ -1058,16 +1060,12 @@
 			<Option target="Compiler" />
 		</Unit>
 		<Unit filename="plugins/compilergcc/compilermessages.cpp">
-			<Option compile="0" />
-			<Option link="0" />
 			<Option target="Compiler" />
 		</Unit>
 		<Unit filename="plugins/compilergcc/compilermessages.h">
 			<Option target="Compiler" />
 		</Unit>
 		<Unit filename="plugins/compilergcc/compileroptionsdlg.cpp">
-			<Option compile="0" />
-			<Option link="0" />
 			<Option target="Compiler" />
 		</Unit>
 		<Unit filename="plugins/compilergcc/compileroptionsdlg.h">
@@ -1388,8 +1386,6 @@
 			<Option target="sdk_gui" />
 		</Unit>
 		<Unit filename="sdk/cbdebugger_interfaces.cpp">
-			<Option compile="0" />
-			<Option link="0" />
 			<Option target="sdk_gui" />
 		</Unit>
 		<Unit filename="sdk/cbeditor.cpp">
@@ -1408,8 +1404,6 @@
 			<Option target="sdk_gui" />
 		</Unit>
 		<Unit filename="sdk/cbstatusbar.cpp">
-			<Option compile="0" />
-			<Option link="0" />
 			<Option target="sdk_gui" />
 		</Unit>
 		<Unit filename="sdk/cbstyledtextctrl.cpp">
@@ -1419,8 +1413,6 @@
 			<Option target="sdk_gui" />
 		</Unit>
 		<Unit filename="sdk/cbtreectrl.cpp">
-			<Option compile="0" />
-			<Option link="0" />
 			<Option target="sdk_gui" />
 		</Unit>
 		<Unit filename="sdk/cbworkspace.cpp">
@@ -1455,13 +1447,9 @@
 			<Option target="sdk_gui" />
 		</Unit>
 		<Unit filename="sdk/configurationpanel.cpp">
-			<Option compile="0" />
-			<Option link="0" />
 			<Option target="sdk_gui" />
 		</Unit>
 		<Unit filename="sdk/configuretoolsdlg.cpp">
-			<Option compile="0" />
-			<Option link="0" />
 			<Option target="sdk_gui" />
 		</Unit>
 		<Unit filename="sdk/confirmreplacedlg.cpp">
@@ -1474,18 +1462,12 @@
 			<Option target="sdk_gui" />
 		</Unit>
 		<Unit filename="sdk/editarrayfiledlg.cpp">
-			<Option compile="0" />
-			<Option link="0" />
 			<Option target="sdk_gui" />
 		</Unit>
 		<Unit filename="sdk/editarrayorderdlg.cpp">
-			<Option compile="0" />
-			<Option link="0" />
 			<Option target="sdk_gui" />
 		</Unit>
 		<Unit filename="sdk/editarraystringdlg.cpp">
-			<Option compile="0" />
-			<Option link="0" />
 			<Option target="sdk_gui" />
 		</Unit>
 		<Unit filename="sdk/editor_hooks.cpp">
@@ -1504,26 +1486,18 @@
 			<Option target="sdk_gui" />
 		</Unit>
 		<Unit filename="sdk/editpairdlg.cpp">
-			<Option compile="0" />
-			<Option link="0" />
 			<Option target="sdk_gui" />
 		</Unit>
 		<Unit filename="sdk/editpathdlg.cpp">
-			<Option compile="0" />
-			<Option link="0" />
 			<Option target="sdk_gui" />
 		</Unit>
 		<Unit filename="sdk/edittooldlg.cpp">
-			<Option compile="0" />
-			<Option link="0" />
 			<Option target="sdk_gui" />
 		</Unit>
 		<Unit filename="sdk/encodingdetector.cpp">
 			<Option target="sdk_gui" />
 		</Unit>
 		<Unit filename="sdk/externaldepsdlg.cpp">
-			<Option compile="0" />
-			<Option link="0" />
 			<Option target="sdk_gui" />
 		</Unit>
 		<Unit filename="sdk/filefilters.cpp">
@@ -1536,8 +1510,6 @@
 			<Option target="sdk_gui" />
 		</Unit>
 		<Unit filename="sdk/findreplacedlg.cpp">
-			<Option compile="0" />
-			<Option link="0" />
 			<Option target="sdk_gui" />
 		</Unit>
 		<Unit filename="sdk/genericmultilinenotesdlg.cpp">
@@ -1550,16 +1522,14 @@
 			<Option target="sdk_gui" />
 		</Unit>
 		<Unit filename="sdk/incrementalselectlistdlg.cpp">
-			<Option compile="0" />
-			<Option link="0" />
 			<Option target="sdk_gui" />
 		</Unit>
 		<Unit filename="sdk/infowindow.cpp">
-			<Option compile="0" />
-			<Option link="0" />
 			<Option target="sdk_gui" />
 		</Unit>
 		<Unit filename="sdk/infowindow_base.cpp">
+			<Option compile="0" />
+			<Option link="0" />
 			<Option target="sdk_gui" />
 		</Unit>
 		<Unit filename="sdk/loggers.cpp">
@@ -1578,8 +1548,6 @@
 			<Option target="sdk_gui" />
 		</Unit>
 		<Unit filename="sdk/menuitemsmanager.cpp">
-			<Option compile="0" />
-			<Option link="0" />
 			<Option target="sdk_gui" />
 		</Unit>
 		<Unit filename="sdk/mozilla_chardet/src/CharDistribution.cpp">
@@ -1658,13 +1626,9 @@
 			<Option target="sdk_gui" />
 		</Unit>
 		<Unit filename="sdk/multiselectdlg.cpp">
-			<Option compile="0" />
-			<Option link="0" />
 			<Option target="sdk_gui" />
 		</Unit>
 		<Unit filename="sdk/newfromtemplatedlg.cpp">
-			<Option compile="0" />
-			<Option link="0" />
 			<Option target="sdk_gui" />
 		</Unit>
 		<Unit filename="sdk/nullptr.cpp">
@@ -1680,8 +1644,6 @@
 			<Option target="sdk_gui" />
 		</Unit>
 		<Unit filename="sdk/pluginsconfigurationdlg.cpp">
-			<Option compile="0" />
-			<Option link="0" />
 			<Option target="sdk_gui" />
 		</Unit>
 		<Unit filename="sdk/printing_types.cpp">
@@ -1709,8 +1671,6 @@
 			<Option target="sdk_gui" />
 		</Unit>
 		<Unit filename="sdk/projectsfilemasksdlg.cpp">
-			<Option compile="0" />
-			<Option link="0" />
 			<Option target="sdk_gui" />
 		</Unit>
 		<Unit filename="sdk/projecttemplateloader.cpp">
@@ -1720,42 +1680,32 @@
 			<Option target="sdk_gui" />
 		</Unit>
 		<Unit filename="sdk/scripting/bindings/sc_dialog.cpp">
-			<Option compile="0" />
-			<Option link="0" />
 			<Option target="sdk_gui" />
 		</Unit>
 		<Unit filename="sdk/scripting/bindings/sc_globals.cpp">
-			<Option compile="0" />
-			<Option link="0" />
 			<Option target="sdk_gui" />
 		</Unit>
 		<Unit filename="sdk/scripting/bindings/sc_io.cpp">
 			<Option target="sdk_gui" />
 		</Unit>
 		<Unit filename="sdk/scripting/bindings/sc_plugin.cpp">
-			<Option compile="0" />
-			<Option link="0" />
 			<Option target="sdk_gui" />
 		</Unit>
 		<Unit filename="sdk/scripting/bindings/sc_progress.cpp">
-			<Option compile="0" />
-			<Option link="0" />
 			<Option target="sdk_gui" />
 		</Unit>
 		<Unit filename="sdk/scripting/bindings/sc_util_dialogs.cpp">
-			<Option compile="0" />
-			<Option link="0" />
 			<Option target="sdk_gui" />
 		</Unit>
 		<Unit filename="sdk/scripting/bindings/sc_wxtypes.cpp">
 			<Option target="sdk_gui" />
 		</Unit>
 		<Unit filename="sdk/scripting/bindings/scriptbindings.cpp">
-			<Option compile="0" />
-			<Option link="0" />
 			<Option target="sdk_gui" />
 		</Unit>
 		<Unit filename="sdk/scripting/bindings/scriptbindings_base.cpp">
+			<Option compile="0" />
+			<Option link="0" />
 			<Option target="sdk_gui" />
 		</Unit>
 		<Unit filename="sdk/scripting/sqplus/SqPlus.cpp">
@@ -1837,11 +1787,11 @@
 			<Option target="sdk_gui" />
 		</Unit>
 		<Unit filename="sdk/scriptingmanager_base.cpp">
+			<Option compile="0" />
+			<Option link="0" />
 			<Option target="sdk_gui" />
 		</Unit>
 		<Unit filename="sdk/scriptsecuritywarningdlg.cpp">
-			<Option compile="0" />
-			<Option link="0" />
 			<Option target="sdk_gui" />
 		</Unit>
 		<Unit filename="sdk/scrollingdialog.cpp">
@@ -1851,8 +1801,6 @@
 			<Option target="sdk_gui" />
 		</Unit>
 		<Unit filename="sdk/searchresultslog.cpp">
-			<Option compile="0" />
-			<Option link="0" />
 			<Option target="sdk_gui" />
 		</Unit>
 		<Unit filename="sdk/selecttargetdlg.cpp">
@@ -2488,7 +2436,13 @@
 		<Unit filename="src/appglobals.h">
 			<Option target="src_gui" />
 		</Unit>
+		<Unit filename="src/associations.cpp">
+			<Option target="src_gui" />
+		</Unit>
 		<Unit filename="src/associations.h">
+			<Option target="src_gui" />
+		</Unit>
+		<Unit filename="src/backtracedlg.cpp">
 			<Option target="src_gui" />
 		</Unit>
 		<Unit filename="src/backtracedlg.h">
@@ -2497,61 +2451,127 @@
 		<Unit filename="src/batchbuild.h">
 			<Option target="src_gui" />
 		</Unit>
+		<Unit filename="src/breakpointsdlg.cpp">
+			<Option target="src_gui" />
+		</Unit>
 		<Unit filename="src/breakpointsdlg.h">
+			<Option target="src_gui" />
+		</Unit>
+		<Unit filename="src/compilersettingsdlg.cpp">
 			<Option target="src_gui" />
 		</Unit>
 		<Unit filename="src/compilersettingsdlg.h">
 			<Option target="src_gui" />
 		</Unit>
+		<Unit filename="src/cpuregistersdlg.cpp">
+			<Option target="src_gui" />
+		</Unit>
 		<Unit filename="src/cpuregistersdlg.h">
+			<Option target="src_gui" />
+		</Unit>
+		<Unit filename="src/crashhandler.cpp">
 			<Option target="src_gui" />
 		</Unit>
 		<Unit filename="src/crashhandler.h">
 			<Option target="src_gui" />
 		</Unit>
+		<Unit filename="src/debugger_interface_creator.cpp">
+			<Option target="src_gui" />
+		</Unit>
 		<Unit filename="src/debugger_interface_creator.h">
+			<Option target="src_gui" />
+		</Unit>
+		<Unit filename="src/debuggermenu.cpp">
 			<Option target="src_gui" />
 		</Unit>
 		<Unit filename="src/debuggermenu.h">
 			<Option target="src_gui" />
 		</Unit>
+		<Unit filename="src/debuggersettingscommonpanel.cpp">
+			<Option target="src_gui" />
+		</Unit>
 		<Unit filename="src/debuggersettingscommonpanel.h">
+			<Option target="src_gui" />
+		</Unit>
+		<Unit filename="src/debuggersettingsdlg.cpp">
 			<Option target="src_gui" />
 		</Unit>
 		<Unit filename="src/debuggersettingsdlg.h">
 			<Option target="src_gui" />
 		</Unit>
+		<Unit filename="src/debuggersettingspanel.cpp">
+			<Option target="src_gui" />
+		</Unit>
 		<Unit filename="src/debuggersettingspanel.h">
+			<Option target="src_gui" />
+		</Unit>
+		<Unit filename="src/disassemblydlg.cpp">
 			<Option target="src_gui" />
 		</Unit>
 		<Unit filename="src/disassemblydlg.h">
 			<Option target="src_gui" />
 		</Unit>
+		<Unit filename="src/dlgabout.cpp">
+			<Option target="src_gui" />
+		</Unit>
 		<Unit filename="src/dlgabout.h">
+			<Option target="src_gui" />
+		</Unit>
+		<Unit filename="src/dlgaboutplugin.cpp">
 			<Option target="src_gui" />
 		</Unit>
 		<Unit filename="src/dlgaboutplugin.h">
 			<Option target="src_gui" />
 		</Unit>
+		<Unit filename="src/editkeywordsdlg.cpp">
+			<Option target="src_gui" />
+		</Unit>
 		<Unit filename="src/editkeywordsdlg.h">
+			<Option target="src_gui" />
+		</Unit>
+		<Unit filename="src/editorconfigurationdlg.cpp">
 			<Option target="src_gui" />
 		</Unit>
 		<Unit filename="src/editorconfigurationdlg.h">
 			<Option target="src_gui" />
 		</Unit>
+		<Unit filename="src/environmentsettingsdlg.cpp">
+			<Option target="src_gui" />
+		</Unit>
 		<Unit filename="src/environmentsettingsdlg.h">
+			<Option target="src_gui" />
+		</Unit>
+		<Unit filename="src/examinememorydlg.cpp">
 			<Option target="src_gui" />
 		</Unit>
 		<Unit filename="src/examinememorydlg.h">
 			<Option target="src_gui" />
 		</Unit>
+		<Unit filename="src/find_replace.cpp">
+			<Option target="src_gui" />
+		</Unit>
 		<Unit filename="src/find_replace.h">
+			<Option target="src_gui" />
+		</Unit>
+		<Unit filename="src/infopane.cpp">
 			<Option target="src_gui" />
 		</Unit>
 		<Unit filename="src/infopane.h">
 			<Option target="src_gui" />
 		</Unit>
+		<Unit filename="src/ipc.cpp">
+			<Option target="src_gui" />
+		</Unit>
+		<Unit filename="src/ipc.h">
+			<Option target="src_gui" />
+		</Unit>
+		<Unit filename="src/main.cpp">
+			<Option target="src_gui" />
+		</Unit>
 		<Unit filename="src/main.h">
+			<Option target="src_gui" />
+		</Unit>
+		<Unit filename="src/notebookstyles.cpp">
 			<Option target="src_gui" />
 		</Unit>
 		<Unit filename="src/notebookstyles.h">
@@ -2565,44 +2585,83 @@
 		<Unit filename="src/prefix.h">
 			<Option target="src_gui" />
 		</Unit>
+		<Unit filename="src/printdlg.cpp">
+			<Option target="src_gui" />
+		</Unit>
 		<Unit filename="src/printdlg.h">
+			<Option target="src_gui" />
+		</Unit>
+		<Unit filename="src/projectdepsdlg.cpp">
 			<Option target="src_gui" />
 		</Unit>
 		<Unit filename="src/projectdepsdlg.h">
 			<Option target="src_gui" />
 		</Unit>
+		<Unit filename="src/projectmanagerui.cpp">
+			<Option target="src_gui" />
+		</Unit>
 		<Unit filename="src/projectmanagerui.h">
+			<Option target="src_gui" />
+		</Unit>
+		<Unit filename="src/projectoptionsdlg.cpp">
 			<Option target="src_gui" />
 		</Unit>
 		<Unit filename="src/projectoptionsdlg.h">
 			<Option target="src_gui" />
 		</Unit>
+		<Unit filename="src/recentitemslist.cpp">
+			<Option target="src_gui" />
+		</Unit>
 		<Unit filename="src/recentitemslist.h">
 			<Option target="src_gui" />
 		</Unit>
-		<Unit filename="src/resources/no_gui.rc">
+		<Unit filename="src/resources/resources.rc">
 			<Option compilerVar="WINDRES" />
+			<Option target="src_gui" />
+		</Unit>
+		<Unit filename="src/scriptconsole.cpp">
 			<Option target="src_gui" />
 		</Unit>
 		<Unit filename="src/scriptconsole.h">
 			<Option target="src_gui" />
 		</Unit>
+		<Unit filename="src/scriptingsettingsdlg.cpp">
+			<Option target="src_gui" />
+		</Unit>
 		<Unit filename="src/scriptingsettingsdlg.h">
+			<Option target="src_gui" />
+		</Unit>
+		<Unit filename="src/splashscreen.cpp">
 			<Option target="src_gui" />
 		</Unit>
 		<Unit filename="src/splashscreen.h">
 			<Option target="src_gui" />
 		</Unit>
+		<Unit filename="src/startherepage.cpp">
+			<Option target="src_gui" />
+		</Unit>
 		<Unit filename="src/startherepage.h">
+			<Option target="src_gui" />
+		</Unit>
+		<Unit filename="src/switcherdlg.cpp">
 			<Option target="src_gui" />
 		</Unit>
 		<Unit filename="src/switcherdlg.h">
 			<Option target="src_gui" />
 		</Unit>
+		<Unit filename="src/threadsdlg.cpp">
+			<Option target="src_gui" />
+		</Unit>
 		<Unit filename="src/threadsdlg.h">
 			<Option target="src_gui" />
 		</Unit>
+		<Unit filename="src/virtualbuildtargetsdlg.cpp">
+			<Option target="src_gui" />
+		</Unit>
 		<Unit filename="src/virtualbuildtargetsdlg.h">
+			<Option target="src_gui" />
+		</Unit>
+		<Unit filename="src/watchesdlg.cpp">
 			<Option target="src_gui" />
 		</Unit>
 		<Unit filename="src/watchesdlg.h">
