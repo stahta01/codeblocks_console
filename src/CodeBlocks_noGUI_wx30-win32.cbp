@@ -1678,11 +1678,6 @@
 		<Unit filename="sdk/scripting/bindings/scriptbindings.cpp">
 			<Option target="sdk_nogui" />
 		</Unit>
-		<Unit filename="sdk/scripting/bindings/scriptbindings_base.cpp">
-			<Option compile="0" />
-			<Option link="0" />
-			<Option target="sdk_nogui" />
-		</Unit>
 		<Unit filename="sdk/scripting/sqplus/SqPlus.cpp">
 			<Option target="SqPlus" />
 		</Unit>
