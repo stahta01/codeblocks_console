@@ -668,9 +668,6 @@
 		<Unit filename="include/pluginmanager.h">
 			<Option target="sdk_nogui" />
 		</Unit>
-		<Unit filename="include/pluginmanager_base.h">
-			<Option target="sdk_nogui" />
-		</Unit>
 		<Unit filename="include/pluginsconfigurationdlg.h">
 			<Option target="sdk_nogui" />
 		</Unit>
