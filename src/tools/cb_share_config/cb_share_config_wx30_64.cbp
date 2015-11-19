@@ -61,7 +61,7 @@
 			<wxsmith version="1">
 				<gui name="wxWidgets" src="app.cpp" main="MainFrame" init_handlers="necessary" language="CPP" />
 				<resources>
-					<wxFrame wxs="wxsmith/MainFrame.wxs" src="mainframe.cpp" hdr="mainframe.h" name="MainFrame" language="CPP" />
+					<wxFrame wxs="wxsmith/MainFrame.wxs" src="mainframe.cpp" hdr="mainframe.h" fwddecl="0" i18n="1" name="MainFrame" language="CPP" />
 				</resources>
 			</wxsmith>
 			<envvars />
