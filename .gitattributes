@@ -1,0 +1,72 @@
+# Declare files you want to always be converted
+# to native line endings on checkout.
+# Warning adding whitespace=tab-in-indent,trailing-space,tabwidth=4 
+#   caused issues; I did NOT know how to fix at this time.
+*.c         text
+*.cpp       text
+*.cxx       text
+*.fbp       text
+*.h         text
+*.hxx       text
+*.m4        text
+*.xpm       text
+
+# Declare files that will always have CRLF line endings on checkout.
+*.sln       text eol=crlf
+# *.bat       text eol=crlf
+
+# Declare files that will always have LF line endings on checkout.
+.gitattributes  text eol=lf
+*.sh            text eol=lf
+*.cbp           text eol=lf
+*.workspace     text eol=lf
+Makefile.am     text whitespace=-tab-in-indent,trailing-space eol=lf
+/bootstrap                                                              text eol=lf
+/src/batch_build_all                                                    text eol=lf
+/src/batch_build_core                                                   text eol=lf
+/src/update                                                             text eol=lf
+/src/update30                                                           text eol=lf
+/src/sdk/wxpropgrid/configure                                           text eol=lf
+/src/plugins/contrib/SpellChecker/hunspell/install-sh                   text eol=lf
+/src/plugins/contrib/SpellChecker/hunspell/src/tools/affixcompress      text eol=lf
+/src/plugins/contrib/SpellChecker/hunspell/src/tools/makealias          text eol=lf
+/src/plugins/contrib/SpellChecker/hunspell/src/tools/wordforms          text eol=lf
+/src/plugins/contrib/SpellChecker/hunspell/src/tools/wordlist2hunspell  text eol=lf
+/src/plugins/contrib/help_plugin/zlib/configure                         text eol=lf
+/src/plugins/contrib/wxContribItems/wxchart/configure                   text eol=lf
+/src/plugins/contrib/wxContribItems/wxthings/configure                  text eol=lf
+/src/plugins/contrib/wxSmith/update                                     text eol=lf
+/src/plugins/contrib/wxSmith/update30                                   text eol=lf
+
+# Denote all files that are truly binary and should not be modified.
+*.BMP binary
+*.bmp binary
+*.ctg binary
+*.dll binary
+*.doc binary
+*.gif binary
+*.icns binary
+*.ico binary
+*.jpg binary
+*.mo binary
+*.mp4 binary
+*.otf binary
+*.pdf binary
+*.pfb binary
+*.png binary
+*.ttf binary
+*.wdr binary
+*.wmf binary
+*.xcf binary
+*.z binary
+src/plugins/contrib/source_exporter/wxPdfDocument/samples/minimal/indic-assamese.txt binary
+src/plugins/contrib/source_exporter/wxPdfDocument/samples/minimal/indic-bengali.txt binary
+src/plugins/contrib/source_exporter/wxPdfDocument/samples/minimal/indic-gujarati.txt binary
+src/plugins/contrib/source_exporter/wxPdfDocument/samples/minimal/indic-hindi.txt binary
+src/plugins/contrib/source_exporter/wxPdfDocument/samples/minimal/indic-kannada.txt binary
+src/plugins/contrib/source_exporter/wxPdfDocument/samples/minimal/indic-malayalam.txt binary
+src/plugins/contrib/source_exporter/wxPdfDocument/samples/minimal/indic-nepali.txt binary
+src/plugins/contrib/source_exporter/wxPdfDocument/samples/minimal/indic-oriya.txt binary
+src/plugins/contrib/source_exporter/wxPdfDocument/samples/minimal/indic-punjabi.txt binary
+src/plugins/contrib/source_exporter/wxPdfDocument/samples/minimal/indic-tamil.txt binary
+src/plugins/contrib/source_exporter/wxPdfDocument/samples/minimal/indic-telugu.txt binary
