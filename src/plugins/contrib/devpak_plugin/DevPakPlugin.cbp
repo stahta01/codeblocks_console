@@ -63,6 +63,7 @@
 		</Build>
 		<VirtualTargets>
 			<Add alias="All" targets="libbz2;default;" />
+			<Add alias="Third-party libs" targets="libbz2;" />
 		</VirtualTargets>
 		<Compiler>
 			<Add option="-std=gnu++11" />

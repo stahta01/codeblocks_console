@@ -93,6 +93,7 @@
 		</Build>
 		<VirtualTargets>
 			<Add alias="All" targets="wxPdfDocument;default;" />
+			<Add alias="Third-party libs" targets="wxPdfDocument;" />
 		</VirtualTargets>
 		<Compiler>
 			<Add option="-Wall" />

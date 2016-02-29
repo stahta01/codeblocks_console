@@ -83,6 +83,7 @@
 		</Build>
 		<VirtualTargets>
 			<Add alias="All" targets="bzip2;zlib;help_plugin;" />
+			<Add alias="Third-party libs" targets="bzip2;zlib;" />
 		</VirtualTargets>
 		<Compiler>
 			<Add option="-std=gnu++11" />

@@ -143,6 +143,7 @@
 		</Build>
 		<VirtualTargets>
 			<Add alias="All" targets="wxFlatNoteBook;wxDateTimePicker;wxChartCtrl;wxCustomButton;wxImagePanel;wxSpeedButton;wxKWIC;wxTreeList;wxLED;wxMathPlot;" />
+			<Add alias="Third-party libs" targets="wxFlatNoteBook;wxChartCtrl;wxCustomButton;wxKWIC;wxTreeList;wxLED;wxMathPlot;" />
 		</VirtualTargets>
 		<Compiler>
 			<Add option="$(#CB_RELEASE_TYPE)" />

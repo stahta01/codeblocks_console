@@ -119,6 +119,7 @@
 		</Build>
 		<VirtualTargets>
 			<Add alias="All" targets="hunspell;wxSpellChecker;plugin;" />
+			<Add alias="Third-party libs" targets="hunspell;wxSpellChecker;" />
 		</VirtualTargets>
 		<Compiler>
 			<Add option="-DHAVE_W32API_H" />
