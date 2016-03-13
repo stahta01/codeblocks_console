@@ -503,6 +503,7 @@ bool lib_finder::EnsureIsDefined(const wxString& ShortCode)
 
 bool lib_finder::TryDownload(const wxString& ShortCode,const wxString& FileName)
 {
+#if wxUSE_URL
     wxArrayString Urls = Manager::Get()->GetConfigManager(_T("lib_finder"))->ReadArrayString(_T("download_urls"));
     for ( size_t i=0; i<Urls.Count(); i++ )
     {
@@ -543,6 +544,7 @@ bool lib_finder::TryDownload(const wxString& ShortCode,const wxString& FileName)
     }
 
     LogManager::Get()->LogWarning(F(_T("lib_finder: Couldn't find suitable download url for '%s'"),ShortCode.wx_str()));
+#endif // #if wxUSE_URL
     return false;
 }
 

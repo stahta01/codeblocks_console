@@ -82,6 +82,7 @@ void FileLoader::operator()()
 // ***** class: URLLoader *****
 void URLLoader::operator()()
 {
+#if wxUSE_URL
     wxURL url(fileName);
     url.SetProxy(ConfigManager::GetProxy());
 
@@ -115,6 +116,7 @@ void URLLoader::operator()()
     len  = mBuffer.size();
     const char Zeros4[] = "\0\0\0\0";
     mBuffer.insert(mBuffer.end(), Zeros4, Zeros4 + 4);
+#endif // #if wxUSE_URL
     Ready();
 }
 

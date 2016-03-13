@@ -82,6 +82,7 @@ bool WebResourcesManager::LoadDetectionConfigurations(const wxArrayString& baseU
 
 bool WebResourcesManager::DoDownload( const wxString& urlName, ProgressHandler* handler, std::vector< char >& arr )
 {
+#if wxUSE_URL
     int id = handler ? handler->StartDownloading( urlName ) : 0;
 
     if ( handler ) handler->SetProgress( 0.f, id );
@@ -152,6 +153,9 @@ bool WebResourcesManager::DoDownload( const wxString& urlName, ProgressHandler* 
     }
     if ( handler ) handler->JobFinished( id );
     return true;
+#else
+    return false;
+#endif // #if wxUSE_URL
 }
 
 void WebResourcesManager::ClearEntries()
