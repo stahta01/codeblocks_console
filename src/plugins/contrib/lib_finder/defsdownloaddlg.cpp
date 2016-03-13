@@ -105,6 +105,7 @@ DefsDownloadDlg::~DefsDownloadDlg()
 
 void DefsDownloadDlg::FetchList()
 {
+#if wxUSE_URL
     wxArrayString Urls = Manager::Get()->GetConfigManager(_T("lib_finder"))->ReadArrayString(_T("download_urls"));
     Urls.Add(_T("http://localhost/lib_finder_test"));
 
@@ -150,4 +151,5 @@ void DefsDownloadDlg::FetchList()
 
 
     }
+#endif // #if wxUSE_URL
 }
