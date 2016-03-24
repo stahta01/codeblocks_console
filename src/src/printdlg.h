@@ -6,6 +6,10 @@
 #ifndef PRINTDLG_H
 #define PRINTDLG_H
 
+#include "wx/defs.h"
+
+#if wxUSE_PRINTING_ARCHITECTURE
+
 #include "scrollingdialog.h"
 #include "printing_types.h"
 
@@ -21,5 +25,7 @@ class PrintDialog : public wxScrollingDialog
 		PrintColourMode GetPrintColourMode() const;
 		bool GetPrintLineNumbers() const;
 };
+
+#endif // wxUSE_PRINTING_ARCHITECTURE
 
 #endif // PRINTDLG_H

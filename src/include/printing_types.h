@@ -6,6 +6,10 @@
 #ifndef PRINTING_TYPES_H
 #define PRINTING_TYPES_H
 
+#include "wx/defs.h"
+
+#if wxUSE_PRINTING_ARCHITECTURE
+
 #include "settings.h"
 #include <wx/print.h>
 
@@ -40,5 +44,7 @@ extern DLLIMPORT void DeInitPrinting();
 #ifdef __cplusplus
 }
 #endif
+
+#endif // wxUSE_PRINTING_ARCHITECTURE
 
 #endif // PRINTING_TYPES_H

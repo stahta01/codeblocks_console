@@ -2937,6 +2937,7 @@ void cbEditor::OnAfterBuildContextMenu(cb_unused ModuleType type)
     // we don't care
 }
 
+#if wxUSE_PRINTING_ARCHITECTURE
 void cbEditor::Print(bool selectionOnly, PrintColourMode pcm, bool line_numbers)
 {
     cbStyledTextCtrl * control = GetControl();
@@ -3008,6 +3009,7 @@ void cbEditor::Print(bool selectionOnly, PrintColourMode pcm, bool line_numbers)
     // restore line numbers if needed
     m_pData->SetLineNumberColWidth(m_pControl && m_pControl2);
 }
+#endif // wxUSE_PRINTING_ARCHITECTURE
 
 // events
 

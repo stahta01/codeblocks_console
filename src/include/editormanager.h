@@ -132,7 +132,9 @@ class DLLIMPORT EditorManager : public Mgr<EditorManager>, public wxEvtHandler
         bool SaveActiveAs();
         bool SaveAll();
 
+#if wxUSE_PRINTING_ARCHITECTURE
         void Print(PrintScope ps, PrintColourMode pcm, bool line_numbers);
+#endif // wxUSE_PRINTING_ARCHITECTURE
 
         /** Hides the editor notebook for layout purposes */
         void HideNotebook();

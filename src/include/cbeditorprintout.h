@@ -6,6 +6,10 @@
 #ifndef CBEDITORPRINTOUT_H
 #define CBEDITORPRINTOUT_H
 
+#include "wx/defs.h"
+
+#if wxUSE_PRINTING_ARCHITECTURE
+
 #include <wx/print.h>
 
 class cbStyledTextCtrl;
@@ -29,5 +33,7 @@ class cbEditorPrintout : public wxPrintout
         int m_SelEnd;
         wxArrayInt* m_pPageSelStart;
 };
+
+#endif // wxUSE_PRINTING_ARCHITECTURE
 
 #endif // CBEDITORPRINTOUT_H
