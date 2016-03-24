@@ -63,7 +63,9 @@ namespace SqPlus \
 
 DECLARE_ENUM_TYPE(wxPathFormat);
 DECLARE_ENUM_TYPE(wxPathNormalize);
+#if wxUSE_PRINTING_ARCHITECTURE
 DECLARE_ENUM_TYPE(PrintColourMode);
+#endif // wxUSE_PRINTING_ARCHITECTURE
 DECLARE_ENUM_TYPE(OptionsRelation);
 DECLARE_ENUM_TYPE(OptionsRelationType);
 DECLARE_ENUM_TYPE(TargetType);

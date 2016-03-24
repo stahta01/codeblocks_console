@@ -421,7 +421,9 @@ BEGIN_EVENT_TABLE(MainFrame, wxFrame)
     EVT_MENU(idFileCloseAll,                      MainFrame::OnFileCloseAll)
     EVT_MENU(idFileCloseProject,                  MainFrame::OnFileCloseProject)
     EVT_MENU(idFileCloseAllProjects,              MainFrame::OnFileCloseAllProjects)
+#if wxUSE_PRINTING_ARCHITECTURE
     EVT_MENU(idFilePrint,                         MainFrame::OnFilePrint)
+#endif // wxUSE_PRINTING_ARCHITECTURE
     EVT_MENU(idFileExit,                          MainFrame::OnFileQuit)
     EVT_MENU(idFileNext,                          MainFrame::OnFileNext)
     EVT_MENU(idFilePrev,                          MainFrame::OnFilePrev)
@@ -667,7 +669,9 @@ MainFrame::~MainFrame()
     SetAcceleratorTable(wxNullAcceleratorTable);
     delete m_pAccel;
 
+#if wxUSE_PRINTING_ARCHITECTURE
     DeInitPrinting();
+#endif // wxUSE_PRINTING_ARCHITECTURE
 
     delete m_debuggerMenuHandler;
     delete m_debuggerToolbarHandler;
@@ -2691,6 +2695,7 @@ void MainFrame::OnFilePrev(cb_unused wxCommandEvent& event)
     DoUpdateStatusBar();
 }
 
+#if wxUSE_PRINTING_ARCHITECTURE
 void MainFrame::OnFilePrint(cb_unused wxCommandEvent& event)
 {
     PrintDialog dlg(this);
@@ -2698,6 +2703,7 @@ void MainFrame::OnFilePrint(cb_unused wxCommandEvent& event)
     if (dlg.ShowModal() == wxID_OK)
         Manager::Get()->GetEditorManager()->Print(dlg.GetPrintScope(), dlg.GetPrintColourMode(), dlg.GetPrintLineNumbers());
 }
+#endif // wxUSE_PRINTING_ARCHITECTURE
 
 void MainFrame::OnFileQuit(cb_unused wxCommandEvent& event)
 {

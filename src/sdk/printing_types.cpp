@@ -15,6 +15,8 @@
     #include "configmanager.h"
 #endif
 
+#if wxUSE_PRINTING_ARCHITECTURE
+
 // NOTE (Tiwag#1#): 061012 global wxPrinter, used in cbeditorprintout
 //                  to get correct settings if changed in printer dialog
 wxPrinter* g_printer = nullptr;
@@ -56,3 +58,5 @@ void DeInitPrinting()
 //    delete g_pageSetupData;
 //    g_pageSetupData = 0;
 }
+#endif // wxUSE_PRINTING_ARCHITECTURE
+
