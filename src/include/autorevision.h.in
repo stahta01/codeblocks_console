@@ -1,4 +1,4 @@
-/*@REVISION@*/
+/*0*/
 //don't include this header, only configmanager-revision.cpp should do this.
 #ifndef AUTOREVISION_H
 #define AUTOREVISION_H
@@ -8,9 +8,9 @@
 
 namespace autorevision
 {
-	const unsigned int svn_revision = @REVISION@;
-	const wxString svnRevision(_T("@REVISION@"));
-	const wxString svnDate(_T("@DATE@"));
+	const unsigned int svn_revision = 0;
+	const wxString svnRevision(_T("0"));
+	const wxString svnDate(_T("2000-01-01 00:00:00"));
 }
 
 
