@@ -183,9 +183,11 @@ BEGIN_EVENT_TABLE(CompilerOptionsDlg, wxPanel)
 //    EVT_TEXT(                  XRCID("txtMakeCmd_SilentBuild"),         CompilerOptionsDlg::OnDirty)
     EVT_CHAR_HOOK(CompilerOptionsDlg::OnMyCharHook)
 
+#if wxUSE_PROPGRID
     EVT_PG_CHANGED(            XRCID("pgCompilerFlags"),                CompilerOptionsDlg::OnOptionChanged)
     EVT_PG_RIGHT_CLICK(        XRCID("pgCompilerFlags"),                CompilerOptionsDlg::OnFlagsPopup)
     EVT_PG_DOUBLE_CLICK(       XRCID("pgCompilerFlags"),                CompilerOptionsDlg::OnOptionDoubleClick)
+#endif // wxUSE_PROPGRID
 END_EVENT_TABLE()
 
 class ScopeTreeData : public wxTreeItemData
@@ -222,7 +224,9 @@ struct VariableListClientData : wxClientData
 */
 
 CompilerOptionsDlg::CompilerOptionsDlg(wxWindow* parent, CompilerGCC* compiler, cbProject* project, ProjectBuildTarget* target) :
+#if wxUSE_PROPGRID
     m_FlagsPG(nullptr),
+#endif // wxUSE_PROPGRID
     m_Compiler(compiler),
     m_CurrentCompilerIdx(0),
     m_pProject(project),
@@ -232,6 +236,7 @@ CompilerOptionsDlg::CompilerOptionsDlg(wxWindow* parent, CompilerGCC* compiler, 
 {
     wxXmlResource::Get()->LoadPanel(this, parent, _T("dlgCompilerOptions"));
 
+#if wxUSE_PROPGRID
     m_FlagsPG = new wxPropertyGrid(this, XRCID("pgCompilerFlags"), wxDefaultPosition, wxDefaultSize,
                                    wxTAB_TRAVERSAL|wxPG_SPLITTER_AUTO_CENTER);
     m_FlagsPG->SetExtraStyle(wxPG_EX_HELP_AS_TOOLTIPS);
@@ -240,6 +245,7 @@ CompilerOptionsDlg::CompilerOptionsDlg(wxWindow* parent, CompilerGCC* compiler, 
 
     m_FlagsPG->SetMinSize(wxSize(400, 400));
     wxXmlResource::Get()->AttachUnknownControl(wxT("pgCompilerFlags"), m_FlagsPG);
+#endif // wxUSE_PROPGRID
 
     if (m_pProject)
     {
@@ -634,6 +640,7 @@ void CompilerOptionsDlg::DoFillTree()
     m_BuildingTree = false;
 } // DoFillTree
 
+#if wxUSE_PROPGRID
 void CompilerOptionsDlg::DoFillOptions()
 {
     m_FlagsPG->Freeze();
@@ -687,6 +694,7 @@ void CompilerOptionsDlg::DoFillOptions()
     }
     m_FlagsPG->Thaw();
 } // DoFillOptions
+#endif // wxUSE_PROPGRID
 
 void CompilerOptionsDlg::TextToOptions()
 {
@@ -894,7 +902,9 @@ void CompilerOptionsDlg::DoLoadOptions()
     }
     TextToOptions();
 
+#if wxUSE_PROPGRID
     DoFillOptions();
+#endif // wxUSE_PROPGRID
     ArrayString2ListBox(IncludeDirs,                XRCCTRL(*this, "lstIncludeDirs",             wxListBox));
     ArrayString2ListBox(LibDirs,                    XRCCTRL(*this, "lstLibDirs",                 wxListBox));
     ArrayString2ListBox(ResDirs,                    XRCCTRL(*this, "lstResDirs",                 wxListBox));
@@ -1739,9 +1749,12 @@ CompileOptionsBase* CompilerOptionsDlg::GetVarsOwner()
 
 void CompilerOptionsDlg::OnCategoryChanged(cb_unused wxCommandEvent& event)
 {    // reshow the compiler options, but with different filter (category) applied
+#if wxUSE_PROPGRID
     DoFillOptions();
+#endif // wxUSE_PROPGRID
 } // OnCategoryChanged
 
+#if wxUSE_PROPGRID
 void CompilerOptionsDlg::OnOptionChanged(wxPropertyGridEvent& event)
 {
     wxPGProperty* property = event.GetProperty();
@@ -1827,6 +1840,7 @@ void CompilerOptionsDlg::OnOptionChanged(wxPropertyGridEvent& event)
     }
     m_bDirty = true;
 }
+#endif // wxUSE_PROPGRID
 
 // some handlers for adding/editing/removing/clearing of include/libraries/resources directories
 void CompilerOptionsDlg::OnAddDirClick(cb_unused wxCommandEvent& event)
@@ -2915,6 +2929,7 @@ void CompilerOptionsDlg::OnMyCharHook(wxKeyEvent& event)
 
 int CompilerOptionsDlg::m_MenuOption = -1;
 
+#if wxUSE_PROPGRID
 void CompilerOptionsDlg::OnFlagsPopup(wxPropertyGridEvent& event)
 {
     int scroll = m_FlagsPG->GetScrollPos(wxVERTICAL);
@@ -3112,12 +3127,14 @@ void CompilerOptionsDlg::OnFlagsPopup(wxPropertyGridEvent& event)
     m_FlagsPG->ScrollLines(scroll);
     m_bFlagsDirty = true;
 }
+#endif // wxUSE_PROPGRID
 
 void CompilerOptionsDlg::OnFlagsPopupClick(wxCommandEvent& event)
 {
     m_MenuOption = event.GetId();
 }
 
+#if wxUSE_PROPGRID
 void CompilerOptionsDlg::OnOptionDoubleClick(wxPropertyGridEvent& event)
 {
     wxPGProperty* property = event.GetProperty();
@@ -3129,3 +3146,4 @@ void CompilerOptionsDlg::OnOptionDoubleClick(wxPropertyGridEvent& event)
     }
     event.Skip();
 }
+#endif // wxUSE_PROPGRID

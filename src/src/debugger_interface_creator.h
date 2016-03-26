@@ -35,6 +35,7 @@ class DebugInterfaceFactory : public cbDebugInterfaceFactory
         virtual cbThreadsDlg* CreateThreads();
         virtual void DeleteThreads(cbThreadsDlg *dialog);
 
+#if wxUSE_PROPGRID
         virtual cbWatchesDlg* CreateWatches();
         virtual void DeleteWatches(cbWatchesDlg *dialog);
 
@@ -42,6 +43,7 @@ class DebugInterfaceFactory : public cbDebugInterfaceFactory
         virtual void HideValueTooltip();
         virtual bool IsValueTooltipShown();
         virtual void UpdateValueTooltip();
+#endif // wxUSE_PROPGRID
     private:
         void OnEditorDeactivate(CodeBlocksEvent &event);
     private:

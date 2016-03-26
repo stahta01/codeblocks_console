@@ -175,6 +175,7 @@ void DebugInterfaceFactory::DeleteThreads(cbThreadsDlg *dialog)
         RemoveDockWindow(dialog->GetWindow());
 }
 
+#if wxUSE_PROPGRID
 cbWatchesDlg* DebugInterfaceFactory::CreateWatches()
 {
     WatchesDlg *dialog = new WatchesDlg;
@@ -237,8 +238,11 @@ bool DebugInterfaceFactory::IsValueTooltipShown()
 {
     return m_tooltip && m_tooltip->IsShown();
 }
+#endif // wxUSE_PROPGRID
 
 void DebugInterfaceFactory::OnEditorDeactivate(cb_unused CodeBlocksEvent &event)
 {
+#if wxUSE_PROPGRID
     HideValueTooltip();
+#endif // wxUSE_PROPGRID
 }
