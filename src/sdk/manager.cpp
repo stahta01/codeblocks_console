@@ -12,6 +12,7 @@
 #ifndef CB_PRECOMP
     #include <wx/xrc/xmlres.h>
     #include <wx/fs_zip.h>
+    #include <wx/frame.h>
     #include <wx/menu.h>
 
     #include "manager.h" // class's header file
