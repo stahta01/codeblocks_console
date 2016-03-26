@@ -550,7 +550,9 @@ class PLUGIN_EXPORT cbDebuggerPlugin: public cbPlugin
 
 
         virtual void OnValueTooltip(const wxString& token, const wxRect &evalRect);
+#if wxUSE_PROPGRID
         virtual bool ShowValueTooltip(int style);
+#endif // wxUSE_PROPGRID
     private:
         void RegisterValueTooltip();
         void ProcessValueTooltip(CodeBlocksEvent& event);

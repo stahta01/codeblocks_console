@@ -60,7 +60,11 @@ namespace
 
     const int idMenuDebuggerAddWatch = wxNewId();
 
-    inline void HideValueTooltip() { Manager::Get()->GetDebuggerManager()->GetInterfaceFactory()->HideValueTooltip(); }
+    inline void HideValueTooltip() {
+#if wxUSE_PROPGRID
+        Manager::Get()->GetDebuggerManager()->GetInterfaceFactory()->HideValueTooltip();
+#endif // wxUSE_PROPGRID
+    }
 
     bool Support(cbDebuggerPlugin *plugin, cbDebuggerFeature::Flags flag)
     {
@@ -135,7 +139,10 @@ BEGIN_EVENT_TABLE(DebuggerMenuHandler, wxEvtHandler)
     EVT_MENU(idMenuAddDataBreakpoint, DebuggerMenuHandler::OnAddDataBreakpoint)
     EVT_MENU(idMenuSendCommand, DebuggerMenuHandler::OnSendCommand)
 
+#if wxUSE_PROPGRID
     EVT_MENU(idMenuDebuggerAddWatch, DebuggerMenuHandler::OnAddWatch)
+#endif // wxUSE_PROPGRID
+
     EVT_MENU(idMenuAttachToProcess, DebuggerMenuHandler::OnAttachToProcess)
     EVT_MENU(idMenuDetach, DebuggerMenuHandler::OnDetachFromProcess)
     EVT_MENU(idMenuDebugActiveTargetsDefault, DebuggerMenuHandler::OnActiveDebuggerTargetsDefaultClick)
@@ -223,6 +230,7 @@ void DebuggerMenuHandler::RegisterDefaultWindowItems()
             return dialog && IsWindowReallyShown(dialog->GetWindow());
         }
     };
+#if wxUSE_PROPGRID
     struct Watches : CommonItem<cbWatchesDlg>
     {
         Watches() :
@@ -234,9 +242,12 @@ void DebuggerMenuHandler::RegisterDefaultWindowItems()
             return Manager::Get()->GetDebuggerManager()->GetWatchesDialog();
         }
     };
+#endif // wxUSE_PROPGRID
 
     RegisterWindowMenu(_("Breakpoints"), _("Edit breakpoints"), new Breakpoints);
+#if wxUSE_PROPGRID
     RegisterWindowMenu(_("Watches"), _("Watch variables"), new Watches);
+#endif // wxUSE_PROPGRID
     RegisterWindowMenu(_("Call stack"), _("Displays the current call stack"),
                        MakeItem(cbDebuggerFeature::Callstack, cbDebuggerPlugin::Backtrace,
                                 &DebuggerManager::GetBacktraceDialog));
@@ -707,6 +718,7 @@ void DebuggerMenuHandler::OnSendCommand(cb_unused wxCommandEvent& event)
     m_lastCommand = cmd;
 }
 
+#if wxUSE_PROPGRID
 void DebuggerMenuHandler::OnAddWatch(cb_unused wxCommandEvent& event)
 {
     if (!m_activeDebugger)
@@ -729,6 +741,7 @@ void DebuggerMenuHandler::OnAddWatch(cb_unused wxCommandEvent& event)
         }
     }
 }
+#endif // wxUSE_PROPGRID
 
 void DebuggerMenuHandler::OnActiveDebuggerClick(wxCommandEvent& event)
 {

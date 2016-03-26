@@ -702,7 +702,9 @@ DebuggerManager::DebuggerManager() :
     m_disassemblyDialog(nullptr),
     m_examineMemoryDialog(nullptr),
     m_threadsDialog(nullptr),
+#if wxUSE_PROPGRID
     m_watchesDialog(nullptr),
+#endif // wxUSE_PROPGRID
     m_logger(nullptr),
     m_loggerIndex(-1),
     m_isDisassemblyMixedMode(false),
@@ -1007,8 +1009,10 @@ void DebuggerManager::CreateWindows()
         m_examineMemoryDialog = m_interfaceFactory->CreateMemory();
     if (!m_threadsDialog)
         m_threadsDialog = m_interfaceFactory->CreateThreads();
+#if wxUSE_PROPGRID
     if (!m_watchesDialog)
         m_watchesDialog = m_interfaceFactory->CreateWatches();
+#endif // wxUSE_PROPGRID
 }
 
 void DebuggerManager::DestoryWindows()
@@ -1031,8 +1035,10 @@ void DebuggerManager::DestoryWindows()
     m_interfaceFactory->DeleteThreads(m_threadsDialog);
     m_threadsDialog = nullptr;
 
+#if wxUSE_PROPGRID
     m_interfaceFactory->DeleteWatches(m_watchesDialog);
     m_watchesDialog = nullptr;
+#endif // wxUSE_PROPGRID
 }
 
 cbDebugInterfaceFactory* DebuggerManager::GetInterfaceFactory()
@@ -1080,10 +1086,12 @@ cbThreadsDlg* DebuggerManager::GetThreadsDialog()
     return m_threadsDialog;
 }
 
+#if wxUSE_PROPGRID
 cbWatchesDlg* DebuggerManager::GetWatchesDialog()
 {
     return m_watchesDialog;
 }
+#endif // wxUSE_PROPGRID
 
 bool DebuggerManager::ShowBacktraceDialog()
 {
@@ -1137,10 +1145,12 @@ cbDebuggerPlugin* DebuggerManager::GetDebuggerHavingWatch(cb::shared_ptr<cbWatch
     return NULL;
 }
 
+#if wxUSE_PROPGRID
 bool DebuggerManager::ShowValueTooltip(const cb::shared_ptr<cbWatch> &watch, const wxRect &rect)
 {
     return m_interfaceFactory->ShowValueTooltip(watch, rect);
 }
+#endif // wxUSE_PROPGRID
 
 DebuggerManager::RegisteredPlugins const & DebuggerManager::GetAllDebuggers() const
 {
@@ -1200,8 +1210,10 @@ void DebuggerManager::RefreshUI()
         if (m_threadsDialog)
             m_threadsDialog->EnableWindow(m_activeDebugger->SupportsFeature(cbDebuggerFeature::Threads));
     }
+#if wxUSE_PROPGRID
     if (m_watchesDialog)
         m_watchesDialog->RefreshUI();
+#endif // wxUSE_PROPGRID
     if (m_breakPointsDialog)
         m_breakPointsDialog->Reload();
 }
