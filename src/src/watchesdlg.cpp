@@ -8,6 +8,7 @@
  */
 
 #include "sdk.h"
+#if wxUSE_PROPGRID
 #ifndef CB_PRECOMP
     #include <wx/app.h>
     #include <wx/dnd.h>
@@ -1223,3 +1224,5 @@ void ValueTooltip::OnTimer(cb_unused wxTimerEvent &event)
     else
         m_outsideCount = 0;
 }
+#endif // wxUSE_PROPGRID
+

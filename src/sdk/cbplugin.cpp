@@ -920,21 +920,26 @@ void cbDebuggerPlugin::BringCBToFront()
 void cbDebuggerPlugin::RegisterValueTooltip()
 {
     typedef cbEventFunctor<cbDebuggerPlugin, CodeBlocksEvent> Event;
+#if wxUSE_PROPGRID
     Manager::Get()->RegisterEventSink(cbEVT_EDITOR_TOOLTIP, new Event(this, &cbDebuggerPlugin::ProcessValueTooltip));
     Manager::Get()->RegisterEventSink(cbEVT_EDITOR_TOOLTIP_CANCEL,
                                       new Event(this, &cbDebuggerPlugin::CancelValueTooltip));
+#endif // wxUSE_PROPGRID
 }
 
+#if wxUSE_PROPGRID
 bool cbDebuggerPlugin::ShowValueTooltip(cb_unused int style)
 {
     return false;
 }
+#endif // wxUSE_PROPGRID
 
 // Default implementation does nothing
 void cbDebuggerPlugin::OnValueTooltip(cb_unused const wxString& token, cb_unused const wxRect& evalRect)
 {
 }
 
+#if wxUSE_PROPGRID
 void cbDebuggerPlugin::ProcessValueTooltip(CodeBlocksEvent& event)
 {
     event.Skip();
@@ -979,6 +984,7 @@ void cbDebuggerPlugin::CancelValueTooltip(cb_unused CodeBlocksEvent& event)
 {
     Manager::Get()->GetDebuggerManager()->GetInterfaceFactory()->HideValueTooltip();
 }
+#endif // wxUSE_PROPGRID
 /////
 ///// cbToolPlugin
 /////

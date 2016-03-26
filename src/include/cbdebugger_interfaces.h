@@ -167,6 +167,7 @@ class DLLIMPORT cbDebugInterfaceFactory
         virtual cbThreadsDlg* CreateThreads() = 0;
         virtual void DeleteThreads(cbThreadsDlg *dialog) = 0;
 
+#if wxUSE_PROPGRID
         virtual cbWatchesDlg* CreateWatches() = 0;
         virtual void DeleteWatches(cbWatchesDlg *dialog) = 0;
 
@@ -177,6 +178,7 @@ class DLLIMPORT cbDebugInterfaceFactory
         virtual void HideValueTooltip() = 0;
         virtual bool IsValueTooltipShown() = 0;
         virtual void UpdateValueTooltip() = 0;
+#endif // wxUSE_PROPGRID
 };
 
 #endif // _CB_DEBUGGER_INTERFACES_H_

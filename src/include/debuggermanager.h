@@ -369,7 +369,9 @@ class DLLIMPORT DebuggerManager : public Mgr<DebuggerManager>
         cbDisassemblyDlg* m_disassemblyDialog;
         cbExamineMemoryDlg* m_examineMemoryDialog;
         cbThreadsDlg* m_threadsDialog;
+#if wxUSE_PROPGRID
         cbWatchesDlg* m_watchesDialog;
+#endif // wxUSE_PROPGRID
 
         TextCtrlLogger* m_logger;
         int m_loggerIndex;
