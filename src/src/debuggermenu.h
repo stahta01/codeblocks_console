@@ -10,7 +10,9 @@
 #include <cbdebugger_interfaces.h>
 
 class cbDebuggerPlugin;
+#if wxUSE_TOOLBAR
 class wxToolBar;
+#endif // wxUSE_TOOLBAR
 
 class DebuggerMenuHandler : public wxEvtHandler, public cbDebuggerMenuHandler
 {
@@ -74,6 +76,7 @@ class DebuggerMenuHandler : public wxEvtHandler, public cbDebuggerMenuHandler
         bool m_disableContinue;
 };
 
+#if wxUSE_TOOLBAR
 class DebuggerToolbarHandler : public wxEvtHandler
 {
         friend class DebuggerManager;
@@ -91,6 +94,7 @@ class DebuggerToolbarHandler : public wxEvtHandler
 
         DECLARE_EVENT_TABLE();
 };
+#endif // wxUSE_TOOLBAR
 
 #endif // X_DEBUGGER_MENU_H
 

@@ -6,12 +6,14 @@
 #ifndef XTRA_RES_H
 #define XTRA_RES_H
 
+
 #include <wx/xrc/xmlres.h>
 #include <wx/xrc/xh_dlg.h>
 #include <wx/toolbar.h>
 
 #include "settings.h" // DLLIMPORT
 
+#if wxUSE_TOOLBAR
 class wxXmlResourceHandler;
 
 class DLLIMPORT wxToolBarAddOnXmlHandler : public wxXmlResourceHandler
@@ -30,6 +32,7 @@ class DLLIMPORT wxToolBarAddOnXmlHandler : public wxXmlResourceHandler
             const wxArtClient& defaultArtClient = wxART_OTHER,
             wxSize size = wxDefaultSize);
 };
+#endif // wxUSE_TOOLBAR
 
 class DLLIMPORT wxScrollingDialogXmlHandler : public wxDialogXmlHandler
 {

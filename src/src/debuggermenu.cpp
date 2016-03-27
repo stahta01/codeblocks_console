@@ -768,6 +768,7 @@ void  DebuggerMenuHandler::OnActiveDebuggerTargetsDefaultClick(cb_unused wxComma
 }
 
 
+#if wxUSE_TOOLBAR
 BEGIN_EVENT_TABLE(DebuggerToolbarHandler, wxEvtHandler)
     // these are different because they are loaded from the XRC
     EVT_UPDATE_UI(idMenuDebug, DebuggerToolbarHandler::OnUpdateUI)
@@ -896,3 +897,4 @@ void DebuggerToolbarHandler::OnStop(cb_unused wxCommandEvent& event)
         m_Toolbar->GetEventHandler()->ProcessEvent(event2);
     }
 }
+#endif // wxUSE_TOOLBAR
