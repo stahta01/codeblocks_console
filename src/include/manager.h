@@ -34,7 +34,9 @@ class MacrosManager;
 class PersonalityManager;
 class wxMenu;
 class wxMenuBar;
+#if wxUSE_TOOLBAR
 class wxToolBar;
+#endif // wxUSE_TOOLBAR
 class UserVariableManager;
 class ScriptingManager;
 class ConfigManager;
@@ -137,15 +139,19 @@ public:
     static wxMenuBar* LoadMenuBar(wxString resid, bool createonfailure = false);
     /// Loads Menu from XRC
     static wxMenu*    LoadMenu(wxString menu_id, bool createonfailure = false);
+#if wxUSE_TOOLBAR
     /// Loads ToolBar from XRC
     static wxToolBar* LoadToolBar(wxFrame *parent, wxString resid, bool defaultsmall = true);
+#endif // wxUSE_TOOLBAR
 
     // Do not use this, use Get()
     static Manager* Get(wxFrame* appWindow);
 
+#if wxUSE_TOOLBAR
     wxToolBar* CreateEmptyToolbar();
     static void AddonToolBar(wxToolBar* toolBar,wxString resid);
     static bool isToolBar16x16(wxToolBar* toolBar);
+#endif // wxUSE_TOOLBAR
 
     static wxCmdLineParser* GetCmdLineParser();
 

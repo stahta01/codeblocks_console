@@ -250,10 +250,12 @@ void cbDebuggerPlugin::BuildModuleMenu(const ModuleType type, wxMenu* menu, cb_u
     Manager::Get()->GetDebuggerManager()->BuildContextMenu(*menu, word, IsRunning());
 }
 
+#if wxUSE_TOOLBAR
 bool cbDebuggerPlugin::BuildToolBar(cb_unused wxToolBar* toolBar)
 {
     return false;
 }
+#endif // wxUSE_TOOLBAR
 
 bool cbDebuggerPlugin::ToolMenuEnabled() const
 {

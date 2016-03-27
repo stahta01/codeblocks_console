@@ -568,7 +568,9 @@ MainFrame::MainFrame(wxWindow* parent)
        m_pPrjManUI(nullptr),
        m_pLogMan(nullptr),
        m_pInfoPane(nullptr),
+#if wxUSE_TOOLBAR
        m_pToolbar(nullptr),
+#endif // wxUSE_TOOLBAR
        m_ToolsMenu(nullptr),
        m_HelpPluginsMenu(nullptr),
        m_ScanningForPlugins(false),
@@ -629,7 +631,9 @@ MainFrame::MainFrame(wxWindow* parent)
 
     LoadWindowSize();
     ScanForPlugins();
+#if wxUSE_TOOLBAR
     CreateToolbars();
+#endif // wxUSE_TOOLBAR
 
     Manager::Get()->GetCCManager();
 
@@ -674,7 +678,9 @@ MainFrame::~MainFrame()
 #endif // wxUSE_PRINTING_ARCHITECTURE
 
     delete m_debuggerMenuHandler;
+#if wxUSE_TOOLBAR
     delete m_debuggerToolbarHandler;
+#endif // wxUSE_TOOLBAR
 }
 
 void MainFrame::RegisterEvents()
@@ -834,17 +840,25 @@ void MainFrame::SetupGUILogging()
 void MainFrame::SetupDebuggerUI()
 {
     m_debuggerMenuHandler = new DebuggerMenuHandler;
+#if wxUSE_TOOLBAR
     m_debuggerToolbarHandler = new DebuggerToolbarHandler(m_debuggerMenuHandler);
+#endif // wxUSE_TOOLBAR
     m_debuggerMenuHandler->SetEvtHandlerEnabled(false);
+#if wxUSE_TOOLBAR
     m_debuggerToolbarHandler->SetEvtHandlerEnabled(false);
+#endif // wxUSE_TOOLBAR
     wxWindow* window = Manager::Get()->GetAppWindow();
     if (window)
     {
         window->PushEventHandler(m_debuggerMenuHandler);
+#if wxUSE_TOOLBAR
         window->PushEventHandler(m_debuggerToolbarHandler);
+#endif // wxUSE_TOOLBAR
     }
     m_debuggerMenuHandler->SetEvtHandlerEnabled(true);
+#if wxUSE_TOOLBAR
     m_debuggerToolbarHandler->SetEvtHandlerEnabled(true);
+#endif // wxUSE_TOOLBAR
 
     if (!Manager::IsBatchBuild())
     {
@@ -910,6 +924,7 @@ void MainFrame::PluginsUpdated(cb_unused cbPlugin* plugin, cb_unused int status)
     // menu
     RecreateMenuBar();
 
+#if wxUSE_TOOLBAR
     // update view->toolbars because we re-created the menubar
     PluginElementsArray plugins = Manager::Get()->GetPluginManager()->GetPlugins();
     for (unsigned int i = 0; i < plugins.GetCount(); ++i)
@@ -938,6 +953,7 @@ void MainFrame::PluginsUpdated(cb_unused cbPlugin* plugin, cb_unused int status)
             }
         }
     }
+#endif // wxUSE_TOOLBAR
 
     Thaw();
 }
@@ -1098,6 +1114,7 @@ void MainFrame::CreateMenubar()
     Manager::Get()->ProcessEvent(event2);
 }
 
+#if wxUSE_TOOLBAR
 void MainFrame::CreateToolbars()
 {
     if (m_pToolbar)
@@ -1184,6 +1201,7 @@ void MainFrame::AddToolbarItem(int id, const wxString& title, const wxString& sh
     m_pToolbar->SetToolShortHelp(id, shortHelp);
     m_pToolbar->SetToolLongHelp(id, longHelp);
 }
+#endif // wxUSE_TOOLBAR
 
 void MainFrame::ScanForPlugins()
 {
@@ -1615,6 +1633,7 @@ void MainFrame::DoAddPluginStatusField(cbPlugin* plugin)
     sbar->AdjustFieldsSize();
 }
 
+#if wxUSE_TOOLBAR
 inline void InitToolbar(wxToolBar *tb)
 {
     tb->SetInitialSize();
@@ -1658,6 +1677,7 @@ ToolbarInfo MainFrame::DoAddPluginToolbar(cbPlugin* plugin)
     }
     return info;
 }
+#endif // wxUSE_TOOLBAR
 
 void MainFrame::DoAddPlugin(cbPlugin* plugin)
 {
@@ -1680,6 +1700,7 @@ void MainFrame::DoAddPlugin(cbPlugin* plugin)
         {
             e.ShowErrorMessage();
         }
+#if wxUSE_TOOLBAR
         // Don't load the toolbars during the initial loading of the plugins, this code should be executed
         // only when a single plugins is loaded from the Plugins -> Manager ... window.
         if (!m_ScanningForPlugins)
@@ -1711,6 +1732,7 @@ void MainFrame::DoAddPlugin(cbPlugin* plugin)
                         position = std::max(position, info.dock_pos);
                     }
                 }
+
                 if (maxX + toolbarInfo.toolbar->GetSize().x <= GetSize().x)
                     position++;
                 else
@@ -1727,6 +1749,7 @@ void MainFrame::DoAddPlugin(cbPlugin* plugin)
                 DoUpdateLayout();
             }
         }
+#endif // wxUSE_TOOLBAR
         DoAddPluginStatusField(plugin);
     }
 }
@@ -2807,6 +2830,7 @@ void MainFrame::OnApplicationClose(wxCloseEvent& event)
         m_pInfoPane = nullptr;
     }
 
+#if wxUSE_TOOLBAR
     // Disconnect the mouse right click event handler for toolbars, this should be done before the plugin is
     // unloaded in Manager::Shutdown().
     PluginToolbarsMap::iterator it;
@@ -2819,6 +2843,7 @@ void MainFrame::OnApplicationClose(wxCloseEvent& event)
             cbAssert(result);
         }
     }
+#endif // wxUSE_TOOLBAR
 
     Manager::Shutdown(); // Shutdown() is not Free(), Manager is automatically destroyed at exit
 
@@ -4071,6 +4096,7 @@ void MainFrame::OnFileMenuUpdateUI(wxUpdateUIEvent& event)
     mbar->Enable(idFileSaveAll,                       canSaveAll);
     mbar->Enable(idFilePrint,                         Manager::Get()->GetEditorManager() && Manager::Get()->GetEditorManager()->GetBuiltinActiveEditor());
 
+#if wxUSE_TOOLBAR
     if (m_pToolbar)
     {
         m_pToolbar->EnableTool(idFileSave,         ed && ed->GetModified());
@@ -4078,6 +4104,7 @@ void MainFrame::OnFileMenuUpdateUI(wxUpdateUIEvent& event)
         m_pToolbar->EnableTool(idFileSaveAll,      canSaveAll);
         m_pToolbar->EnableTool(idFilePrint,        Manager::Get()->GetEditorManager() && Manager::Get()->GetEditorManager()->GetBuiltinActiveEditor());
     }
+#endif // wxUSE_TOOLBAR
 
     event.Skip();
 }
@@ -4194,6 +4221,7 @@ void MainFrame::OnEditMenuUpdateUI(wxUpdateUIEvent& event)
         }
     }
 
+#if wxUSE_TOOLBAR
     if (m_pToolbar)
     {
         m_pToolbar->EnableTool(idEditUndo,  canUndo);
@@ -4202,6 +4230,7 @@ void MainFrame::OnEditMenuUpdateUI(wxUpdateUIEvent& event)
         m_pToolbar->EnableTool(idEditCopy,  hasSel);
         m_pToolbar->EnableTool(idEditPaste, canPaste);
     }
+#endif // wxUSE_TOOLBAR
 
     event.Skip();
 }
@@ -4229,6 +4258,7 @@ void MainFrame::OnViewMenuUpdateUI(wxUpdateUIEvent& event)
     mbar->Enable(idViewFocusManagement,    manVis);
     mbar->Enable(idViewFocusLogsAndOthers, m_pInfoPane->IsShown());
 
+#if wxUSE_TOOLBAR
     // toolbars
     wxMenu* viewToolbars = nullptr;
     GetMenuBar()->FindItem(idViewToolMain, &viewToolbars);
@@ -4236,6 +4266,7 @@ void MainFrame::OnViewMenuUpdateUI(wxUpdateUIEvent& event)
     {
         SetChecksForViewToolbarsMenu(*viewToolbars);
     }
+#endif // wxUSE_TOOLBAR
 
     event.Skip();
 }
@@ -4453,6 +4484,7 @@ void MainFrame::OnToggleBar(wxCommandEvent& event)
         win = m_pPrjManUI->GetNotebook();
     else if (event.GetId() == idViewLogManager)
         win = m_pInfoPane;
+#if wxUSE_TOOLBAR
     else if (event.GetId() == idViewToolMain)
     {
         win = m_pToolbar;
@@ -4463,8 +4495,10 @@ void MainFrame::OnToggleBar(wxCommandEvent& event)
         win = m_debuggerToolbarHandler->GetToolbar();
         toolbar = true;
     }
+#endif // wxUSE_TOOLBAR
     else
     {
+#if wxUSE_TOOLBAR
         wxString pluginName = m_PluginIDsMap[event.GetId()];
         if (!pluginName.IsEmpty())
         {
@@ -4475,6 +4509,7 @@ void MainFrame::OnToggleBar(wxCommandEvent& event)
                 toolbar = true;
             }
         }
+#endif // wxUSE_TOOLBAR
     }
 
     if (win)
@@ -4667,6 +4702,7 @@ void MainFrame::OnPluginUnloaded(CodeBlocksEvent& event)
     if ( sb )
         sb->RemoveField(plugin);
 
+#if wxUSE_TOOLBAR
     // remove toolbar, if any
     if (m_PluginsTools[plugin])
     {
@@ -4678,6 +4714,7 @@ void MainFrame::OnPluginUnloaded(CodeBlocksEvent& event)
         m_PluginsTools.erase(plugin);
         DoUpdateLayout();
     }
+#endif // wxUSE_TOOLBAR
 
     PluginsUpdated(plugin, Unloaded);
 }
@@ -5118,10 +5155,13 @@ wxStatusBar* MainFrame::OnCreateStatusBar(int number, long style, wxWindowID id,
 // Let the user toggle the toolbar from the context menu
 void MainFrame::OnMouseRightUp(wxMouseEvent& event)
 {
+#if wxUSE_TOOLBAR
     PopupToggleToolbarMenu();
+#endif // wxUSE_TOOLBAR
     event.Skip();
 }
 
+#if wxUSE_TOOLBAR
 void MainFrame::OnToolBarRightClick(wxCommandEvent& event)
 {
     PopupToggleToolbarMenu();
@@ -5172,3 +5212,4 @@ void MainFrame::SetChecksForViewToolbarsMenu(wxMenu &menu)
     menu.Check(idViewToolMain,     m_LayoutManager.GetPane(m_pToolbar).IsShown());
     menu.Check(idViewToolDebugger, m_LayoutManager.GetPane(m_debuggerToolbarHandler->GetToolbar(false)).IsShown());
 }
+#endif // wxUSE_TOOLBAR

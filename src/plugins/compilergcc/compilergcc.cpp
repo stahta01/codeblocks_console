@@ -301,7 +301,9 @@ CompilerGCC::CompilerGCC() :
     m_TargetIndex(-1),
     m_pErrorsMenu(0L),
     m_pProject(0L),
+#if wxUSE_TOOLBAR
     m_pTbar(0L),
+#endif // wxUSE_TOOLBAR
     m_pLog(0L),
     m_pListLog(0L),
     m_pToolTarget(0L),
@@ -341,7 +343,9 @@ void CompilerGCC::OnAttach()
     m_TargetIndex = -1;
     m_pErrorsMenu = 0L;
     m_pProject = 0L;
+#if wxUSE_TOOLBAR
     m_pTbar = 0L;
+#endif // wxUSE_TOOLBAR
     m_pLog = 0L;
     m_pListLog = 0L;
     m_pToolTarget = 0L;
@@ -615,6 +619,7 @@ void CompilerGCC::BuildModuleMenu(const ModuleType type, wxMenu* menu, const Fil
     }
 }
 
+#if wxUSE_TOOLBAR
 bool CompilerGCC::BuildToolBar(wxToolBar* toolBar)
 {
     if (!IsAttached() || !toolBar)
@@ -629,6 +634,7 @@ bool CompilerGCC::BuildToolBar(wxToolBar* toolBar)
     DoRecreateTargetMenu(); // make sure the tool target combo is up-to-date
     return true;
 }
+#endif // wxUSE_TOOLBAR
 
 void CompilerGCC::Dispatcher(wxCommandEvent& event)
 {
@@ -3343,6 +3349,7 @@ void CompilerGCC::OnUpdateUI(wxUpdateUIEvent& event)
         mbar->Enable(idMenuProjectProperties,      !running && prj && !otherRunning);
     }
 
+#if wxUSE_TOOLBAR
     // enable/disable compiler toolbar buttons
     wxToolBar* tbar = m_pTbar;//Manager::Get()->GetAppWindow()->GetToolBar();
     if (tbar)
@@ -3357,6 +3364,7 @@ void CompilerGCC::OnUpdateUI(wxUpdateUIEvent& event)
         if (m_pToolTarget)
             m_pToolTarget->Enable(!running && prj && !otherRunning);
     }
+#endif // wxUSE_TOOLBAR
 
     // allow other UpdateUI handlers to process this event
     // *very* important! don't forget it...

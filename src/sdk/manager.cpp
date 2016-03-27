@@ -351,7 +351,9 @@ void Manager::InitXRC(bool force)
     if (!xrcok || force)
     {
         wxFileSystem::AddHandler(new wxZipFSHandler);
+#if wxUSE_TOOLBAR
         wxXmlResource::Get()->InsertHandler(new wxToolBarAddOnXmlHandler);
+#endif // wxUSE_TOOLBAR
         wxXmlResource::Get()->InitAllHandlers();
 
         xrcok = true;
@@ -377,6 +379,7 @@ wxMenu *Manager::LoadMenu(wxString menu_id,bool createonfailure)
     return m;
 }
 
+#if wxUSE_TOOLBAR
 wxToolBar *Manager::LoadToolBar(wxFrame *parent,wxString resid,bool defaultsmall)
 {
     if (!parent)
@@ -420,6 +423,7 @@ bool Manager::isToolBar16x16(wxToolBar* toolBar)
     wxSize mysize=toolBar->GetToolBitmapSize();
     return (mysize.GetWidth()<=16 && mysize.GetHeight()<=16);
 }
+#endif // wxUSE_TOOLBAR
 
 wxFrame* Manager::GetAppFrame() const
 {

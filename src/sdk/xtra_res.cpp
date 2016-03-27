@@ -17,6 +17,7 @@
 
 #include <wx/xml/xml.h>
 
+#if wxUSE_TOOLBAR
 /////////////////////////////////////////////////////////////////////////////
 // Name:        xh_toolb.cpp
 // Purpose:     XRC resource for wxBoxSizer
@@ -268,6 +269,7 @@ bool wxToolBarAddOnXmlHandler::CanHandle(wxXmlNode *node)
             (m_isInside && issep));
 }
 
+#endif // wxUSE_TOOLBAR
 
 
 IMPLEMENT_DYNAMIC_CLASS(wxScrollingDialogXmlHandler, wxDialogXmlHandler)
