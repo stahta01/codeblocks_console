@@ -32,7 +32,9 @@ extern int idStartHerePageVarSubst;
 
 class cbAuiNotebook;
 class DebuggerMenuHandler;
+#if wxUSE_TOOLBAR
 class DebuggerToolbarHandler;
+#endif // wxUSE_TOOLBAR
 class InfoPane;
 class wxGauge;
 class ProjectManagerUI;
@@ -108,9 +110,11 @@ class MainFrame : public wxFrame
         void OnMouseRightUp(wxMouseEvent& event);
         void OnToolBarRightClick(wxCommandEvent& event);
 
+#if wxUSE_TOOLBAR
         // common function to show context menu for toggle toolbars
         void PopupToggleToolbarMenu();
         void SetChecksForViewToolbarsMenu(wxMenu &menu);
+#endif // wxUSE_TOOLBAR
 
         // File->New submenu entries handler
         void OnFileNewWhat(wxCommandEvent& event);
@@ -303,7 +307,9 @@ class MainFrame : public wxFrame
     protected:
         void CreateIDE();
         void CreateMenubar();
+#if wxUSE_TOOLBAR
         void CreateToolbars();
+#endif // wxUSE_TOOLBAR
         void ScanForPlugins();
         void AddToolbarItem(int id, const wxString& title, const wxString& shortHelp, const wxString& longHelp, const wxString& image);
         void RecreateMenuBar();
@@ -372,8 +378,10 @@ class MainFrame : public wxFrame
         LogManager*       m_pLogMan;
         InfoPane*         m_pInfoPane;
 
+#if wxUSE_TOOLBAR
         wxToolBar* m_pToolbar; // main toolbar
         PluginToolbarsMap m_PluginsTools; // plugin -> toolbar map
+#endif // wxUSE_TOOLBAR
 
         PluginIDsMap m_PluginIDsMap;
         wxMenu* m_ToolsMenu;
@@ -403,7 +411,9 @@ class MainFrame : public wxFrame
         wxButton*          m_pHighlightButton;
 
         DebuggerMenuHandler*    m_debuggerMenuHandler;
+#if wxUSE_TOOLBAR
         DebuggerToolbarHandler* m_debuggerToolbarHandler;
+#endif // wxUSE_TOOLBAR
 
         FindReplace m_findReplace;
 

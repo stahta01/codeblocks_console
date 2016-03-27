@@ -43,7 +43,9 @@
 // class decls
 class wxMenuBar;
 class wxMenu;
+#if wxUSE_TOOLBAR
 class wxToolBar;
+#endif // wxUSE_TOOLBAR
 class wxPanel;
 class wxWindow;
 
@@ -154,6 +156,7 @@ class PLUGIN_EXPORT cbPlugin : public wxEvtHandler
           */
         virtual void BuildModuleMenu(cb_optional const ModuleType type, cb_optional wxMenu* menu, cb_optional const FileTreeData* data = nullptr) { }
 
+#if wxUSE_TOOLBAR
         /** This method is called by Code::Blocks and is used by the plugin
           * to add any toolbar items it needs on Code::Blocks's toolbar.\n
           * It is a pure virtual method that needs to be implemented by all
@@ -163,6 +166,7 @@ class PLUGIN_EXPORT cbPlugin : public wxEvtHandler
           * @return The plugin should return true if it needed the toolbar, false if not
           */
         virtual bool BuildToolBar(cb_optional wxToolBar* toolBar ) { return false; }
+#endif // wxUSE_TOOLBAR
 
         /** This method return the priority of the plugin's toolbar, the less value
           * indicates a more preceding position when C::B starts with no configuration file
@@ -405,7 +409,9 @@ class PLUGIN_EXPORT cbDebuggerPlugin: public cbPlugin
 
         virtual void BuildMenu(wxMenuBar* menuBar);
         virtual void BuildModuleMenu(const ModuleType type, wxMenu* menu, const FileTreeData* data = nullptr);
+#if wxUSE_TOOLBAR
         virtual bool BuildToolBar(wxToolBar* toolBar);
+#endif // wxUSE_TOOLBAR
 
         /** @brief Notify the debugger that lines were added or removed in an editor.
           * This causes the debugger to keep the breakpoints list in-sync with the
@@ -673,8 +679,10 @@ class PLUGIN_EXPORT cbToolPlugin : public cbPlugin
         void BuildMenu(cb_unused wxMenuBar* menuBar){}
         void RemoveMenu(cb_unused wxMenuBar* menuBar){}
         void BuildModuleMenu(cb_unused const ModuleType type, cb_unused wxMenu* menu, cb_unused const FileTreeData* data = nullptr){}
+#if wxUSE_TOOLBAR
         bool BuildToolBar(cb_unused wxToolBar* toolBar){ return false; }
         void RemoveToolBar(cb_unused wxToolBar* toolBar){}
+#endif // wxUSE_TOOLBAR
 };
 
 /** @brief Base class for mime plugins
@@ -718,8 +726,10 @@ class PLUGIN_EXPORT cbMimePlugin : public cbPlugin
         void BuildMenu(cb_unused wxMenuBar* menuBar){}
         void RemoveMenu(cb_unused wxMenuBar* menuBar){}
         void BuildModuleMenu(cb_unused const ModuleType type, cb_unused wxMenu* menu, cb_unused const FileTreeData* data = nullptr){}
+#if wxUSE_TOOLBAR
         bool BuildToolBar(cb_unused wxToolBar* toolBar){ return false; }
         void RemoveToolBar(cb_unused wxToolBar* toolBar){}
+#endif // wxUSE_TOOLBAR
 };
 
 class wxHtmlLinkEvent;
@@ -1012,8 +1022,10 @@ class PLUGIN_EXPORT cbWizardPlugin : public cbPlugin
         void BuildMenu(cb_unused wxMenuBar* menuBar){}
         void RemoveMenu(cb_unused wxMenuBar* menuBar){}
         void BuildModuleMenu(cb_unused const ModuleType type, cb_unused wxMenu* menu, cb_unused const FileTreeData* data = nullptr){}
+#if wxUSE_TOOLBAR
         bool BuildToolBar(cb_unused wxToolBar* toolBar){ return false; }
         void RemoveToolBar(cb_unused wxToolBar* toolBar){}
+#endif // wxUSE_TOOLBAR
 };
 
 /** @brief Base class for SmartIndent plugins
@@ -1032,8 +1044,10 @@ class cbSmartIndentPlugin : public cbPlugin
         void BuildMenu(cb_unused wxMenuBar* menuBar){}
         void RemoveMenu(cb_unused wxMenuBar* menuBar){}
         void BuildModuleMenu(cb_unused const ModuleType type, cb_unused wxMenu* menu, cb_unused const FileTreeData* data = nullptr){}
+#if wxUSE_TOOLBAR
         bool BuildToolBar(cb_unused wxToolBar* toolBar){ return false; }
         void RemoveToolBar(cb_unused wxToolBar* toolBar){}
+#endif // wxUSE_TOOLBAR
     protected:
         void OnAttach();
         void OnRelease(bool appShutDown);
