@@ -1927,6 +1927,7 @@ void CompilerOptionsDlg::OnClearDirClick(cb_unused wxCommandEvent& event)
 
 void CompilerOptionsDlg::OnCopyDirsClick(cb_unused wxCommandEvent& event)
 {
+#if wxUSE_CHOICEDLG
     if (!m_pProject)
         return;
 
@@ -1983,6 +1984,7 @@ void CompilerOptionsDlg::OnCopyDirsClick(cb_unused wxCommandEvent& event)
             }
         }
     }
+#endif // wxUSE_CHOICEDLG
 } // OnCopyDirsClick
 
 static void QuoteString(wxString &value, const wxString &caption)
@@ -2344,6 +2346,7 @@ void CompilerOptionsDlg::OnClearLibClick(cb_unused wxCommandEvent& event)
 
 void CompilerOptionsDlg::OnCopyLibsClick(cb_unused wxCommandEvent& event)
 {
+#if wxUSE_CHOICEDLG
     if (!m_pProject)
         return;
     wxListBox* lstLibs = XRCCTRL(*this, "lstLibs", wxListBox);
@@ -2383,6 +2386,7 @@ void CompilerOptionsDlg::OnCopyLibsClick(cb_unused wxCommandEvent& event)
                 base->AddLinkLib(lstLibs->GetString(i));
         }
     }
+#endif // wxUSE_CHOICEDLG
 } // OnCopyLibsClick
 
 void CompilerOptionsDlg::OnAddExtraPathClick(cb_unused wxCommandEvent& event)

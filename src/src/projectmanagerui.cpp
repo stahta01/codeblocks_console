@@ -2497,6 +2497,7 @@ bool ProjectManagerUI::QueryCloseWorkspace()
 
 int ProjectManagerUI::AskForBuildTargetIndex(cbProject* project)
 {
+#if wxUSE_CHOICEDLG
     cbProject* prj = project;
     if (!prj)
         prj = Manager::Get()->GetProjectManager()->GetActiveProject();
@@ -2511,6 +2512,9 @@ int ProjectManagerUI::AskForBuildTargetIndex(cbProject* project)
     int target = cbGetSingleChoiceIndex(_("Select the target:"), _("Project targets"), array, m_pTree, wxSize(300, 400));
 
     return target;
+#else
+    return -1;
+#endif // wxUSE_CHOICEDLG
 }
 
 wxArrayInt ProjectManagerUI::AskForMultiBuildTargetIndex(cbProject* project)
