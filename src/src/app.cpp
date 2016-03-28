@@ -1207,6 +1207,7 @@ void CodeBlocksApp::SetupPersonality(const wxString& personality)
 {
     if (personality.CmpNoCase(_T("ask")) == 0)
     {
+#if wxUSE_CHOICEDLG
         const wxArrayString items(Manager::Get()->GetPersonalityManager()->GetPersonalitiesList());
 
         wxSingleChoiceDialog dlg(nullptr, _("Please choose which personality (profile) to load:"),
@@ -1215,6 +1216,7 @@ void CodeBlocksApp::SetupPersonality(const wxString& personality)
 
         if (dlg.ShowModal() == wxID_OK)
             Manager::Get()->GetPersonalityManager()->SetPersonality(dlg.GetStringSelection());
+#endif // wxUSE_CHOICEDLG
     }
     else
         Manager::Get()->GetPersonalityManager()->SetPersonality(personality, true);

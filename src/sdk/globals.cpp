@@ -1402,6 +1402,7 @@ int cbMessageBox(const wxString& message, const wxString& caption, int style, wx
     return dlg.ShowModal();
 }
 
+#if wxUSE_CHOICEDLG
 DLLIMPORT int cbGetSingleChoiceIndex(const wxString& message, const wxString& caption,
                                      const wxArrayString& choices, wxWindow *parent,
                                      const wxSize &size, int initialSelection)
@@ -1415,6 +1416,7 @@ DLLIMPORT int cbGetSingleChoiceIndex(const wxString& message, const wxString& ca
     PlaceWindow(&dialog);
     return (dialog.ShowModal() == wxID_OK ? dialog.GetSelection() : -1);
 }
+#endif // wxUSE_CHOICEDLG
 
 DLLIMPORT wxArrayInt cbGetMultiChoiceDialog(const wxString& message, const wxString& caption,
                                      const wxArrayString& choices, wxWindow *parent,
