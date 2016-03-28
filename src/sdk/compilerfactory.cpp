@@ -297,6 +297,7 @@ void CompilerFactory::LoadSettings()
 
 Compiler* CompilerFactory::SelectCompilerUI(const wxString& message, const wxString& preselectedID)
 {
+#if wxUSE_CHOICEDLG
     int selected = -1;
     const wxString lid = preselectedID.Lower();
 
@@ -329,6 +330,7 @@ Compiler* CompilerFactory::SelectCompilerUI(const wxString& message, const wxStr
     PlaceWindow(&dlg);
     if (dlg.ShowModal() == wxID_OK)
         return Compilers[dlg.GetSelection()];
+#endif // wxUSE_CHOICEDLG
     return nullptr;
 }
 

@@ -216,6 +216,7 @@ bool DebuggerSettingsDlg::CreateConfig(wxWindow *panel, cbDebuggerPlugin *plugin
 
 void DebuggerSettingsDlg::DeleteConfig(wxWindow *panel, cbDebuggerPlugin *plugin)
 {
+#if wxUSE_CHOICEDLG
     size_t pageIndex = FindPageIndex(m_treebook, panel);
     if (pageIndex == m_treebook->GetPageCount())
         return;
@@ -258,6 +259,7 @@ void DebuggerSettingsDlg::DeleteConfig(wxWindow *panel, cbDebuggerPlugin *plugin
         }
         break;
     }
+#endif // wxUSE_CHOICEDLG
 }
 
 void DebuggerSettingsDlg::ResetConfig(wxWindow *panel, cbDebuggerPlugin *plugin)
