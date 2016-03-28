@@ -15,6 +15,7 @@
     #include <wx/radiobut.h>
     #include <wx/xrc/xmlres.h>
     #include <wx/intl.h>
+    #include <wx/listbox.h>
     #include <wx/listctrl.h>
     #include <wx/combobox.h>
     #include <wx/choice.h>
