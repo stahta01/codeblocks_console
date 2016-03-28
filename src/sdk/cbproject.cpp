@@ -9,9 +9,8 @@
 
 #include "sdk_precomp.h"
 
-#ifndef wxUSE_CHOICEDLG
-    #define wxUSE_CHOICEDLG 1
-#endif
+// needed in wxWidgets 2.8.12 to define wxUSE_CHOICEDLG when NOPCH
+#include <wx/defs.h>
 
 #include <wx/choicdlg.h>
 #include <wx/filedlg.h>
