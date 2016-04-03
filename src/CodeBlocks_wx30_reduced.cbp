@@ -65,7 +65,6 @@
 					<Add option="-DWINVER=0x0501" />
 					<Add option="-DLINK_LEXERS" />
 					<Add option="-DSCI_LEXER" />
-					<Add option="-DWXMAKINGDLL_SCI" />
 					<Add directory="sdk/wxscintilla/src/scintilla/include" />
 					<Add directory="sdk/wxscintilla/src/scintilla/src" />
 					<Add directory="sdk/wxscintilla/src/scintilla/lexlib" />
@@ -95,7 +94,6 @@
 					<Add option="-Woverloaded-virtual" />
 					<Add option="-DEXPORT_LIB" />
 					<Add option="-DEXPORT_EVENTS" />
-					<Add option="-DWXMAKINGDLL_SCI" />
 					<Add directory="include" />
 					<Add directory="include/tinyxml" />
 					<Add directory="include/scripting/bindings" />
@@ -116,11 +114,30 @@
 					<Add option="-Wl,--no-undefined" />
 					<Add library="shfolder" />
 					<Add library="txml" />
-					<Add library="wxscintilla_cb" />
 					<Add library="sqplus" />
 					<Add library="sqstdlib" />
 					<Add library="squirrel" />
+					<Add library="wxscintilla_cb" />
+					<Add library="wxmsw$(WX_VERSION)$(WX_SUFFIX)_aui" />
+					<Add library="wxmsw$(WX_VERSION)$(WX_SUFFIX)_xrc" />
+					<Add library="wxmsw$(WX_VERSION)$(WX_SUFFIX)_html" />
+					<Add library="wxmsw$(WX_VERSION)$(WX_SUFFIX)_adv" />
+					<Add library="wxmsw$(WX_VERSION)$(WX_SUFFIX)_core" />
+					<Add library="wxbase$(WX_VERSION)$(WX_SUFFIX)_xml" />
+					<Add library="wxbase$(WX_VERSION)$(WX_SUFFIX)_net" />
+					<Add library="wxbase$(WX_VERSION)$(WX_SUFFIX)" />
+					<Add library="wxpng" />
+					<Add library="wxexpat" />
+					<Add library="wxzlib" />
+					<Add library="wxregex$(WX_SUFFIX)" />
 					<Add library="gdi32" />
+					<Add library="uuid" />
+					<Add library="ole32" />
+					<Add library="comdlg32" />
+					<Add library="comctl32" />
+					<Add library="winspool" />
+					<Add library="oleaut32" />
+					<Add library="ws2_32" />
 					<Add directory="devel30" />
 					<Add directory="sdk/scripting/lib" />
 				</Linker>
@@ -262,23 +279,21 @@
 			<Add option="-std=gnu++11" />
 			<Add option="-DHAVE_W32API_H" />
 			<Add option="-D__WXMSW__" />
-			<Add option="-DWXUSINGDLL" />
 			<Add option="-DcbDEBUG" />
 			<Add option="-DNOPCH" />
 			<Add option="-DwxUSE_UNICODE" />
 			<Add directory="$(#WX30.include)" />
-			<Add directory="$(#WX30.lib)/gcc_dll$(WX_CFG)/msw$(WX_SUFFIX)" />
+			<Add directory="$(#WX30.lib)/gcc_lib$(WX_CFG)/msw$(WX_SUFFIX)" />
 			<Add directory="sdk/wxscintilla/include" />
 			<Add directory="include/tinyxml" />
 		</Compiler>
 		<ResourceCompiler>
 			<Add directory="$(#WX30.include)" />
-			<Add directory="$(#WX30)/lib/gcc_dll$(WX_CFG)/msw$(WX_SUFFIX)" />
+			<Add directory="$(#WX30)/lib/gcc_lib$(WX_CFG)/msw$(WX_SUFFIX)" />
 		</ResourceCompiler>
 		<Linker>
-			<Add library="wxmsw$(WX_VERSION)$(WX_SUFFIX)" />
 			<Add directory="base/tinyxml" />
-			<Add directory="$(#WX30.lib)/gcc_dll$(WX_CFG)" />
+			<Add directory="$(#WX30.lib)/gcc_lib$(WX_CFG)" />
 		</Linker>
 		<Unit filename="base/tinyxml/tinystr.cpp">
 			<Option target="tinyXML" />
