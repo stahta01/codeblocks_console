@@ -38,6 +38,9 @@ Makefile.am     text whitespace=-tab-in-indent,trailing-space eol=lf
 /src/plugins/contrib/wxSmith/update                                     text eol=lf
 /src/plugins/contrib/wxSmith/update30                                   text eol=lf
 
+# Files that needs fixed; treat as binary till fixed!
+/src/sdk/wxpropgrid/build_wx26/propgrid.sln binary
+
 # Denote all files that are truly binary and should not be modified.
 *.BMP binary
 *.bmp binary
