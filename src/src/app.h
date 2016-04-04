@@ -126,7 +126,9 @@ class CodeBlocksApp : public wxApp
         void AddFileToOpenDelayed(const wxString& filename);
     protected:
         void OnBatchBuildDone(CodeBlocksEvent& event);
+#if wxUSE_TASKBARICON
         void OnTBIconLeftDown(wxTaskBarIconEvent& event);
+#endif // wxUSE_TASKBARICON
         bool LoadConfig();
         void InitDebugConsole();
         void InitExceptionHandler();
