@@ -40,6 +40,12 @@ Makefile.am     text whitespace=-tab-in-indent,trailing-space eol=lf
 
 # Files that needs fixed; treat as binary till fixed!
 /src/sdk/wxpropgrid/build_wx26/propgrid.sln binary
+/src/tools/cbp2make/src/buildtools.h        binary
+/src/tools/cbp2make/src/cbp2make.cpp        binary
+/src/tools/cbp2make/src/cbproject.cpp       binary
+/src/tools/cbp2make/src/cbptarget.cpp       binary
+/src/tools/cbp2make/src/platforms.cpp       binary
+/src/tools/cbp2make/src/platforms.h         binary
 
 # Denote all files that are truly binary and should not be modified.
 *.BMP binary
