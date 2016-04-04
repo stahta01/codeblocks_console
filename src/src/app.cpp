@@ -323,7 +323,9 @@ IMPLEMENT_APP(CodeBlocksApp) // TODO: This gives a "redundant declaration" warni
 
 BEGIN_EVENT_TABLE(CodeBlocksApp, wxApp)
     EVT_ACTIVATE_APP(CodeBlocksApp::OnAppActivate)
+#if wxUSE_TASKBARICON
     EVT_TASKBAR_LEFT_DOWN(CodeBlocksApp::OnTBIconLeftDown)
+#endif // wxUSE_TASKBARICON
 END_EVENT_TABLE()
 
 #ifdef __WXMAC__
@@ -937,6 +939,7 @@ int CodeBlocksApp::BatchJob()
     PlaceWindow(m_pBatchBuildDialog);
 
     wxString title = _("Building '") + wxFileNameFromPath(wxString(argv[argc-1])) + _("' (target '")  + m_BatchTarget + _T("')");
+#if wxUSE_TASKBARICON
     wxTaskBarIcon* tbIcon = new wxTaskBarIcon();
     tbIcon->SetIcon(
             #ifdef __WXMSW__
@@ -945,6 +948,7 @@ int CodeBlocksApp::BatchJob()
                 wxIcon(app),
             #endif // __WXMSW__
                 title);
+#endif // wxUSE_TASKBARICON
 
     wxString bb_title = m_pBatchBuildDialog->GetTitle();
     m_pBatchBuildDialog->SetTitle(bb_title + _T(" - ") + title);
@@ -992,11 +996,13 @@ int CodeBlocksApp::BatchJob()
         }
     }
 
+#if wxUSE_TASKBARICON
     if (tbIcon)
     {
         tbIcon->RemoveIcon();
         delete tbIcon;
     }
+#endif // wxUSE_TASKBARICON
 
     return 0;
 }
@@ -1038,6 +1044,7 @@ void CodeBlocksApp::OnBatchBuildDone(CodeBlocksEvent& event)
     }
 }
 
+#if wxUSE_TASKBARICON
 void CodeBlocksApp::OnTBIconLeftDown(wxTaskBarIconEvent& event)
 {
     event.Skip();
@@ -1047,6 +1054,7 @@ void CodeBlocksApp::OnTBIconLeftDown(wxTaskBarIconEvent& event)
         m_pBatchBuildDialog->Refresh();
     }
 }
+#endif // wxUSE_TASKBARICON
 
 wxString CodeBlocksApp::GetAppPath() const
 {
