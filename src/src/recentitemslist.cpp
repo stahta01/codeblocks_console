@@ -17,6 +17,9 @@
 #endif
 
 #include <wx/docview.h>
+#if !wxUSE_DOC_VIEW_ARCHITECTURE
+#include <wx/filehistory.h>
+#endif // !wxUSE_DOC_VIEW_ARCHITECTURE
 
 #include "recentitemslist.h"
 

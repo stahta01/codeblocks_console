@@ -11,6 +11,9 @@
 #include <wx/aui/aui.h> // wxAuiManager
 #include <wx/toolbar.h>
 #include <wx/docview.h> // for wxFileHistory
+#if !wxUSE_DOC_VIEW_ARCHITECTURE
+#include <wx/filehistory.h>
+#endif // !wxUSE_DOC_VIEW_ARCHITECTURE
 #include <wx/notebook.h>
 #include <wx/dynarray.h>
 #include <cbeditor.h>
