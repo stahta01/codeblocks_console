@@ -2631,6 +2631,7 @@ void CompilerOptionsDlg::OnAutoDetectClick(cb_unused wxCommandEvent& event)
 
 void CompilerOptionsDlg::OnSelectProgramClick(wxCommandEvent& event)
 {
+#if wxUSE_FILEDLG
     // see who called us
     wxTextCtrl* obj = 0L;
     if (event.GetId() == XRCID("btnCcompiler"))
@@ -2667,6 +2668,7 @@ void CompilerOptionsDlg::OnSelectProgramClick(wxCommandEvent& event)
     wxFileName fname(dlg.GetPath());
     obj->SetValue(fname.GetFullName());
     m_bDirty = true;
+#endif // wxUSE_FILEDLG
 } // OnSelectProgramClick
 
 void CompilerOptionsDlg::OnAdvancedClick(cb_unused wxCommandEvent& event)

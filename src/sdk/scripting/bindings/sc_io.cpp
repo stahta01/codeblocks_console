@@ -150,6 +150,7 @@ namespace ScriptBindings
 
         wxString ChooseFile(const wxString& title, const wxString& defaultFile, const wxString& filter)
         {
+#if wxUSE_FILEDLG
             wxFileDialog dlg(nullptr,
                             title,
                             wxEmptyString,
@@ -159,6 +160,7 @@ namespace ScriptBindings
             PlaceWindow(&dlg);
             if (dlg.ShowModal() == wxID_OK)
                 return dlg.GetPath();
+#endif // wxUSE_FILEDLG
             return wxEmptyString;
         }
 

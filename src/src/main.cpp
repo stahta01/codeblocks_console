@@ -1776,6 +1776,7 @@ bool MainFrame::Open(const wxString& filename, bool addToHistory)
 
 wxString MainFrame::ShowOpenFileDialog(const wxString& caption, const wxString& filter)
 {
+#if wxUSE_FILEDLG
     wxFileDialog dlg(this,
                      caption,
                      wxEmptyString,
@@ -1787,6 +1788,9 @@ wxString MainFrame::ShowOpenFileDialog(const wxString& caption, const wxString& 
     if (dlg.ShowModal() == wxID_OK)
         sel = dlg.GetPath();
     return sel;
+#else
+    return wxEmptyString;
+#endif // wxUSE_FILEDLG
 }
 
 bool MainFrame::OpenGeneric(const wxString& filename, bool addToHistory)
@@ -2477,6 +2481,7 @@ void MainFrame::OnFileNew(cb_unused wxCommandEvent& event)
 //      the last type : is that expected behaviour ???
 void MainFrame::DoOnFileOpen(bool bProject)
 {
+#if wxUSE_FILEDLG
     wxString Filters = FileFilters::GetFilterString();
     // the value returned by GetIndexForFilterAll() is updated by GetFilterString()
     int StoredIndex = FileFilters::GetIndexForFilterAll();
@@ -2520,6 +2525,7 @@ void MainFrame::DoOnFileOpen(bool bProject)
         dlg.GetPaths(files);
         OnDropFiles(0,0,files);
     }
+#endif // wxUSE_FILEDLG
 }
 
 void MainFrame::OnFileOpen(cb_unused wxCommandEvent& event)

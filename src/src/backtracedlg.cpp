@@ -208,6 +208,7 @@ void BacktraceDlg::OnDoubleClick(cb_unused wxListEvent& event)
 
 void BacktraceDlg::OnSave(cb_unused wxCommandEvent& event)
 {
+#if wxUSE_FILEDLG
     wxFileDialog dlg(this, _("Save as text file"), wxEmptyString, wxEmptyString,
                      FileFilters::GetFilterAll(), wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
     PlaceWindow(&dlg);
@@ -238,6 +239,7 @@ void BacktraceDlg::OnSave(cb_unused wxCommandEvent& event)
             << _T('\n');
     }
     cbMessageBox(_("File saved"), _("Result"), wxICON_INFORMATION);
+#endif // wxUSE_FILEDLG
 }
 
 void BacktraceDlg::OnCopyToClipboard(cb_unused wxCommandEvent& event)

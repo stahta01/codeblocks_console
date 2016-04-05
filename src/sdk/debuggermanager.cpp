@@ -625,6 +625,7 @@ public:
 
     void OnLoadFile(cb_unused wxCommandEvent& event)
     {
+#if wxUSE_FILEDLG
         cbDebuggerPlugin *plugin = Manager::Get()->GetDebuggerManager()->GetActiveDebugger();
         if (!plugin)
             return;
@@ -641,6 +642,7 @@ public:
 
             plugin->SendCommand(_T("source ") + dialog.GetPath(), m_debug_log);
         }
+#endif // wxUSE_FILEDLG
     }
 
     void OnUpdateUI(wxUpdateUIEvent &event)

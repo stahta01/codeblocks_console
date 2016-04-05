@@ -122,6 +122,7 @@ bool cbWorkspace::Save(bool force)
 
 bool cbWorkspace::SaveAs(cb_unused const wxString& filename)
 {
+#if wxUSE_FILEDLG
     wxFileDialog dlg(Manager::Get()->GetAppWindow(),
                      _("Save workspace"),
                      m_Filename.GetPath(),
@@ -142,6 +143,9 @@ bool cbWorkspace::SaveAs(cb_unused const wxString& filename)
         m_IsDefault = false;
 
     return Save(true);
+#else
+    return false;
+#endif // wxUSE_FILEDLG
 }
 
 void cbWorkspace::SetTitle(const wxString& title)

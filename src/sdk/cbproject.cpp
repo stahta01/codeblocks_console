@@ -428,6 +428,7 @@ void cbProject::Touch()
 
 bool cbProject::SaveAs()
 {
+#if wxUSE_FILEDLG
     wxFileName fname;
     fname.Assign(m_Filename);
     wxFileDialog dlg(Manager::Get()->GetAppWindow(),
@@ -472,6 +473,7 @@ bool cbProject::SaveAs()
     }
 
     cbMessageBox(_("Couldn't save project ") + m_Filename + _("\n(Maybe the file is write-protected?)"), _("Warning"), wxICON_WARNING);
+#endif // wxUSE_FILEDLG
     return false;
 }
 
