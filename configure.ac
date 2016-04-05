@@ -304,7 +304,7 @@ AM_CONDITIONAL([HAVE_WX29], [test $wx_config_major_version -gt 2 -o $wx_config_m
 if test "x$HAVE_WX29_TRUE" = "x" ; then
     AC_MSG_RESULT(yes (version $WX_VERSION))
     AC_MSG_NOTICE([(Re)setting libs for wxWidgets $WX_VERSION])
-    WX_LIBS=`$WX_CONFIG_WITH_ARGS --libs std,aui,propgrid,richtext`
+    WX_LIBS=`$WX_CONFIG_WITH_ARGS --libs std,aui`
     WXPROPGRID_DIR=
     WXPROPGRID_LIB=
     WXPROPGRID_INCLUDE=
