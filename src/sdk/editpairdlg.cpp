@@ -62,6 +62,7 @@ void EditPairDlg::OnBrowse(cb_unused wxCommandEvent& event)
     {
         case bmBrowseForFile:
         {
+#if wxUSE_FILEDLG
             wxFileDialog dlg(this,
                             _("Select file"),
                             XRCCTRL(*this, "txtValue", wxTextCtrl)->GetValue(),
@@ -71,6 +72,7 @@ void EditPairDlg::OnBrowse(cb_unused wxCommandEvent& event)
             PlaceWindow(&dlg);
             if (dlg.ShowModal() == wxID_OK)
                 XRCCTRL(*this, "txtValue", wxTextCtrl)->SetValue(dlg.GetPath());
+#endif // wxUSE_FILEDLG
             break;
         }
         case bmBrowseForDirectory:

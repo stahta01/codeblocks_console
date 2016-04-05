@@ -1286,6 +1286,7 @@ void ProjectManagerUI::OnAddFilesToProjectRecursively(wxCommandEvent& event)
 
 void ProjectManagerUI::OnAddFileToProject(wxCommandEvent& event)
 {
+#if wxUSE_FILEDLG
     ProjectManager* pm = Manager::Get()->GetProjectManager();
     cbProject* prj = nullptr;
     wxString basePath;
@@ -1336,6 +1337,7 @@ void ProjectManagerUI::OnAddFileToProject(wxCommandEvent& event)
         pm->AddMultipleFilesToProject(array, prj, targets);
         RebuildTree();
     }
+#endif // wxUSE_FILEDLG
 }
 
 namespace

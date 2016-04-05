@@ -809,6 +809,7 @@ void ProjectOptionsDlg::OnBrowseDirClick(wxCommandEvent& event)
 
 void ProjectOptionsDlg::OnBrowseOutputFilenameClick(cb_unused wxCommandEvent& event)
 {
+#if wxUSE_FILEDLG
     wxFileName fname;
     fname.Assign(XRCCTRL(*this, "txtOutputFilename", wxTextCtrl)->GetValue());
     fname.Normalize(wxPATH_NORM_ALL & ~wxPATH_NORM_CASE, m_Project->GetBasePath());
@@ -825,10 +826,12 @@ void ProjectOptionsDlg::OnBrowseOutputFilenameClick(cb_unused wxCommandEvent& ev
     fname.Assign(dlg.GetPath());
     fname.MakeRelativeTo(m_Project->GetBasePath());
     XRCCTRL(*this, "txtOutputFilename", wxTextCtrl)->SetValue(fname.GetFullPath());
+#endif // wxUSE_FILEDLG
 }
 
 void ProjectOptionsDlg::OnBrowseImportLibraryFilenameClick(cb_unused wxCommandEvent& event)
 {
+#if wxUSE_FILEDLG
     wxFileName fname;
     fname.Assign(XRCCTRL(*this, "txtImportLibraryFilename", wxTextCtrl)->GetValue());
     fname.Normalize(wxPATH_NORM_ALL & ~wxPATH_NORM_CASE, m_Project->GetBasePath());
@@ -845,10 +848,12 @@ void ProjectOptionsDlg::OnBrowseImportLibraryFilenameClick(cb_unused wxCommandEv
     fname.Assign(dlg.GetPath());
     fname.MakeRelativeTo(m_Project->GetBasePath());
     XRCCTRL(*this, "txtImportLibraryFilename", wxTextCtrl)->SetValue(fname.GetFullPath());
+#endif // wxUSE_FILEDLG
 }
 
 void ProjectOptionsDlg::OnBrowseDefinitionFileFilenameClick(cb_unused wxCommandEvent& event)
 {
+#if wxUSE_FILEDLG
     wxFileName fname;
     fname.Assign(XRCCTRL(*this, "txtDefinitionFileFilename", wxTextCtrl)->GetValue());
     fname.Normalize(wxPATH_NORM_ALL & ~wxPATH_NORM_CASE, m_Project->GetBasePath());
@@ -865,6 +870,7 @@ void ProjectOptionsDlg::OnBrowseDefinitionFileFilenameClick(cb_unused wxCommandE
     fname.Assign(dlg.GetPath());
     fname.MakeRelativeTo(m_Project->GetBasePath());
     XRCCTRL(*this, "txtDefinitionFileFilename", wxTextCtrl)->SetValue(fname.GetFullPath());
+#endif // wxUSE_FILEDLG
 }
 
 void ProjectOptionsDlg::OnFileOptionsClick(cb_unused wxCommandEvent& event)

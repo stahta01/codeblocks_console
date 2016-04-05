@@ -167,6 +167,7 @@ void ScriptConsole::OnbtnExecuteClick(cb_unused wxCommandEvent& event)
 
 void ScriptConsole::OnbtnLoadClick(cb_unused wxCommandEvent& event)
 {
+#if wxUSE_FILEDLG
     ConfigManager* mgr = Manager::Get()->GetConfigManager(_T("app"));
     wxString path = mgr->Read(_T("/file_dialogs/file_run_script/directory"), wxEmptyString);
     wxFileDialog dlg(this,
@@ -187,6 +188,7 @@ void ScriptConsole::OnbtnLoadClick(cb_unused wxCommandEvent& event)
         }
     }
     txtCommand->SetFocus();
+#endif // wxUSE_FILEDLG
 }
 
 void ScriptConsole::OnbtnClearClick(cb_unused wxCommandEvent& event)

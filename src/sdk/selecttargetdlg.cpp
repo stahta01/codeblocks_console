@@ -165,6 +165,7 @@ void SelectTargetDlg::OnListboxDClick(cb_unused wxCommandEvent& event)
 
 void SelectTargetDlg::OnHostApplicationButtonClick(cb_unused wxCommandEvent& event)
 {
+#if wxUSE_FILEDLG
     if(wxTextCtrl* obj = XRCCTRL(*this, "txtHostApp", wxTextCtrl))
     {
         wxFileDialog dlg(this,
@@ -190,6 +191,7 @@ void SelectTargetDlg::OnHostApplicationButtonClick(cb_unused wxCommandEvent& eve
         else
             obj->SetValue(fname.GetFullPath());
     }
+#endif // wxUSE_FILEDLG
 } // end of OnHostApplicationButtonClick
 
 void SelectTargetDlg::EndModal(int retCode)

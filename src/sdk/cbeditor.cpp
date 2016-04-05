@@ -1811,6 +1811,7 @@ bool cbEditor::Save()
 
 bool cbEditor::SaveAs()
 {
+#if wxUSE_FILEDLG
     wxFileName fname;
     fname.Assign(m_Filename);
     ConfigManager* mgr = Manager::Get()->GetConfigManager(_T("app"));
@@ -1880,6 +1881,9 @@ bool cbEditor::SaveAs()
         mgr->Write(_T("/file_dialogs/save_file_as/directory"), dlg.GetDirectory());
     }
     return Save();
+#else
+    return false;
+#endif // wxUSE_FILEDLG
 } // end of SaveAs
 
 bool cbEditor::SaveFoldState()

@@ -230,6 +230,7 @@ void DisassemblyDlg::OnAdjustLine(cb_unused wxCommandEvent& event)
 
 void DisassemblyDlg::OnSave(cb_unused wxCommandEvent& event)
 {
+#if wxUSE_FILEDLG
     wxFileDialog dlg(this,
                      _("Save as text file"),
                      _T("assembly_dump.txt"),
@@ -255,6 +256,7 @@ void DisassemblyDlg::OnSave(cb_unused wxCommandEvent& event)
 
     if (!cbSaveToFile(dlg.GetPath(), output))
         cbMessageBox(_("Could not save file..."), _("Error"), wxICON_ERROR);
+#endif // wxUSE_FILEDLG
 }
 
 void DisassemblyDlg::OnRefresh(cb_unused wxCommandEvent& event)

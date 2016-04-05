@@ -121,6 +121,7 @@ void EditPathDlg::OnBrowse(cb_unused wxCommandEvent& event)
     }
     else
     {
+#if wxUSE_FILEDLG
         wxFileDialog dlg(this, m_Message, (fname.GetPath().IsEmpty() ? s_LastPath : fname.GetPath()),
                 fname.GetFullName(), m_Filter, wxFD_CHANGE_DIR | (m_AllowMultiSel ? wxFD_MULTIPLE : 0) );
 
@@ -133,6 +134,7 @@ void EditPathDlg::OnBrowse(cb_unused wxCommandEvent& event)
                 path = dlg.GetPath();
         }
         else
+#endif // wxUSE_FILEDLG
             return;
     }
 

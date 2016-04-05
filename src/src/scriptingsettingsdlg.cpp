@@ -313,6 +313,7 @@ void ScriptingSettingsDlg::OnRemoveScript(cb_unused wxCommandEvent& event)
 
 void ScriptingSettingsDlg::OnBrowse(cb_unused wxCommandEvent& event)
 {
+#if wxUSE_FILEDLG
     wxFileDialog dlg(this,
                      _("Select script file"),
                      XRCCTRL(*this, "txtScript", wxTextCtrl)->GetValue(),
@@ -336,6 +337,7 @@ void ScriptingSettingsDlg::OnBrowse(cb_unused wxCommandEvent& event)
         }
         XRCCTRL(*this, "txtScript", wxTextCtrl)->SetValue(f.GetFullPath());
     }
+#endif // wxUSE_FILEDLG
 }
 
 void ScriptingSettingsDlg::OnTrustSelection(cb_unused wxListEvent& event)

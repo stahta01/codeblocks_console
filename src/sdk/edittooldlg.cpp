@@ -64,10 +64,12 @@ void EditToolDlg::OnUpdateUI(cb_unused wxUpdateUIEvent& event)
 
 void EditToolDlg::OnBrowseCommand(cb_unused wxCommandEvent& event)
 {
+#if wxUSE_FILEDLG
     const wxFileName file(XRCCTRL(*this, "txtCommand", wxTextCtrl)->GetValue());
     wxString filename = wxFileSelector(_("Select executable"), file.GetPath(wxPATH_GET_VOLUME), file.GetFullName());
     if (!filename.IsEmpty())
         XRCCTRL(*this, "txtCommand", wxTextCtrl)->SetValue(filename);
+#endif // wxUSE_FILEDLG
 } // end of OnBrowseCommand
 
 void EditToolDlg::OnBrowseDir(cb_unused wxCommandEvent& event)

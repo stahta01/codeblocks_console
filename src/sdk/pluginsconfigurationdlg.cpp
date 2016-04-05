@@ -236,6 +236,7 @@ void PluginsConfigurationDlg::OnToggle(wxCommandEvent& event)
 
 void PluginsConfigurationDlg::OnInstall(cb_unused wxCommandEvent& event)
 {
+#if wxUSE_FILEDLG
     wxFileDialog fd(this,
                         _("Select plugin to install"),
                         wxEmptyString, wxEmptyString,
@@ -263,6 +264,7 @@ void PluginsConfigurationDlg::OnInstall(cb_unused wxCommandEvent& event)
     FillList();
     if (!failure.IsEmpty())
         cbMessageBox(_("One or more plugins were not installed successfully:\n\n") + failure, _("Warning"), wxICON_WARNING, this);
+#endif // wxUSE_FILEDLG
 }
 
 void PluginsConfigurationDlg::OnUninstall(cb_unused wxCommandEvent& event)

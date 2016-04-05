@@ -77,6 +77,7 @@ void EditArrayFileDlg::EndModal(int retCode)
 
 void EditArrayFileDlg::OnAdd(wxCommandEvent& WXUNUSED(event))
 {
+#if wxUSE_FILEDLG
     wxFileDialog dlg(this,
                     _("Select file"),
                     m_BasePath,
@@ -91,10 +92,12 @@ void EditArrayFileDlg::OnAdd(wxCommandEvent& WXUNUSED(event))
     if (m_UseRelativePaths)
         fname.MakeRelativeTo(m_BasePath);
     XRCCTRL(*this, "lstItems", wxListBox)->Append(fname.GetFullPath());
+#endif // wxUSE_FILEDLG
 }
 
 void EditArrayFileDlg::OnEdit(wxCommandEvent& WXUNUSED(event))
 {
+#if wxUSE_FILEDLG
     wxListBox* list = XRCCTRL(*this, "lstItems", wxListBox);
     wxFileDialog dlg(this,
                     _("Select file"),
@@ -110,6 +113,7 @@ void EditArrayFileDlg::OnEdit(wxCommandEvent& WXUNUSED(event))
     if (m_UseRelativePaths)
         fname.MakeRelativeTo(m_BasePath);
     list->SetString(list->GetSelection(), fname.GetFullPath());
+#endif // wxUSE_FILEDLG
 }
 
 void EditArrayFileDlg::OnDelete(wxCommandEvent& WXUNUSED(event))
