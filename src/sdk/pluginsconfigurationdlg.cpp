@@ -296,6 +296,7 @@ void PluginsConfigurationDlg::OnUninstall(cb_unused wxCommandEvent& event)
 
 void PluginsConfigurationDlg::OnExport(cb_unused wxCommandEvent& event)
 {
+#if wxUSE_DIRDLG
     wxListCtrl* list = XRCCTRL(*this, "lstPlugins", wxListCtrl);
     if (list->GetSelectedItemCount() == 0)
         return;
@@ -393,6 +394,7 @@ void PluginsConfigurationDlg::OnExport(cb_unused wxCommandEvent& event)
 
     if (!failure.IsEmpty())
         cbMessageBox(_("Failed exporting one or more plugins:\n\n") + failure, _("Warning"), wxICON_WARNING, this);
+#endif // wxUSE_DIRDLG
 }
 
 void PluginsConfigurationDlg::OnSelect(cb_unused wxListEvent& event)
