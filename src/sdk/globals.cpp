@@ -626,6 +626,7 @@ wxString ChooseDirectory(wxWindow* parent,
                          bool askToMakeRelative, // relative to initialPath
                          bool showCreateDirButton) // where supported
 {
+#if wxUSE_DIRDLG
     wxDirDialog dlg(parent, message, _T(""),
                     (showCreateDirButton ? wxDD_NEW_DIR_BUTTON : 0) | wxRESIZE_BORDER);
     dlg.SetPath(initialPath);
@@ -645,6 +646,9 @@ wxString ChooseDirectory(wxWindow* parent,
         }
     }
     return path.GetFullPath();
+#else 
+    return wxEmptyString;
+#endif // wxUSE_DIRDLG
 }
 
 // Reads a wxString from a file. File must be open. File is closed automatically.
