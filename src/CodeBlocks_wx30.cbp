@@ -147,6 +147,13 @@
 					<Add library="sqplus" />
 					<Add library="sqstdlib" />
 					<Add library="squirrel" />
+					<Add library="wxmsw$(WX_VERSION)$(WX_SUFFIX)_aui" />
+					<Add library="wxmsw$(WX_VERSION)$(WX_SUFFIX)_xrc" />
+					<Add library="wxmsw$(WX_VERSION)$(WX_SUFFIX)_adv" />
+					<Add library="wxmsw$(WX_VERSION)$(WX_SUFFIX)_core" />
+					<Add library="wxbase$(WX_VERSION)$(WX_SUFFIX)_xml" />
+					<Add library="wxbase$(WX_VERSION)$(WX_SUFFIX)_net" />
+					<Add library="wxbase$(WX_VERSION)$(WX_SUFFIX)" />
 					<Add library="gdi32" />
 					<Add directory="devel30" />
 					<Add directory="sdk/scripting/lib" />
@@ -185,6 +192,10 @@
 					<Add option="-Wl,--enable-auto-import" />
 					<Add option="-Wl,--no-undefined" />
 					<Add library="codeblocks" />
+					<Add library="wxmsw$(WX_VERSION)$(WX_SUFFIX)_aui" />
+					<Add library="wxmsw$(WX_VERSION)$(WX_SUFFIX)_xrc" />
+					<Add library="wxmsw$(WX_VERSION)$(WX_SUFFIX)_core" />
+					<Add library="wxbase$(WX_VERSION)$(WX_SUFFIX)" />
 					<Add library="exchndl" />
 					<Add library="shfolder" />
 					<Add library="kernel32" />
@@ -352,8 +363,11 @@
 					<Add option="-Wl,--no-undefined" />
 					<Add option="-mthreads" />
 					<Add library="codeblocks" />
-					<Add library="wxmsw$(WX_VERSION)$(WX_SUFFIX)" />
 					<Add library="depslib" />
+					<Add library="wxmsw$(WX_VERSION)$(WX_SUFFIX)_xrc" />
+					<Add library="wxmsw$(WX_VERSION)$(WX_SUFFIX)_core" />
+					<Add library="wxbase$(WX_VERSION)$(WX_SUFFIX)_xml" />
+					<Add library="wxbase$(WX_VERSION)$(WX_SUFFIX)" />
 					<Add directory="devel30" />
 					<Add directory="plugins/compilergcc/depslib" />
 				</Linker>
@@ -734,7 +748,6 @@
 			<Add directory="$(#WX30)/lib/gcc_dll$(WX_CFG)/msw$(WX_SUFFIX)" />
 		</ResourceCompiler>
 		<Linker>
-			<Add library="wxmsw$(WX_VERSION)$(WX_SUFFIX)" />
 			<Add directory="base/tinyxml" />
 			<Add directory="$(#WX30.lib)/gcc_dll$(WX_CFG)" />
 		</Linker>
