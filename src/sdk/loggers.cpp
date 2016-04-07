@@ -59,11 +59,13 @@ TextCtrlLogger::~TextCtrlLogger()
 
 void TextCtrlLogger::CopyContentsToClipboard(bool selectionOnly)
 {
+#if wxUSE_CLIPBOARD
     if (control && control->GetValue().IsEmpty() == false && wxTheClipboard->Open())
     {
         wxTheClipboard->SetData(new wxTextDataObject(selectionOnly ? control->GetStringSelection() : control->GetValue()));
         wxTheClipboard->Close();
     }
+#endif // wxUSE_CLIPBOARD
 }
 
 void TextCtrlLogger::UpdateSettings()
@@ -255,6 +257,7 @@ ListCtrlLogger::~ListCtrlLogger()
 
 void ListCtrlLogger::CopyContentsToClipboard(bool selectionOnly)
 {
+#if wxUSE_CLIPBOARD
     if (control && control->GetItemCount() > 0 && wxTheClipboard->Open())
     {
         wxString text;
@@ -278,6 +281,7 @@ void ListCtrlLogger::CopyContentsToClipboard(bool selectionOnly)
         wxTheClipboard->SetData(new wxTextDataObject(text));
         wxTheClipboard->Close();
     }
+#endif // wxUSE_CLIPBOARD
 }
 
 wxString ListCtrlLogger::GetItemAsText(long item) const

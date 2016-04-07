@@ -578,7 +578,9 @@ bool CodeBlocksApp::OnInit()
     m_SafeMode             = false;
     m_BatchWindowAutoClose = true;
 
+#if wxUSE_CLIPBOARD
     wxTheClipboard->Flush();
+#endif // wxUSE_CLIPBOARD
 
     wxCmdLineParser& parser = *Manager::GetCmdLineParser();
     parser.SetDesc(cmdLineDesc);
@@ -803,7 +805,9 @@ bool CodeBlocksApp::OnInit()
 
 int CodeBlocksApp::OnExit()
 {
+#if wxUSE_CLIPBOARD
     wxTheClipboard->Flush();
+#endif // wxUSE_CLIPBOARD
 
     if (g_DDEServer) delete g_DDEServer;
 
