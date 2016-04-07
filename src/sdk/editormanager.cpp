@@ -1956,6 +1956,7 @@ void EditorManager::OnAppActivated(CodeBlocksEvent& event)
         firstLaunch = false;
         return; // avoid startup crash
     }
+#if wxUSE_DATAOBJ
     wxTextDataObject data;
     bool gotData = false;
     wxTheClipboard->UsePrimarySelection(true);
@@ -1968,6 +1969,7 @@ void EditorManager::OnAppActivated(CodeBlocksEvent& event)
     wxTheClipboard->UsePrimarySelection(false);
     if (gotData && !data.GetText().IsEmpty())
         m_pData->m_SelectionClipboard = data.GetText();
+#endif // wxUSE_DATAOBJ
 }
 
 wxString EditorManager::GetSelectionClipboard()

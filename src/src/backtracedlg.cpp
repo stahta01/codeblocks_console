@@ -265,12 +265,14 @@ void BacktraceDlg::OnCopyToClipboard(cb_unused wxCommandEvent& event)
             << _T('(') << file << _T(':') << line << _T(')')
             << _T('\n');
     }
+#if wxUSE_DATAOBJ
     wxTextDataObject *object = new wxTextDataObject(text);
     if(wxTheClipboard->Open())
     {
         wxTheClipboard->SetData(object);
         wxTheClipboard->Close();
     }
+#endif // wxUSE_DATAOBJ
 }
 
 void BacktraceDlg::OnSettingJumpDefault(wxCommandEvent& event)
