@@ -2,7 +2,7 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="Code::Blocks wx3.0.x" />
+		<Option title="Code::Blocks pluginAPI wx3.0.x" />
 		<Option default_target="src" />
 		<Option compiler="gcc" />
 		<Build>
@@ -700,8 +700,8 @@
 				</ExtraCommands>
 			</Target>
 			<Environment>
-				<Variable name="WX_CFG" value="" />
-				<Variable name="WX_SUFFIX" value="u" />
+				<Variable name="WX_CFG" value="3.0.X" />
+				<Variable name="WX_SUFFIX" value="ud" />
 				<Variable name="WX_VERSION" value="30" />
 			</Environment>
 		</Build>
