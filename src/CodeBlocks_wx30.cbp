@@ -7,12 +7,23 @@
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="tinyXML">
-				<Option output="base/tinyxml/txml" prefix_auto="1" extension_auto="1" />
+				<Option output="lib/txml" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="" />
 				<Option object_output=".objs30" />
 				<Option type="2" />
 				<Option compiler="gcc" />
+				<Option projectCompilerOptionsRelation="1" />
+				<Option projectIncludeDirsRelation="1" />
+				<Option projectResourceIncludeDirsRelation="1" />
+				<Option projectLibDirsRelation="1" />
 				<Compiler>
+					<Add option="-Wall" />
+					<Add option="$(#CB_RELEASE_TYPE)" />
+					<Add option="-pipe" />
+					<Add option="-mthreads" />
+					<Add option="-fmessage-length=0" />
+					<Add option="-fexceptions" />
+					<Add option="-std=gnu++11" />
 					<Add directory="include/tinyxml" />
 				</Compiler>
 			</Target>
@@ -29,11 +40,11 @@
 				<Linker>
 					<Add option="-s" />
 					<Add library="txml" />
-					<Add directory="base/tinyxml" />
+					<Add directory="lib" />
 				</Linker>
 			</Target>
 			<Target title="ConsoleRunner">
-				<Option output="tools/ConsoleRunner/cb_console_runner" prefix_auto="1" extension_auto="1" />
+				<Option output="devel/cb_console_runner" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="tools/ConsoleRunner" />
 				<Option object_output=".objs30" />
 				<Option type="1" />
@@ -44,7 +55,7 @@
 				</Compiler>
 			</Target>
 			<Target title="Squirrel">
-				<Option output="sdk/scripting/lib/squirrel" prefix_auto="1" extension_auto="1" />
+				<Option output="lib/squirrel" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="" />
 				<Option object_output=".objs30" />
 				<Option type="2" />
@@ -56,10 +67,10 @@
 				</Compiler>
 			</Target>
 			<Target title="Squirrel std lib">
-				<Option output="sdk/scripting/lib/sqstdlib" prefix_auto="1" extension_auto="1" />
+				<Option output="lib/sqstdlib" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="" />
 				<Option object_output=".objs30" />
-				<Option external_deps="sdk/scripting/lib/libsquirrel.a;" />
+				<Option external_deps="lib/libsquirrel.a;" />
 				<Option type="2" />
 				<Option compiler="gcc" />
 				<Compiler>
@@ -69,10 +80,10 @@
 				</Compiler>
 			</Target>
 			<Target title="SqPlus">
-				<Option output="sdk/scripting/lib/sqplus" prefix_auto="1" extension_auto="1" />
+				<Option output="lib/sqplus" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="" />
 				<Option object_output=".objs30" />
-				<Option external_deps="sdk/scripting/lib/libsquirrel.a;sdk/scripting/lib/libsqstdlib.a;" />
+				<Option external_deps="lib/libsquirrel.a;lib/libsqstdlib.a;" />
 				<Option type="2" />
 				<Option compiler="gcc" />
 				<Compiler>
@@ -112,7 +123,7 @@
 				<Option output="devel30/codeblocks" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="devel30" />
 				<Option object_output=".objs30" />
-				<Option external_deps="base/tinyxml/libtxml.a;sdk/scripting/lib/libsquirrel.a;sdk/scripting/lib/libsqstdlib.a;sdk/scripting/lib/libsqplus.a;devel30/libwxscintilla_cb.a;" />
+				<Option external_deps="lib/libtxml.a;lib/libsquirrel.a;lib/libsqstdlib.a;lib/libsqplus.a;devel30/libwxscintilla_cb.a;" />
 				<Option type="3" />
 				<Option compiler="gcc" />
 				<Option parameters="--debug-log --no-dde --no-check-associations --multiple-instance --verbose -p debug" />
@@ -148,8 +159,9 @@
 					<Add library="sqstdlib" />
 					<Add library="squirrel" />
 					<Add library="gdi32" />
+					<Add directory="lib30" />
 					<Add directory="devel30" />
-					<Add directory="sdk/scripting/lib" />
+					<Add directory="lib" />
 				</Linker>
 				<ExtraCommands>
 					<Add before="build_tools/autorevision/autorevision +wx +int +t .. include/autorevision.h" />
@@ -314,7 +326,7 @@
 				</ExtraCommands>
 			</Target>
 			<Target title="Compiler depslib">
-				<Option output="plugins/compilergcc/depslib/depslib" prefix_auto="1" extension_auto="1" />
+				<Option output="lib/depslib" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="" />
 				<Option object_output=".objs30" />
 				<Option type="2" />
@@ -331,7 +343,7 @@
 				<Option output="devel30/share/CodeBlocks/plugins/compiler" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="devel30" />
 				<Option object_output=".objs30" />
-				<Option external_deps="devel30/libcodeblocks.a;plugins/compilergcc/depslib/libdepslib.a;" />
+				<Option external_deps="devel30/libcodeblocks.a;lib/libdepslib.a;" />
 				<Option type="3" />
 				<Option compiler="gcc" />
 				<Option parameters="--debug-log --no-dde --no-check-associations --multiple-instance --no-splash-screen --verbose -p debug" />
@@ -356,6 +368,7 @@
 					<Add library="depslib" />
 					<Add directory="devel30" />
 					<Add directory="plugins/compilergcc/depslib" />
+					<Add directory="lib" />
 				</Linker>
 				<ExtraCommands>
 					<Add after="cmd /c if not exist devel30\share\CodeBlocks mkdir devel30\share\CodeBlocks" />
