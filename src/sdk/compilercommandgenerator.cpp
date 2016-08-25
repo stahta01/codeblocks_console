@@ -239,7 +239,7 @@ void CompilerCommandGenerator::GenerateCommandLine(wxString& macro,
         (compiler->GetPrograms().LIB.IsEmpty() && macro.Contains(_T("$lib_linker"))) ||
         (compiler->GetPrograms().WINDRES.IsEmpty() && macro.Contains(_T("$rescomp"))))
     {
-        Manager::Get()->GetLogManager()->DebugLog(F(_T("GenerateCommandLine: no executable found! (file=%s)"), file.c_str()));
+        Manager::Get()->GetLogManager()->DebugLog(F(_T("GenerateCommandLine: no executable found! (file=%s)"), file.wx_str()));
         macro.Clear();
         return;
     }
@@ -930,7 +930,7 @@ wxString CompilerCommandGenerator::ExpandBackticks(wxString& str)
 		}
 		else
 		{
-			Manager::Get()->GetLogManager()->DebugLog(F(_T("Caching result of `%s`"), cmd.c_str()));
+			Manager::Get()->GetLogManager()->DebugLog(F(_T("Caching result of `%s`"), cmd.wx_str()));
 			wxArrayString output;
 			if (platform::WindowsVersion() >= platform::winver_WindowsNT2000)
 				wxExecute(_T("cmd /c ") + cmd, output, wxEXEC_NODISABLE);
