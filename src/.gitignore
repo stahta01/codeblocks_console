@@ -1,0 +1,14 @@
+*.layout
+*.depend
+/include/autorevision.h
+/build_tools/autorevision/autorevision.exe
+/.objs/
+/output/share/
+/output/*.dll
+/output/*.exe
+/output/*.rpt
+/devel/share/
+/devel/*.dll
+/devel/*.exe
+/devel/*.rpt
+/devel/*.a
