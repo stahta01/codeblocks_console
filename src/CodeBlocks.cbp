@@ -53,6 +53,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-fno-inline" />
+					<Add option="-fpermissive" />
 					<Add directory="include/scripting/include" />
 					<Add directory="include/scripting/squirrel" />
 				</Compiler>
@@ -136,6 +137,7 @@
 				<Option createStaticLib="1" />
 				<Option projectLinkerOptionsRelation="2" />
 				<Compiler>
+					<Add option="-fpermissive" />
 					<Add option="-DEXPORT_LIB" />
 					<Add option="-DEXPORT_EVENTS" />
 					<Add directory="include" />
@@ -284,6 +286,7 @@
 				<Option projectIncludeDirsRelation="2" />
 				<Option projectLibDirsRelation="2" />
 				<Compiler>
+					<Add option="-fpermissive" />
 					<Add option="-DBUILDING_PLUGIN" />
 					<Add directory="include" />
 					<Add directory="include/scripting/include" />
