@@ -8,7 +8,7 @@
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="tinyXML">
-				<Option output="base/tinyxml/libtxml.a" prefix_auto="0" extension_auto="0" />
+				<Option output="devel/libtxml.a" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="" />
 				<Option type="2" />
 				<Option compiler="gcc" />
@@ -31,7 +31,7 @@
 				<Linker>
 					<Add option="-s" />
 					<Add library="txml" />
-					<Add directory="base/tinyxml" />
+					<Add directory="devel" />
 				</Linker>
 			</Target>
 			<Target title="ConsoleRunner">
@@ -47,7 +47,7 @@
 				</Compiler>
 			</Target>
 			<Target title="Squirrel">
-				<Option output="sdk/scripting/lib/libsquirrel.a" prefix_auto="0" extension_auto="0" />
+				<Option output="devel/libsquirrel.a" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="" />
 				<Option type="2" />
 				<Option compiler="gcc" />
@@ -62,9 +62,9 @@
 				</Linker>
 			</Target>
 			<Target title="Squirrel std lib">
-				<Option output="sdk/scripting/lib/libsqstdlib.a" prefix_auto="0" extension_auto="0" />
+				<Option output="devel/libsqstdlib.a" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="" />
-				<Option external_deps="sdk/scripting/lib/libsquirrel.a;" />
+				<Option external_deps="devel/libsquirrel.a;" />
 				<Option type="2" />
 				<Option compiler="gcc" />
 				<Compiler>
@@ -77,9 +77,9 @@
 				</Linker>
 			</Target>
 			<Target title="SqPlus">
-				<Option output="sdk/scripting/lib/libsqplus.a" prefix_auto="0" extension_auto="0" />
+				<Option output="devel/libsqplus.a" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="" />
-				<Option external_deps="sdk/scripting/lib/libsquirrel.a;sdk/scripting/lib/libsqstdlib.a;" />
+				<Option external_deps="devel/libsquirrel.a;devel/libsqstdlib.a;" />
 				<Option type="2" />
 				<Option compiler="gcc" />
 				<Compiler>
@@ -92,7 +92,7 @@
 				</Linker>
 			</Target>
 			<Target title="scintilla">
-				<Option output="devel/wxscintilla.dll" prefix_auto="0" extension_auto="0" />
+				<Option output="devel/wxscintilla" prefix_auto="0" extension_auto="1" />
 				<Option working_dir="devel" />
 				<Option type="3" />
 				<Option compiler="gcc" />
@@ -116,7 +116,7 @@
 				</Linker>
 			</Target>
 			<Target title="wxFlatNotebook">
-				<Option output="sdk/wxFlatNotebook/libwxflatnotebook.a" prefix_auto="0" extension_auto="0" />
+				<Option output="devel/libwxflatnotebook.a" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="" />
 				<Option type="2" />
 				<Option compiler="gcc" />
@@ -128,9 +128,9 @@
 				</Linker>
 			</Target>
 			<Target title="sdk">
-				<Option output="devel/codeblocks.dll" prefix_auto="0" extension_auto="0" />
+				<Option output="devel/codeblocks" prefix_auto="0" extension_auto="1" />
 				<Option working_dir="devel" />
-				<Option external_deps="base/tinyxml/libtxml.a;sdk/propgrid/libpropgrid.a;sdk/wxFlatNotebook/libwxflatnotebook.a;sdk/scripting/lib/libsquirrel.a;sdk/scripting/lib/libsqstdlib.a;sdk/scripting/lib/libsqplus.a;" />
+				<Option external_deps="devel/libtxml.a;devel/libwxflatnotebook.a;devel/libsquirrel.a;devel/libsqstdlib.a;devel/libsqplus.a;" />
 				<Option type="3" />
 				<Option compiler="gcc" />
 				<Option parameters="--debug-log --no-check-associations" />
@@ -158,15 +158,13 @@
 					<Add library="sqstdlib" />
 					<Add library="squirrel" />
 					<Add directory="devel" />
-					<Add directory="sdk/scripting/lib" />
-					<Add directory="sdk/wxFlatNotebook" />
 				</Linker>
 				<ExtraCommands>
 					<Add before="build_tools/autorevision/autorevision +wx +int +t . include/autorevision.h" />
 				</ExtraCommands>
 			</Target>
 			<Target title="wxAUI">
-				<Option output="src/wxAUI/libwxaui.a" prefix_auto="0" extension_auto="0" />
+				<Option output="devel/libwxaui.a" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="" />
 				<Option type="2" />
 				<Option compiler="gcc" />
@@ -183,7 +181,7 @@
 			<Target title="src">
 				<Option output="devel/codeblocks.exe" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="devel" />
-				<Option external_deps="src/wxAUI/libwxaui.a;" />
+				<Option external_deps="devel/libwxaui.a;" />
 				<Option type="0" />
 				<Option compiler="gcc" />
 				<Option parameters="--debug-log --no-check-associations -ns" />
@@ -218,7 +216,6 @@
 					<Add library="libadvapi32.a" />
 					<Add library="libwsock32.a" />
 					<Add directory="devel" />
-					<Add directory="src/wxAUI" />
 				</Linker>
 			</Target>
 			<Target title="AStyle">
@@ -242,7 +239,7 @@
 				</Linker>
 			</Target>
 			<Target title="Compiler depslib">
-				<Option output="plugins/compilergcc/depslib/libdepslib.a" prefix_auto="0" extension_auto="0" />
+				<Option output="devel/libdepslib.a" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="" />
 				<Option type="2" />
 				<Option compiler="gcc" />
@@ -253,7 +250,7 @@
 			<Target title="Compiler">
 				<Option output="devel/share/CodeBlocks/plugins/compiler.dll" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="devel/share/CodeBlocks/plugins" />
-				<Option external_deps="plugins/compilergcc/depslib/libdepslib.a;" />
+				<Option external_deps="devel/libdepslib.a;" />
 				<Option type="3" />
 				<Option compiler="gcc" />
 				<Option projectLinkerOptionsRelation="1" />
@@ -274,7 +271,6 @@
 					<Add library="wxmsw28$(WX_SUFFIX)" />
 					<Add library="depslib" />
 					<Add directory="devel" />
-					<Add directory="plugins/compilergcc/depslib" />
 				</Linker>
 			</Target>
 			<Target title="Debugger">
@@ -509,7 +505,6 @@
 		</ResourceCompiler>
 		<Linker>
 			<Add library="wxmsw28$(WX_SUFFIX)" />
-			<Add directory="base/tinyxml" />
 			<Add directory="$(#WX.lib)/gcc_dll$(WX_CFG)" />
 		</Linker>
 		<Unit filename="base/tinyxml/tinystr.cpp">
