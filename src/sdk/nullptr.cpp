@@ -9,8 +9,12 @@
 
 #include <prep.h>
 
+#if !defined(__GXX_EXPERIMENTAL_CXX0X__) && (__GNUC__ < 5)
+
 /* -----------------------------------------------
  * remove this once the compiler supports C++0x
  * ----------------------------------------------- */
 
 null_pointer_t nullptr;
+
+#endif
