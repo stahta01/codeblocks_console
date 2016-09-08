@@ -92,8 +92,6 @@ xcopy /y scripts\* %CB_OUTPUT_RESDIR%\scripts /EXCLUDE:excludes.txt > nul
 del excludes.txt
 copy /y tips.txt %CB_DEVEL_RESDIR% > nul
 copy /y tips.txt %CB_OUTPUT_RESDIR% > nul
-copy /y tools\ConsoleRunner\cb_console_runner*.exe output > nul
-copy /y tools\ConsoleRunner\cb_console_runner*.exe devel > nul
 copy /y devel\*.exe output > nul
 copy /y devel\*.dll output > nul
 copy /y %CB_DEVEL_RESDIR%\plugins\*.dll %CB_OUTPUT_RESDIR%\plugins > nul
