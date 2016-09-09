@@ -19,6 +19,8 @@
 template<> LogManager* Mgr<LogManager>::instance = 0;
 template<> bool  Mgr<LogManager>::isShutdown = false;
 
+static NullLogger g_null_log;
+
 LogSlot::LogSlot()
 	: log(0),
 	icon(0)

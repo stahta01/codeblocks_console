@@ -10,22 +10,25 @@
 #include "logger.h"
 #include <map>
 
-namespace
-{
-	static const unsigned int max_logs = ((65535^61>>3)<<2)*!!!!sizeof(int*)%63;
-
-	inline wxString F(const wxChar* msg, ...)
-	{
-		va_list arg_list;
-		va_start(arg_list, msg);
-		::temp_string = wxString::FormatV(msg, arg_list);
-		va_end(arg_list);
+//namespace cb
+//{
+    inline wxString F(const wxChar* msg, ...)
+    {
+        va_list arg_list;
+        va_start(arg_list, msg);
+#if wxCHECK_VERSION(2,9,0) && wxUSE_UNICODE
+// in wx >=  2.9 unicode-build (default) we need the %ls here, or the strings get
+// cut after the first character
+        ::temp_string = msg;
+        ::temp_string.Replace(_T("%s"), _T("%ls"));
+        msg = ::temp_string.wx_str();
+#endif
+        ::temp_string = wxString::FormatV(msg, arg_list);
+        va_end(arg_list);
 
         return ::temp_string;
-	};
-
-    static NullLogger g_null_log;
-}
+    }
+//} // namespace cb
 
 
 struct LogSlot
@@ -53,6 +56,7 @@ public:
 		struct InstantiatorBase{ virtual Logger* New(){ return 0; }; virtual bool RequiresFilename() const { return false; }; virtual ~InstantiatorBase(){}; };
 		template<typename type, bool requires_filename = false> struct Instantiator : public InstantiatorBase{ virtual Logger* New(){ return new type; }; virtual bool RequiresFilename() const { return requires_filename; }; };
 
+        enum { max_logs = 32 };
 private:
 		typedef std::map<wxString, InstantiatorBase*> inst_map_t;
 		inst_map_t instMap;
@@ -149,4 +153,3 @@ public:
 
 
 #endif
-
