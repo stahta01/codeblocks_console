@@ -774,7 +774,7 @@ void DebuggerGDB::DoSwitchToDebuggingLayout()
 	CodeBlocksLayoutEvent queryEvent(cbEVT_QUERY_VIEW_LAYOUT);
 	CodeBlocksLayoutEvent switchEvent(cbEVT_SWITCH_VIEW_LAYOUT, _("Debugging"));
 
-	Manager::Get()->GetLogManager()->DebugLog(F(_("Switching layout to \"%s\""), switchEvent.layout.c_str()));
+	Manager::Get()->GetLogManager()->DebugLog(F(_("Switching layout to \"%s\""), switchEvent.layout.wx_str()));
 
 	// query the current layout
 	Manager::Get()->ProcessEvent(queryEvent);
@@ -788,7 +788,7 @@ void DebuggerGDB::DoSwitchToPreviousLayout()
 {
 	CodeBlocksLayoutEvent switchEvent(cbEVT_SWITCH_VIEW_LAYOUT, m_PreviousLayout);
 
-	Manager::Get()->GetLogManager()->DebugLog(F(_("Switching layout to \"%s\""), !switchEvent.layout.IsEmpty() ? switchEvent.layout.c_str() : wxString(_("Code::Blocks default")).c_str()));
+	Manager::Get()->GetLogManager()->DebugLog(F(_("Switching layout to \"%s\""), !switchEvent.layout.IsEmpty() ? switchEvent.layout.wx_str() : wxString(_("Code::Blocks default")).c_str()));
 
 	// switch to previous layout
 	Manager::Get()->ProcessEvent(switchEvent);
