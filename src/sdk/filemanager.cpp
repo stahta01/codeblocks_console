@@ -134,7 +134,7 @@ LoaderBase* FileManager::Load(const wxString& file, bool reuseEditors)
                 if(ed && fileName == ed->GetFilename())
                 {
                     wxString s(ed->GetControl()->GetText());
-                    NullLoader *nl = new NullLoader(file, (char*) s.c_str(), s.length() * sizeof(wxChar));
+                    NullLoader *nl = new NullLoader(file, (char*) s.wx_str(), s.length() * sizeof(wxChar));
                     return nl;
                 }
             }
