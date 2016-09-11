@@ -54,12 +54,12 @@ void ProjectFile::Rename(const wxString& new_name)
 {
     wxString path = file.GetPath(wxPATH_GET_VOLUME | wxPATH_GET_SEPARATOR);
 
-	file.Assign(path + new_name);
-	relativeFilename = relativeFilename.BeforeLast(wxFILE_SEP_PATH);
-	relativeFilename.IsEmpty() || relativeFilename.Append(wxFILE_SEP_PATH);
-	relativeFilename.Append(new_name);
+    file.Assign(path + new_name);
+    relativeFilename = relativeFilename.BeforeLast(wxFILE_SEP_PATH);
+    if (relativeFilename.IsEmpty()) relativeFilename.Append(wxFILE_SEP_PATH);
+    relativeFilename.Append(new_name);
 
-	UpdateFileDetails();
+    UpdateFileDetails();
 	if (project)
 	{
 		project->ProjectFileRenamed(this);
