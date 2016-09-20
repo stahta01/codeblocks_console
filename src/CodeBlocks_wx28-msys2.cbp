@@ -68,7 +68,7 @@
 				<Option output="devel28_msys2/libsqstdlib.a" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="" />
 				<Option object_output=".objs28_msys2" />
-				<Option external_deps="devel/libsquirrel.a;" />
+				<Option external_deps="devel28_msys2/libsquirrel.a;" />
 				<Option type="2" />
 				<Option compiler="gcc" />
 				<Compiler>
@@ -84,7 +84,7 @@
 				<Option output="devel28_msys2/libsqplus.a" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="" />
 				<Option object_output=".objs28_msys2" />
-				<Option external_deps="devel/libsquirrel.a;devel/libsqstdlib.a;" />
+				<Option external_deps="devel28_msys2/libsquirrel.a;devel28_msys2/libsqstdlib.a;" />
 				<Option type="2" />
 				<Option compiler="gcc" />
 				<Compiler>
@@ -143,7 +143,7 @@
 				<Option output="devel28_msys2/codeblocks" prefix_auto="0" extension_auto="1" />
 				<Option working_dir="devel28_msys2" />
 				<Option object_output=".objs28_msys2" />
-				<Option external_deps="devel/libtxml.a;devel/libwxflatnotebook.a;devel/libsquirrel.a;devel/libsqstdlib.a;devel/libsqplus.a;" />
+				<Option external_deps="devel28_msys2/libtxml.a;devel28_msys2/libwxflatnotebook.a;devel28_msys2/libsquirrel.a;devel28_msys2/libsqstdlib.a;devel28_msys2/libsqplus.a;" />
 				<Option type="3" />
 				<Option compiler="gcc" />
 				<Option parameters="--debug-log --no-check-associations" />
@@ -205,7 +205,7 @@
 				<Option output="devel28_msys2/codeblocks.exe" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="devel28_msys2" />
 				<Option object_output=".objs28_msys2" />
-				<Option external_deps="devel/libwxaui.a;" />
+				<Option external_deps="devel28_msys2/libwxaui.a;" />
 				<Option type="0" />
 				<Option compiler="gcc" />
 				<Option parameters="--debug-log --no-check-associations -ns" />
@@ -291,7 +291,7 @@
 				<Option output="devel28_msys2/share/CodeBlocks/plugins/compiler.dll" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="devel28_msys2/share/CodeBlocks/plugins" />
 				<Option object_output=".objs28_msys2" />
-				<Option external_deps="devel/libdepslib.a;" />
+				<Option external_deps="devel28_msys2/libdepslib.a;" />
 				<Option type="3" />
 				<Option compiler="gcc" />
 				<Option projectLinkerOptionsRelation="1" />
